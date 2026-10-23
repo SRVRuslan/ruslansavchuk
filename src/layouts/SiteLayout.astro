@@ -1,0 +1,30 @@
+---
+import "../styles/global.css";
+import config from "../data/config.js";
+---
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#080d15" />
+    <meta name="description" content="Незалежний веброзробник. Продумані сайти, інтернет-магазини та вебзастосунки — від першої ідеї до запуску." />
+    <meta property="og:title" content={`${config.brand} — ${config.tagline}`} />
+    <meta property="og:description" content="Перетворюю хороші ідеї на сайти, якими приємно користуватися." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/rs-brand-original.png" />
+    <meta property="og:image:alt" content="RS — Ruslan Savchuk. Web Developer · Software Engineer." />
+    <meta property="og:locale" content="uk_UA" />
+    <meta name="color-scheme" content="dark" />
+    <title>{config.brand} — {config.tagline}</title>
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/rs-favicon.png" />
+    <link rel="apple-touch-icon" href="/assets/rs-favicon.png" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="skip">Перейти до вмісту</a>
+    <slot />
+    <script>
+      import "../scripts/client.js";
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+---
+import BrandLogo from './BrandLogo.astro';
+---
+<footer class="site-footer">
+      <div class="container">
+        <div class="footer-overview">
+          <div class="footer-summary">
+            <BrandLogo footer />
+            <p class="footer-tagline" data-i18n="footerTagline">Продумано. Розроблено. З любов’ю до деталей.</p>
+            <a class="footer-email" id="footer-email" hidden><span></span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+          </div>
+          <nav class="footer-navigation" aria-label="Навігація у футері" data-i18n-aria="footerNavigation">
+            <h2 class="footer-heading" data-i18n="footerNavigationHeading">Навігація</h2>
+            <a href="#work" data-i18n="navWork">Роботи</a>
+            <a href="#services" data-i18n="navServices">Послуги</a>
+            <a href="#about" data-i18n="navAbout">Про мене</a>
+            <a href="#contact" data-i18n="letsTalk">Поговорімо</a>
+          </nav>
+          <div class="footer-connect">
+            <h2 class="footer-heading" data-i18n="footerConnect">Будьмо на зв’язку</h2>
+            <p class="footer-social-caption" data-i18n="footerSocialCaption">Ідеї, проєкти та трохи більше про мене.</p>
+            <div class="footer-social-list" id="social-links">
+              <span class="footer-social-icon" data-social="github" role="img" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.86c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.6 9.6 0 0 1 12 6.83c.85 0 1.71.11 2.51.34 1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.76c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" /></svg></span>
+              <span class="footer-social-icon" data-social="linkedin" role="img" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM3.3 9h3.4v12H3.3V9Zm5.8 0h3.3v1.64h.05A3.62 3.62 0 0 1 15.7 8.7c3.48 0 4.12 2.23 4.12 5.12V21h-3.44v-6.36c0-1.52-.03-3.47-2.12-3.47-2.12 0-2.44 1.66-2.44 3.36V21H9.1V9Z" /></svg></span>
+              <span class="footer-social-icon" data-social="instagram" role="img" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8" /><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8" /><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" /></svg></span>
+              <span class="footer-social-icon" data-social="telegram" role="img" aria-label="Telegram" title="Telegram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m20.7 3.4-18 7.1c-1.2.5-1.2 1.1-.2 1.4l4.6 1.4 1.8 5.4c.2.6.4.7.8.7.3 0 .6-.2.8-.4l2.6-2.5 5.4 4c1 .5 1.6.2 1.8-.9l3-14.5c.3-1.4-.5-2-1.6-1.7ZM8.2 13l10.6-6.7c.5-.3.9-.1.5.2l-8.7 7.9-.3 3.4L8.2 13Z" /></svg></span>
+            </div>
+          </div>
+        </div>
+        <div class="footer-credits">
+          <p class="footer-copyright">© <span id="year">2026</span> <span data-owner>Руслан Савчук</span><span class="footer-rights" data-i18n="rights">Усі права захищено.</span></p>
+          <p class="footer-author"><span data-i18n="footerCredit">Автор і розробник сайту</span><span data-owner>Руслан Савчук</span></p>
+          <a class="footer-to-top" href="#home"><span data-i18n="backTop">Нагору</span><span class="footer-top-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 19V5m-6 6 6-6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></span></a>
+        </div>
+      </div>
+    </footer>

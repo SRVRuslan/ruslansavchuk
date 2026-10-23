@@ -1,0 +1,8 @@
+### Astro development server
+GET http://localhost:4321/?lang=uk
+
+### English version
+GET http://localhost:4321/?lang=en
+
+### French version
+GET http://localhost:4321/?lang=fr

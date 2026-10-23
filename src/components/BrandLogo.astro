@@ -1,0 +1,14 @@
+---
+interface Props {
+  footer?: boolean;
+}
+
+const { footer = false } = Astro.props;
+---
+<a class:list={['logo', 'rs-logo', { 'footer-logo': footer }]} href="#home" aria-label="Ruslan Savchuk — Web Developer · Software Engineer — на головну">
+  <img class="rs-logo-mark" src="/assets/rs-mark.webp" width="640" height="364" alt="" aria-hidden="true" decoding="async" />
+  <span class="rs-wordmark" aria-hidden="true">
+    <span class="rs-logo-name">RUSLAN <strong>SAVCHUK</strong></span>
+    <span class="rs-logo-role">WEB DEVELOPER <span>•</span> SOFTWARE ENGINEER</span>
+  </span>
+</a>

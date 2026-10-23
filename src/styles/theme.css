@@ -1,0 +1,241 @@
+/* Global theme imported after the base stylesheet. */
+/* Midnight surfaces, brushed-silver type and electric-blue RS accents. */
+:root {
+  color-scheme: dark;
+  --paper: #080d15;
+  --ink: #edf3fc;
+  --muted: #9faec2;
+  --accent: #64b5ff;
+  --line: #253349;
+  --surface: #0f1722;
+  --surface-raised: #172231;
+  --on-accent: #071522;
+  --border-control: #5b718d;
+}
+
+html { background: var(--paper); scrollbar-color: #56565c var(--paper); }
+::selection { background: var(--accent); color: var(--on-accent); }
+:focus-visible { outline-color: var(--accent); }
+.skip-link { background: var(--accent); color: var(--on-accent); }
+.header { background: rgb(8 13 21 / 92%); }
+.header.is-scrolled { background: rgb(8 13 21 / 97%); box-shadow: 0 8px 30px #0005; }
+.header::after, .desktop-nav a::after { background: var(--accent); }
+.logo-dot, .hero-spark, .small-cross, .mini-asterisk { color: var(--accent); }
+.language-switch { background: var(--surface); }
+.language-switch button[aria-pressed=true] { background: var(--accent); color: var(--on-accent); }
+.mobile-nav { background: var(--paper); }
+.availability { background: var(--surface); color: #d2d2cd; }
+.status-dot, .contact-note .status-dot { background: var(--accent); box-shadow: 0 0 0 3px #64b5ff14; }
+.highlight { color: var(--accent); }
+.highlight::before { inset: 88% -4px -2px; background: #64b5ff29; }
+.hero-description, .service-card p, .contact-copy > p:not(.eyebrow), .contact-note, .form-note {
+  color: var(--muted);
+}
+.button-dark { background: var(--accent); color: var(--on-accent); }
+.button:hover { background: #a5d6ff; box-shadow: 0 6px 24px #64b5ff17; }
+.hero-art::before { background: radial-gradient(ellipse, #64b5ff14, #64b5ff05 48%, transparent 70%); }
+.art-grid { background-image: linear-gradient(#ffffff0b 1px, transparent 1px), linear-gradient(90deg, #ffffff0b 1px, transparent 1px); }
+.art-coordinate, .art-caption { color: #95959c; }
+.code-window { background: #111113; border-color: #35353b; box-shadow: 0 18px 45px #0006; }
+.window-bar { border-color: var(--line); color: #929298; }
+.line-numbers { color: #7e7e87; }
+.preview-window { background: #1b1b1e; border-color: #45454b; box-shadow: 0 24px 60px #0009; }
+.preview-toolbar { background: #222225; border-color: #37373d; color: #aaaab0; }
+.preview-toolbar .window-dots i { background: #66666e; }
+.preview-arrow { background: var(--accent); color: var(--on-accent); }
+.asterisk { filter: drop-shadow(6px 10px 12px #64b5ff1a); }
+.art-sticker { background: #232326; border-color: #45454b; box-shadow: 0 12px 24px #0005; }
+.art-sticker > span { color: var(--accent); }
+.expertise-strip { background: #101012; }
+.expertise-inner i, .expertise-inner > span::before { color: var(--accent); }
+.section-number, .service-index, .process-step > span:first-child { color: #9999a0; }
+
+/* Keep the project artwork in its original palette, inside dark frames. */
+.project-filters button { color: var(--muted); }
+.project-filters button[aria-pressed=true] { background: #26262a; border-color: #4e4e56; color: var(--ink); box-shadow: none; }
+.project-filters button:hover { background: #222225; color: var(--ink); }
+.project-art-forma { background: #1e1d1b; }
+.project-art-orbit { background: #17191f; }
+.project-art-bloom { background: #191e18; }
+.project-art::after { border-color: #ffffff10; }
+.project-art > img { box-shadow: 0 20px 40px #0007; }
+.concept-badge { background: #111113e6; border-color: #ffffff29; color: #efefeb; }
+.project-open-icon { background: #171719f2; border-color: #737379; color: var(--ink); }
+.project-open:hover .project-open-icon, .project-open:focus-visible .project-open-icon {
+  background: var(--accent); color: var(--on-accent);
+}
+.project-type { background: #ffffff03; }
+.bloom-brand { color: #e3ebd9; }
+.bloom-tagline { color: #bac7ae; }
+.bloom-small { color: #a2b496; }
+.orbit-dot { color: #b7b6ed; }
+
+.services-section { background: #101012; border-color: var(--line); }
+.service-card { background: #171719; border-color: #333337; }
+.service-card:hover { background: #1d1d20; }
+.service-card::after { background: radial-gradient(circle, #64b5ff1a, transparent 70%); }
+.service-icon { border-color: #414147; background: #222225; color: var(--accent); }
+.service-tags > span { border-color: #3c3c42; color: #b9b9bf; }
+.about-visual { background: #151517; border-color: #343438; }
+.about-grid { background-image: linear-gradient(#ffffff0a 1px, transparent 1px), linear-gradient(90deg, #ffffff0a 1px, transparent 1px); }
+.about-visual-label, .about-visual-footer { color: #9999a1; }
+.about-monogram { color: #74747b; }
+.about-monogram span { color: #d8d8dc; }
+.about-note { background: #262629; border: 1px solid #4a4a50; box-shadow: 2px 15px 30px #0006; }
+.note-star, .about-values > div > span:first-child { color: var(--accent); }
+.note-signature { color: #bdbdaf; }
+.process-step { border-color: #3a3a40; }
+.process-step > span:last-child { color: var(--accent); }
+.faq-list details[open] { background: #ffffff04; }
+.faq-plus::before, .faq-plus::after { background: var(--accent); }
+
+.contact-section {
+  background: radial-gradient(ellipse at 0 100%, #64b5ff09, transparent 60%), var(--surface);
+  border-block: 1px solid #343438;
+}
+.contact-copy .section-number { color: #9999a0; }
+.contact-period, .contact-decoration, .contact-email { color: var(--accent); }
+.contact-form input[type=text], .contact-form input[type=email], .contact-form textarea {
+  color: var(--ink);
+  border-color: var(--border-control);
+  caret-color: var(--accent);
+}
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: #9e9ea5; }
+.contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); box-shadow: 0 1px 0 var(--accent); }
+.contact-form input:autofill { -webkit-text-fill-color: var(--ink); box-shadow: 0 0 0 100px var(--surface) inset; }
+.service-picker label > span { background: #19191c; border-color: var(--border-control); color: #d0d0d5; }
+.service-picker input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.service-picker input:focus-visible + span { outline-color: var(--accent); }
+.form-status { color: var(--accent); }
+.project-dialog { background: var(--surface); box-shadow: 0 30px 100px #000b; }
+.project-dialog::backdrop { background: #000c; }
+.dialog-image-wrap { background: #202023; }
+.dialog-close { background: #19191c; border: 1px solid #63636b; color: var(--ink); box-shadow: 0 3px 12px #0006; }
+.noscript-message { background: var(--surface-raised); color: var(--ink); }
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-art:hover .preview-window { box-shadow: 0 28px 65px #000b; }
+  .project-open:hover .project-art { box-shadow: 0 16px 40px -22px #000b; }
+  .service-card:hover { border-color: #557eac; box-shadow: 0 16px 32px -24px #000a; }
+  .service-card:hover .service-icon { color: var(--on-accent); }
+  .process-grid article:hover .process-step { border-color: var(--accent); }
+  .faq-list summary:hover, .footer-social-list a:hover, .text-link:hover { color: var(--accent); }
+}
+
+/* Personal RS brand: silver letterforms, clean spacing, blue edge light. */
+.rs-logo {
+  flex-shrink: 0;
+  gap: 12px;
+  letter-spacing: normal;
+}
+.rs-logo-mark {
+  display: block;
+  width: 64px;
+  height: auto;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 12px #1688ff26);
+}
+.header .rs-logo-mark {
+  transform: scale(1.4);
+  transform-origin: center;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .header .rs-logo-mark {
+    animation: rs-logo-glow 3s ease-in-out infinite;
+  }
+}
+@keyframes rs-logo-glow {
+  0%, 100% { filter: drop-shadow(0 0 10px #1688ff40); }
+  50% { filter: drop-shadow(0 0 18px #1688ffb3) drop-shadow(0 0 7px #55bdff80); }
+}
+.rs-wordmark { display: block; }
+.rs-logo-name {
+  display: block;
+  color: #e9eff8;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 1.4px;
+  white-space: nowrap;
+}
+.rs-logo-name strong { font-weight: 800; }
+.rs-logo-role {
+  display: block;
+  margin-top: 5px;
+  color: #a6b7cd;
+  font-size: 6px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: .85px;
+  white-space: nowrap;
+}
+.rs-logo-role > span { margin-inline: 3px; color: #369bff; }
+.footer-logo.rs-logo { gap: 16px; }
+.footer-logo .rs-logo-mark { width: 88px; }
+.footer-logo .rs-logo-name { font-size: 19px; letter-spacing: 1.5px; }
+.footer-logo .rs-logo-role { font-size: 7px; letter-spacing: 1px; }
+.about-brand-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: radial-gradient(ellipse at center, #10243c, #02060b 75%);
+  border-color: #233f60;
+}
+.rs-brand-art {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.asterisk > span {
+  background: linear-gradient(90deg, #1160c4 0%, #3c9cfa 35%, #b7e1ff 60%, #1859aa 100%);
+}
+.code-green { color: #a3cfff; }
+.about-values > div > span:first-child { color: var(--accent); }
+@media (max-width: 900px) {
+  .rs-logo { gap: 9px; }
+  .rs-logo-mark { width: 50px; }
+  .rs-logo-name { font-size: 11px; letter-spacing: .8px; }
+  .rs-logo-role { font-size: 5.5px; letter-spacing: .55px; }
+  .footer-logo.rs-logo { gap: 10px; }
+  .footer-logo .rs-logo-mark { width: 66px; }
+  .footer-logo .rs-logo-name { font-size: 15px; letter-spacing: .8px; }
+  .footer-logo .rs-logo-role { font-size: 6px; letter-spacing: .6px; }
+}
+@media (max-width: 640px) {
+  .rs-logo { gap: 8px; }
+  .rs-logo-mark { width: 38px; }
+  .rs-logo-name { font-size: 10px; letter-spacing: .45px; }
+  .rs-logo-role { margin-top: 4px; font-size: 4.5px; letter-spacing: .18px; }
+  .rs-logo-role > span { margin-inline: 1px; }
+  .footer-logo .rs-logo-mark { width: 76px; }
+  .footer-logo .rs-logo-name { font-size: 18px; letter-spacing: .8px; }
+  .footer-logo .rs-logo-role { font-size: 6.4px; letter-spacing: .5px; }
+  .about-brand-visual { height: auto; min-height: 230px; padding: 12px; }
+  .rs-brand-art { height: auto; }
+}
+
+/* Balance the header wordmark against the enlarged RS symbol. */
+.header .rs-logo-name {
+  font-size: 18px;
+  line-height: 1.25;
+}
+.header .rs-logo-role {
+  margin-top: 7px;
+  font-size: 8.5px;
+  line-height: 1.5;
+  letter-spacing: .7px;
+}
+@media (max-width: 900px) {
+  .header .rs-logo-name { font-size: 14px; }
+  .header .rs-logo-role { margin-top: 6px; font-size: 6.8px; letter-spacing: .5px; }
+}
+@media (max-width: 640px) {
+  .header .rs-logo-name { font-size: 12px; letter-spacing: .2px; }
+  .header .rs-logo-role { margin-top: 4px; font-size: 5.2px; letter-spacing: .1px; }
+}
+@media (max-width: 360px) {
+  .header .rs-logo-name { font-size: 11px; }
+  .header .rs-logo-role { font-size: 4.8px; }
+}
