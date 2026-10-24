@@ -569,6 +569,11 @@
   .project-filters button { min-height: 44px; }
   .service-card p { min-height: 0; }
   .process-grid p, .about-copy > p:not(.eyebrow) { font-size: 12px; }
+  /* Reserve a separate cell for the contact arrow above the full-width heading. */
+  .contact-copy { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 16px; }
+  .contact-copy > :not(.eyebrow):not(.contact-decoration) { grid-column: 1 / -1; }
+  .contact-copy .eyebrow { grid-area: 1 / 1; align-self: center; }
+  .contact-decoration { grid-area: 1 / 2; position: static; align-self: center; font-size: 48px; line-height: 1; margin: 0; }
   .contact-form input[type=text], .contact-form input[type=email], .contact-form textarea { font-size: 16px; }
   .service-picker label > span { min-height: 44px; display: flex; align-items: center; }
   .dialog-close { width: 44px; height: 44px; }
