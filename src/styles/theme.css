@@ -102,7 +102,7 @@ html { background: var(--paper); scrollbar-color: #56565c var(--paper); }
 }
 .contact-copy .section-number { color: #9999a0; }
 .contact-period, .contact-decoration, .contact-email { color: var(--accent); }
-.contact-form input[type=text], .contact-form input[type=email], .contact-form textarea {
+.contact-form input[type=text], .contact-form input[type=email], .contact-form input[type=tel], .contact-form textarea {
   color: var(--ink);
   border-color: var(--border-control);
   caret-color: var(--accent);
@@ -140,7 +140,7 @@ html { background: var(--paper); scrollbar-color: #56565c var(--paper); }
   width: 64px;
   height: auto;
   flex-shrink: 0;
-  filter: drop-shadow(0 0 12px #1688ff26);
+  filter: drop-shadow(0 0 12px #1688ff2e);
 }
 .header .rs-logo-mark {
   transform: scale(1.4);
@@ -152,8 +152,8 @@ html { background: var(--paper); scrollbar-color: #56565c var(--paper); }
   }
 }
 @keyframes rs-logo-glow {
-  0%, 100% { filter: drop-shadow(0 0 10px #1688ff40); }
-  50% { filter: drop-shadow(0 0 18px #1688ffb3) drop-shadow(0 0 7px #55bdff80); }
+  0%, 100% { filter: drop-shadow(0 0 10px #1688ff4d); }
+  50% { filter: drop-shadow(0 0 18px #1688ffd7) drop-shadow(0 0 7px #55bdff9a); }
 }
 .rs-wordmark { display: block; }
 .rs-logo-name {

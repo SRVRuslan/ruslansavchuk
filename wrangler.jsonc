@@ -1,0 +1,29 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ruslansavchuk",
+  "account_id": "3c75295ab6c346e05ba389966251f52a",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-23",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+  "routes": [
+    { "pattern": "ruslansavchuk.com", "custom_domain": true },
+    { "pattern": "www.ruslansavchuk.com", "custom_domain": true }
+  ],
+  "send_email": [
+    {
+      "name": "CONTACT_EMAIL",
+      "destination_address": "ruslan.savchuk.dev.ca@gmail.com"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "CONTACT_RATE_LIMITER",
+      "namespace_id": "859732101",
+      "simple": { "limit": 5, "period": 60 }
+    }
+  ]
+}

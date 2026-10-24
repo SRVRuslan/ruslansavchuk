@@ -49,7 +49,7 @@ import projectSettings from '../data/projects.js';
       step2Title: 'Проєктуємо', step2Text: 'Будуємо структуру та знаходимо візуальну мову. Узгоджуємо дизайн до початку розробки.',
       step3Title: 'Розробляємо', step3Text: 'Перетворюємо дизайн на живий сайт. Показую проміжні результати й враховую ваш відгук.',
       step4Title: 'Запускаємо', step4Text: 'Перевіряємо деталі, публікуємо сайт і розбираємося з керуванням. Ваша ідея вже онлайн.',
-      faqEyebrow: 'ПЕРЕД СТАРТОМ', faqHeading: 'Можливо, ви<br />хочете знати.',
+      faqEyebrow: 'ПЕРЕД СТАРТОМ', faqHeading: 'Можливо, ви<br /> хочете знати.',
       faq1Question: 'Скільки коштує розробка сайту?', faq1Answer: 'Вартість залежить від обсягу, дизайну та функцій. Після короткого знайомства з вашим завданням я підготую пропозицію з конкретним переліком робіт і бюджетом.',
       faq2Question: 'Скільки часу займає проєкт?', faq2Answer: 'Терміни визначаємо разом після обговорення задачі. На них впливають кількість сторінок, складність функцій і готовність матеріалів. Перед стартом у вас буде зрозумілий план із ключовими етапами.',
       faq3Question: 'Чи можна звернутися лише з ідеєю?', faq3Answer: 'Так. Не обов’язково мати готове технічне завдання. Розкажіть, для кого ваш продукт і чого хочете досягти — разом визначимо структуру, функції та наступні кроки.',
@@ -59,16 +59,17 @@ import projectSettings from '../data/projects.js';
       nameLabel: 'Ваше ім’я', namePlaceholder: 'Як до вас звертатися?', emailLabel: 'Електронна пошта', interestLabel: 'Що вас цікавить?',
       interestWebsite: 'Вебсайт', interestApp: 'Вебзастосунок', interestShop: 'Інтернет-магазин', interestOther: 'Щось інше',
       messageLabel: 'Кілька слів про вашу ідею', messagePlaceholder: 'Що хочете створити? Для кого? Чи є орієнтовні терміни?',
-      formNote: 'Збережіть короткий бриф, щоб мати деталі проєкту під рукою.',
-      formEmailNote: 'Кнопка відкриє вашу поштову програму з готовим листом. Надсилання підтверджуєте ви.',
-      submitBrief: 'Зберегти бриф', submitEmail: 'Підготувати лист',
-      briefSaved: 'Бриф завантажено. Ви можете доповнити його й передати розробнику зручним способом.',
-      emailPrepared: 'Лист підготовлено для вашої поштової програми. Якщо вона не відкрилася, скористайтеся адресою поруч. Бриф також завантажено.',
+      phoneLabel: 'Номер телефону (необов’язково)', phonePlaceholder: 'Номер у зручному для вас форматі',
+      formNote: 'Заявка надійде мені на пошту. Я відповім вам особисто.',
+      submitSend: 'Відправити', submitSending: 'Відправляємо…',
+      formSent: 'Дякую! Вашу заявку відправлено. Я зв’яжуся з вами найближчим часом.',
+      formError: 'Не вдалося відправити заявку. Спробуйте ще раз або напишіть мені на пошту. Ваші дані збережено у формі.',
+      formRateLimited: 'Забагато спроб. Зачекайте хвилину та спробуйте ще раз.',
       requiredField: 'Будь ласка, заповніть це поле.', invalidEmail: 'Введіть коректну електронну адресу.', shortMessage: 'Опишіть ідею хоча б у 10 символах.',
-      briefTitle: 'БРИФ НА РОЗРОБКУ ПРОЄКТУ', emailSubject: 'Новий проєкт — {name}',
       footerTagline: 'Продумано. Розроблено. З любов’ю до деталей.', backTop: 'Нагору', rights: 'Усі права захищено.', footerCredit: 'Автор і розробник сайту',
       footerNavigation: 'Навігація у футері', footerNavigationHeading: 'Навігація',
-      footerConnect: 'Будьмо на зв’язку', footerSocialCaption: 'Ідеї, проєкти та трохи більше про мене.',
+      footerConnect: 'Будьмо на зв’язку', footerSocialCaption: 'Напишіть мені — обговорімо ваш проєкт.',
+      emailLinkLabel: 'Написати листа',
       socialProfileLabel: '{name} — відкрити в новій вкладці',
       closeProject: 'Закрити опис проєкту', projectFocus: 'ФОКУС', projectType: 'ФОРМАТ',
       projectDisclaimer: 'Це демонстраційна концепція, створена для цього портфоліо, а не запущений клієнтський проєкт.', wantSimilar: 'Обговорити подібний проєкт',
@@ -125,7 +126,7 @@ import projectSettings from '../data/projects.js';
       step2Title: 'Shape the idea', step2Text: 'We plan the structure and find a visual language. The design is agreed on before development begins.',
       step3Title: 'Bring it to life', step3Text: 'The design becomes a working website. I share progress along the way and incorporate your feedback.',
       step4Title: 'Ready for takeoff', step4Text: 'We check the details, launch the site, and walk through how to manage it. Your idea is out in the world.',
-      faqEyebrow: 'BEFORE WE START', faqHeading: 'You might<br />be wondering.',
+      faqEyebrow: 'BEFORE WE START', faqHeading: 'You might<br /> be wondering.',
       faq1Question: 'How much does a website cost?', faq1Answer: 'The cost depends on the scope, design, and functionality. After a short conversation about your project, I’ll prepare a proposal with a clear breakdown of the work and budget.',
       faq2Question: 'How long does a project take?', faq2Answer: 'We agree on the timeline after discussing your needs. The number of pages, complexity, and readiness of content all play a part. Before we start, you’ll have a clear plan with key milestones.',
       faq3Question: 'Can I start with just an idea?', faq3Answer: 'Absolutely. You don’t need a finished brief. Tell me who your product is for and what you want to achieve. We’ll work out the structure, features, and next steps together.',
@@ -135,16 +136,17 @@ import projectSettings from '../data/projects.js';
       nameLabel: 'Your name', namePlaceholder: 'What should I call you?', emailLabel: 'Email address', interestLabel: 'What do you have in mind?',
       interestWebsite: 'Website', interestApp: 'Web app', interestShop: 'Online store', interestOther: 'Something else',
       messageLabel: 'A few words about your idea', messagePlaceholder: 'What would you like to create? Who is it for? Any timeline in mind?',
-      formNote: 'Save a short brief to keep your project details in one place.',
-      formEmailNote: 'This opens your email app with a prepared message. You review and send it yourself.',
-      submitBrief: 'Save project brief', submitEmail: 'Prepare an email',
-      briefSaved: 'Your brief has been downloaded. You can add to it and share it with the developer whenever you’re ready.',
-      emailPrepared: 'Your message is ready for your email app. If it didn’t open, use the email address shown here. A copy of your brief has also been downloaded.',
+      phoneLabel: 'Phone number (optional)', phonePlaceholder: 'Your number in any format you prefer',
+      formNote: 'Your enquiry goes straight to my inbox. I’ll reply personally.',
+      submitSend: 'Send', submitSending: 'Sending…',
+      formSent: 'Thank you! Your enquiry has been sent. I’ll get back to you soon.',
+      formError: 'Your enquiry could not be sent. Please try again or email me directly. Your details are still in the form.',
+      formRateLimited: 'Too many attempts. Please wait a minute and try again.',
       requiredField: 'Please fill out this field.', invalidEmail: 'Please enter a valid email address.', shortMessage: 'Please describe your idea in at least 10 characters.',
-      briefTitle: 'PROJECT DEVELOPMENT BRIEF', emailSubject: 'New project — {name}',
       footerTagline: 'Thoughtfully designed. Carefully built. Made with care.', backTop: 'Back to top', rights: 'All rights reserved.', footerCredit: 'Website author and developer',
       footerNavigation: 'Footer navigation', footerNavigationHeading: 'Explore',
-      footerConnect: 'Stay connected', footerSocialCaption: 'Ideas, projects, and a little more about me.',
+      footerConnect: 'Stay connected', footerSocialCaption: 'Email me — let’s talk about your project.',
+      emailLinkLabel: 'Send an email',
       socialProfileLabel: '{name} — open in a new tab',
       closeProject: 'Close project details', projectFocus: 'FOCUS', projectType: 'FORMAT',
       projectDisclaimer: 'This is a demonstration concept created for this portfolio, rather than a launched client project.', wantSimilar: 'Discuss a similar project',
@@ -204,7 +206,7 @@ import projectSettings from '../data/projects.js';
     step2Title: 'Concevoir le projet', step2Text: 'Nous préparons la structure et définissons le style visuel. Le design est validé avant le début du développement.',
     step3Title: 'Donner vie à l’idée', step3Text: 'Le design devient un site fonctionnel. Je vous présente les avancées et prends en compte vos retours.',
     step4Title: 'Mettre en ligne', step4Text: 'Nous vérifions les détails, lançons le site et voyons ensemble comment le gérer. Votre idée est désormais en ligne.',
-    faqEyebrow: 'AVANT DE COMMENCER', faqHeading: 'Vous vous posez<br />peut-être ces questions.',
+    faqEyebrow: 'AVANT DE COMMENCER', faqHeading: 'Vous vous posez<br /> peut-être ces questions.',
     faq1Question: 'Combien coûte la création d’un site web ?', faq1Answer: 'Le coût dépend du périmètre, du design et des fonctionnalités. Après un premier échange sur votre projet, je vous prépare une proposition avec le détail des travaux et le budget.',
     faq2Question: 'Combien de temps prend un projet ?', faq2Answer: 'Nous convenons des délais après avoir discuté de vos besoins. Le nombre de pages, la complexité des fonctionnalités et la disponibilité des contenus influencent le calendrier. Avant de commencer, vous aurez un plan clair avec les étapes principales.',
     faq3Question: 'Puis-je vous contacter avec une simple idée ?', faq3Answer: 'Bien sûr. Vous n’avez pas besoin d’un cahier des charges finalisé. Dites-moi à qui s’adresse votre produit et ce que vous souhaitez accomplir. Nous définirons ensemble la structure, les fonctionnalités et les prochaines étapes.',
@@ -214,16 +216,17 @@ import projectSettings from '../data/projects.js';
     nameLabel: 'Votre nom', namePlaceholder: 'Comment vous appelez-vous ?', emailLabel: 'Adresse e-mail', interestLabel: 'Quel projet avez-vous en tête ?',
     interestWebsite: 'Site web', interestApp: 'Application web', interestShop: 'Boutique en ligne', interestOther: 'Autre projet',
     messageLabel: 'Quelques mots sur votre idée', messagePlaceholder: 'Que souhaitez-vous créer ? Pour qui ? Avez-vous des délais en tête ?',
-    formNote: 'Enregistrez un brief pour garder les détails de votre projet à portée de main.',
-    formEmailNote: 'Ce bouton ouvre votre messagerie avec un e-mail prérempli. Vous le vérifiez et l’envoyez vous-même.',
-    submitBrief: 'Enregistrer le brief', submitEmail: 'Préparer un e-mail',
-    briefSaved: 'Votre brief a été téléchargé. Vous pouvez le compléter et le transmettre au développeur par le moyen de votre choix.',
-    emailPrepared: 'Votre e-mail est prêt dans votre messagerie. Si elle ne s’est pas ouverte, utilisez l’adresse indiquée ici. Une copie de votre brief a également été téléchargée.',
+    phoneLabel: 'Numéro de téléphone (facultatif)', phonePlaceholder: 'Votre numéro au format de votre choix',
+    formNote: 'Votre demande arrive directement dans ma boîte mail. Je vous répondrai personnellement.',
+    submitSend: 'Envoyer', submitSending: 'Envoi en cours…',
+    formSent: 'Merci ! Votre demande a été envoyée. Je vous répondrai prochainement.',
+    formError: 'L’envoi a échoué. Réessayez ou contactez-moi par e-mail. Vos informations sont conservées dans le formulaire.',
+    formRateLimited: 'Trop de tentatives. Patientez une minute, puis réessayez.',
     requiredField: 'Veuillez remplir ce champ.', invalidEmail: 'Veuillez saisir une adresse e-mail valide.', shortMessage: 'Veuillez décrire votre idée en au moins 10 caractères.',
-    briefTitle: 'BRIEF DE DÉVELOPPEMENT DU PROJET', emailSubject: 'Nouveau projet — {name}',
     footerTagline: 'Un design réfléchi. Un développement soigné. Le souci du détail.', backTop: 'Retour en haut', rights: 'Tous droits réservés.', footerCredit: 'Auteur et développeur du site',
     footerNavigation: 'Navigation du pied de page', footerNavigationHeading: 'Navigation',
-    footerConnect: 'Restons en contact', footerSocialCaption: 'Des idées, des projets et quelques mots sur moi.',
+    footerConnect: 'Restons en contact', footerSocialCaption: 'Écrivez-moi pour parler de votre projet.',
+    emailLinkLabel: 'Envoyer un e-mail',
     socialProfileLabel: '{name} — ouvrir dans un nouvel onglet',
     closeProject: 'Fermer les détails du projet', projectFocus: 'AXES PRINCIPAUX', projectType: 'FORMAT',
     projectDisclaimer: 'Ce concept de démonstration a été créé pour ce portfolio. Il ne s’agit pas d’un projet client mis en ligne.', wantSimilar: 'Parlons d’un projet similaire',
@@ -269,6 +272,7 @@ import projectSettings from '../data/projects.js';
   let language = 'uk';
   let activeProject = null;
   let statusKey = '';
+  let sending = false;
 
   function setLanguageMenu(open) {
     languageToggle.setAttribute('aria-expanded', String(open));
@@ -366,8 +370,7 @@ import projectSettings from '../data/projects.js';
     document.querySelectorAll('a[data-social]').forEach(link => {
       link.setAttribute('aria-label', dictionary.socialProfileLabel.replace('{name}', link.title));
     });
-    document.getElementById('submit-label').textContent = dictionary[email ? 'submitEmail' : 'submitBrief'];
-    document.getElementById('form-note').textContent = dictionary[email ? 'formEmailNote' : 'formNote'];
+    document.getElementById('submit-label').textContent = dictionary[sending ? 'submitSending' : 'submitSend'];
     formStatus.textContent = statusKey ? dictionary[statusKey] : '';
     form.querySelectorAll('input, textarea').forEach(input => input.setCustomValidity(''));
     menuButton.setAttribute('aria-label', dictionary[mobileNav.hidden ? 'openMenu' : 'closeMenu']);
@@ -546,8 +549,9 @@ import projectSettings from '../data/projects.js';
     });
   });
 
-  form.addEventListener('submit', event => {
+  form.addEventListener('submit', async event => {
     event.preventDefault();
+    if (sending) return;
     const dictionary = translations[language];
     for (const field of ['name', 'message']) {
       const input = form.elements[field];
@@ -559,28 +563,41 @@ import projectSettings from '../data/projects.js';
       }
     }
     const data = new FormData(form);
-    const serviceKeys = { website: 'interestWebsite', app: 'interestApp', shop: 'interestShop', other: 'interestOther' };
-    const brief = [
-      dictionary.briefTitle, '',
-      `${dictionary.nameLabel}: ${data.get('name').trim()}`,
-      `${dictionary.emailLabel}: ${data.get('email').trim()}`,
-      `${dictionary.interestLabel} ${dictionary[serviceKeys[data.get('service')]]}`, '',
-      dictionary.messageLabel, data.get('message').trim(),
-    ].join('\n');
-    const blob = new Blob(['\uFEFF', brief], { type: 'text/plain;charset=utf-8' });
-    const objectUrl = URL.createObjectURL(blob);
-    const download = document.createElement('a');
-    download.href = objectUrl; download.download = `project-brief-${language}.txt`;
-    document.body.append(download); download.click(); download.remove();
-    setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
-    if (email) {
-      const subject = dictionary.emailSubject.replace('{name}', data.get('name').trim());
-      const mail = document.createElement('a');
-      mail.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(brief)}`;
-      document.body.append(mail); mail.click(); mail.remove();
+    const payload = Object.fromEntries(data);
+    payload.language = language;
+    sending = true;
+    statusKey = '';
+    formStatus.textContent = '';
+    form.dataset.status = 'sending';
+    form.setAttribute('aria-busy', 'true');
+    form.querySelectorAll('input, textarea, button').forEach(input => { input.disabled = true; });
+    document.getElementById('submit-label').textContent = dictionary.submitSending;
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: AbortSignal.timeout(15000),
+      });
+      const result = await response.json();
+      if (!response.ok || result.ok !== true) {
+        statusKey = response.status === 429 ? 'formRateLimited' : 'formError';
+        form.dataset.status = 'error';
+      } else {
+        form.reset();
+        statusKey = 'formSent';
+        form.dataset.status = 'success';
+      }
+    } catch {
+      statusKey = 'formError';
+      form.dataset.status = 'error';
+    } finally {
+      sending = false;
+      form.removeAttribute('aria-busy');
+      form.querySelectorAll('input, textarea, button').forEach(input => { input.disabled = false; });
+      document.getElementById('submit-label').textContent = translations[language].submitSend;
+      formStatus.textContent = translations[language][statusKey];
     }
-    statusKey = email ? 'emailPrepared' : 'briefSaved';
-    formStatus.textContent = dictionary[statusKey];
   });
 
   if ('IntersectionObserver' in window) {

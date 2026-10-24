@@ -1,1 +1,50 @@
-<section class="contact-section" id="contact" aria-labelledby="contact-heading"><div class="container contact-inner"><div class="contact-copy"><p class="eyebrow"><span data-i18n="contactEyebrow">НАСТУПНИЙ ПРОЄКТ — ВАШ?</span></p><h2 id="contact-heading" data-i18n="contactHeading">Зробімо щось<br />класне<span class="contact-period">.</span></h2><p data-i18n="contactDescription">Велика ідея чи маленький початок — усе починається з розмови. Розкажіть, що маєте на думці.</p><a class="contact-email" id="contact-email" hidden></a><div class="contact-decoration" aria-hidden="true">↗</div><div class="contact-note"><span class="status-dot"></span><span data-i18n="contactNote">Хороші проєкти починаються з «привіт».</span></div></div><form class="contact-form" id="contact-form"><div class="form-row"><label><span data-i18n="nameLabel">Ваше ім’я</span><input name="name" type="text" autocomplete="name" maxlength="100" required placeholder="Як до вас звертатися?" data-i18n-placeholder="namePlaceholder" /></label><label><span data-i18n="emailLabel">Електронна пошта</span><input name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@example.com" /></label></div><fieldset class="service-picker"><legend data-i18n="interestLabel">Що вас цікавить?</legend><div><label><input type="radio" name="service" value="website" checked /><span data-i18n="interestWebsite">Вебсайт</span></label><label><input type="radio" name="service" value="app" /><span data-i18n="interestApp">Вебзастосунок</span></label><label><input type="radio" name="service" value="shop" /><span data-i18n="interestShop">Інтернет-магазин</span></label><label><input type="radio" name="service" value="other" /><span data-i18n="interestOther">Щось інше</span></label></div></fieldset><label class="message-label"><span data-i18n="messageLabel">Кілька слів про вашу ідею</span><textarea name="message" rows="4" minlength="10" maxlength="5000" required placeholder="Що хочете створити? Для кого? Чи є орієнтовні терміни?" data-i18n-placeholder="messagePlaceholder"></textarea></label><p class="form-note" id="form-note" data-i18n="formNote">Збережіть короткий бриф, щоб мати деталі проєкту під рукою.</p><button class="button button-dark form-submit" type="submit"><span id="submit-label" data-i18n="submitBrief">Зберегти бриф</span><span aria-hidden="true">↗</span></button><p class="form-status" id="form-status" role="status" aria-live="polite"></p></form></div></section>
+<section class="contact-section" id="contact" aria-labelledby="contact-heading">
+  <div class="container contact-inner">
+    <div class="contact-copy">
+      <p class="eyebrow"><span data-i18n="contactEyebrow">НАСТУПНИЙ ПРОЄКТ — ВАШ?</span></p>
+      <h2 id="contact-heading" data-i18n="contactHeading">Зробімо щось<br />класне<span class="contact-period">.</span></h2>
+      <p data-i18n="contactDescription">Велика ідея чи маленький початок — усе починається з розмови. Розкажіть, що маєте на думці.</p>
+      <a class="contact-email" id="contact-email" hidden></a>
+      <div class="contact-decoration" aria-hidden="true">↗</div>
+      <div class="contact-note"><span class="status-dot"></span><span data-i18n="contactNote">Хороші проєкти починаються з «привіт».</span></div>
+    </div>
+    <form class="contact-form" id="contact-form" aria-describedby="form-note">
+      <div class="form-row">
+        <label>
+          <span data-i18n="nameLabel">Ваше ім’я</span>
+          <input name="name" type="text" autocomplete="name" maxlength="100" required placeholder="Як до вас звертатися?" data-i18n-placeholder="namePlaceholder" />
+        </label>
+        <label>
+          <span data-i18n="emailLabel">Електронна пошта</span>
+          <input name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@example.com" />
+        </label>
+      </div>
+      <label class="contact-phone">
+        <span data-i18n="phoneLabel">Номер телефону (необов’язково)</span>
+        <input name="phone" type="tel" autocomplete="tel" placeholder="Номер у зручному для вас форматі" data-i18n-placeholder="phonePlaceholder" />
+      </label>
+      <label class="contact-honeypot" aria-hidden="true">
+        Company
+        <input name="company" type="text" tabindex="-1" autocomplete="off" />
+      </label>
+      <fieldset class="service-picker">
+        <legend data-i18n="interestLabel">Що вас цікавить?</legend>
+        <div>
+          <label><input type="radio" name="service" value="website" checked /><span data-i18n="interestWebsite">Вебсайт</span></label>
+          <label><input type="radio" name="service" value="app" /><span data-i18n="interestApp">Вебзастосунок</span></label>
+          <label><input type="radio" name="service" value="shop" /><span data-i18n="interestShop">Інтернет-магазин</span></label>
+          <label><input type="radio" name="service" value="other" /><span data-i18n="interestOther">Щось інше</span></label>
+        </div>
+      </fieldset>
+      <label class="message-label">
+        <span data-i18n="messageLabel">Кілька слів про вашу ідею</span>
+        <textarea name="message" rows="4" minlength="10" maxlength="5000" required placeholder="Що хочете створити? Для кого? Чи є орієнтовні терміни?" data-i18n-placeholder="messagePlaceholder"></textarea>
+      </label>
+      <p class="form-note" id="form-note" data-i18n="formNote">Заявка надійде мені на пошту. Я відповім вам особисто.</p>
+      <button class="button button-dark form-submit" type="submit">
+        <span id="submit-label" data-i18n="submitSend">Відправити</span><span aria-hidden="true">↗</span>
+      </button>
+      <p class="form-status" id="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
+    </form>
+  </div>
+</section>
