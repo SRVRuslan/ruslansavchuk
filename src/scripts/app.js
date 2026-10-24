@@ -273,6 +273,7 @@ import projectSettings from '../data/projects.js';
   let activeProject = null;
   let statusKey = '';
   let sending = false;
+  let menuScrollFrame = 0;
 
   function setLanguageMenu(open) {
     languageToggle.setAttribute('aria-expanded', String(open));
@@ -280,10 +281,18 @@ import projectSettings from '../data/projects.js';
   }
 
   function setMenu(open) {
+    cancelAnimationFrame(menuScrollFrame);
+    menuScrollFrame = 0;
     if (open) setLanguageMenu(false);
     menuButton.setAttribute('aria-expanded', String(open));
     menuButton.setAttribute('aria-label', translations[language][open ? 'closeMenu' : 'openMenu']);
     mobileNav.hidden = !open;
+    if (open) {
+      // Let scroll anchoring settle after the sticky header expands.
+      menuScrollFrame = requestAnimationFrame(() => {
+        menuScrollFrame = requestAnimationFrame(() => { menuScrollFrame = 0; });
+      });
+    }
   }
 
   function updateProject() {
@@ -447,6 +456,9 @@ import projectSettings from '../data/projects.js';
   });
   menuButton.addEventListener('click', () => setMenu(mobileNav.hidden));
   mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+  addEventListener('scroll', () => {
+    if (!mobileNav.hidden && !menuScrollFrame) setMenu(false);
+  }, { passive: true });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && !languageOptions.hidden) {
       setLanguageMenu(false);
