@@ -1,0 +1,40 @@
+<div class="hero-globe" aria-hidden="true">
+  <canvas data-hero-globe width="600" height="600"></canvas>
+</div>
+
+<style>
+  .hero-globe {
+    position: absolute;
+    z-index: -1;
+    top: -65px;
+    right: -7%;
+    width: 112%;
+    max-width: 640px;
+    aspect-ratio: 1;
+    pointer-events: none;
+    opacity: .8;
+    /* Fade the lower hemisphere into the existing background. */
+    mask-image: linear-gradient(#000 65%, #0009 85%, transparent 100%);
+  }
+
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 36% 28%, #13253a77, #0b152388 48%, #080d1500 70%);
+  }
+
+  @media (max-width: 640px) {
+    .hero-globe {
+      top: -22px;
+      right: -2%;
+      width: 104%;
+      opacity: .7;
+    }
+  }
+</style>
+
+<script>
+  import '../scripts/globe.js';
+</script>
