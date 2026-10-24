@@ -348,43 +348,57 @@
     padding-block: 57px 52px;
   }
   .footer-tagline { font-size: 22px; }
-  .footer-credits { grid-template-columns: 1fr 1fr; }
-  .footer-author { display: none; }
+  .footer-credits {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 18px;
+    padding-block: 24px;
+    text-align: center;
+  }
+  .footer-copyright { justify-content: center; }
+  .footer-author { display: flex; }
+  .footer-to-top { justify-self: center; }
 }
 @media (max-width: 640px) {
   .footer-overview {
-    grid-template-columns: 1fr 1fr;
-    gap: 42px 24px;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 32px;
     padding-block: 47px 42px;
+    text-align: center;
   }
-  .footer-summary { grid-column: 1 / -1; }
+  .footer-summary { width: 100%; }
   .footer-logo { font-size: 29px; }
   .footer-logo .logo-symbol { font-size: 35px; }
   .footer-tagline {
     max-width: 350px;
+    margin-inline: auto;
     margin-top: 22px;
     font-size: 20px;
   }
   .footer-email { margin-top: 22px; font-size: 12px; }
   .footer-heading { margin-bottom: 18px; }
+  .footer-navigation { align-items: center; }
   .footer-navigation a { min-height: 38px; font-size: 13px; }
   .footer-social-caption { font-size: 12px; }
-  .footer-social-list { gap: 8px; margin-top: 20px; }
+  .footer-social-list { justify-content: center; gap: 8px; margin-top: 20px; }
   .footer-social-icon { width: 43px; height: 43px; flex-basis: 43px; }
   .footer-credits {
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr);
     min-height: 88px;
     gap: 18px;
     font-size: 10px;
   }
   .footer-copyright { gap: 5px; }
+  .footer-author { flex-direction: column; gap: 8px; }
+  .footer-author-link::before { display: none; }
   .footer-rights { width: 100%; }
   .footer-rights::before { display: none; }
   .footer-to-top > span:first-child { display: none; }
   .footer-top-icon { width: 42px; height: 42px; }
 }
 @media (max-width: 360px) {
-  .footer-overview { gap: 36px 16px; }
+  .footer-overview { gap: 32px; }
   .footer-social-icon { width: 40px; height: 40px; flex-basis: 40px; }
 }
 @media print {
