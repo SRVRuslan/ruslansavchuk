@@ -9,7 +9,7 @@ import projectSettings from '../data/projects.js';
       pageTitle: 'Веброзробник — сайти з характером',
       pageDescription: 'Незалежний веброзробник. Продумані сайти, інтернет-магазини та вебзастосунки — від першої ідеї до запуску.',
       skip: 'Перейти до вмісту', navigation: 'Основна навігація', mobileNavigation: 'Мобільна навігація',
-      navWork: 'Роботи', navServices: 'Послуги', navAbout: 'Про мене', letsTalk: 'Поговорімо',
+      navWork: 'Роботи', navServices: 'Послуги', navAbout: 'Про мене', letsTalk: 'Зв’яжіться з нами',
       languageLabel: 'Мова сайту', openMenu: 'Відкрити меню', closeMenu: 'Закрити меню',
       availability: 'Відкритий до нових проєктів', heroEyebrow: 'НЕЗАЛЕЖНИЙ ВЕБРОЗРОБНИК',
       heroLine1: 'Хороші ідеї.', heroLine2: 'Класні сайти.',
@@ -86,7 +86,7 @@ import projectSettings from '../data/projects.js';
       pageTitle: 'Web developer — websites with character',
       pageDescription: 'Independent web developer. Thoughtful websites, online stores and web applications — from the first idea to launch.',
       skip: 'Skip to content', navigation: 'Main navigation', mobileNavigation: 'Mobile navigation',
-      navWork: 'Work', navServices: 'Services', navAbout: 'About', letsTalk: 'Let’s talk',
+      navWork: 'Work', navServices: 'Services', navAbout: 'About', letsTalk: 'Contact Us',
       languageLabel: 'Website language', openMenu: 'Open menu', closeMenu: 'Close menu',
       availability: 'Available for new projects', heroEyebrow: 'INDEPENDENT WEB DEVELOPER',
       heroLine1: 'Good ideas.', heroLine2: 'Great websites.',
@@ -145,7 +145,7 @@ import projectSettings from '../data/projects.js';
       requiredField: 'Please fill out this field.', invalidEmail: 'Please enter a valid email address.', shortMessage: 'Please describe your idea in at least 10 characters.',
       footerTagline: 'Thoughtfully designed. Carefully built. Made with care.', backTop: 'Back to top', rights: 'All rights reserved.', footerCredit: 'CREATED & DEVELOPED BY',
       footerNavigation: 'Footer navigation', footerNavigationHeading: 'Explore',
-      footerConnect: 'Stay connected', footerSocialCaption: 'Email me — let’s talk about your project.',
+      footerConnect: 'Stay connected', footerSocialCaption: 'Message me — let’s talk about your project.',
       emailLinkLabel: 'Send an email',
       socialProfileLabel: '{name} — open in a new tab',
       closeProject: 'Close project details', projectFocus: 'FOCUS', projectType: 'FORMAT',
@@ -165,7 +165,7 @@ import projectSettings from '../data/projects.js';
     pageTitle: 'Développeur web — des sites qui ont du caractère',
     pageDescription: 'Développeur web indépendant. Sites web, boutiques en ligne et applications web conçus avec soin — de la première idée au lancement.',
     skip: 'Aller au contenu', navigation: 'Navigation principale', mobileNavigation: 'Navigation mobile',
-    navWork: 'Projets', navServices: 'Services', navAbout: 'À propos', letsTalk: 'Parlons-en',
+    navWork: 'Projets', navServices: 'Services', navAbout: 'À propos', letsTalk: 'Contactez-nous',
     languageLabel: 'Langue du site', openMenu: 'Ouvrir le menu', closeMenu: 'Fermer le menu',
     availability: 'Disponible pour de nouveaux projets', heroEyebrow: 'DÉVELOPPEUR WEB INDÉPENDANT',
     heroLine1: 'De belles idées.', heroLine2: 'De beaux sites.',
@@ -405,7 +405,7 @@ import projectSettings from '../data/projects.js';
     footerEmail.href = `mailto:${email}`;
     footerEmail.hidden = false;
   }
-  const socialNames = { github: 'GitHub', linkedin: 'LinkedIn', instagram: 'Instagram', telegram: 'Telegram' };
+  const socialNames = { whatsapp: 'WhatsApp', github: 'GitHub', linkedin: 'LinkedIn', instagram: 'Instagram', telegram: 'Telegram' };
   Object.entries(config.social || {}).forEach(([key, value]) => {
     if (!value || !socialNames[key]) return;
     try {
