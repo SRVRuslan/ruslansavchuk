@@ -8,7 +8,11 @@
       <div class="contact-decoration" aria-hidden="true">↗</div>
       <div class="contact-note"><span class="status-dot"></span><span data-i18n="contactNote">Хороші проєкти починаються з «привіт».</span></div>
     </div>
-    <form class="contact-form" id="contact-form" aria-describedby="form-note">
+    <form class="contact-form" id="contact-form" aria-labelledby="contact-form-heading" aria-describedby="form-note">
+      <div class="contact-form-intro">
+        <h2 id="contact-form-heading" data-i18n="formHeading">Заявка на сайт</h2>
+        <p data-i18n="formIntro">Розкажіть про сайт — я зв’яжуся з вами.</p>
+      </div>
       <div class="form-row">
         <label>
           <span data-i18n="nameLabel">Ваше ім’я</span>
@@ -23,28 +27,93 @@
         <span data-i18n="phoneLabel">Номер телефону (необов’язково)</span>
         <input name="phone" type="tel" autocomplete="tel" placeholder="Номер у зручному для вас форматі" data-i18n-placeholder="phonePlaceholder" />
       </label>
+      <label class="message-label">
+        <span data-i18n="messageLabel">Який сайт вам потрібен?</span>
+        <textarea name="message" rows="3" minlength="10" maxlength="5000" required placeholder="Наприклад: сайт для кав’ярні з меню та контактами." data-i18n-placeholder="messagePlaceholder"></textarea>
+      </label>
+      <details class="form-extras" open>
+        <summary><span data-i18n="formExtrasLabel">Обрати тип проєкту</span></summary>
+        <fieldset class="service-picker">
+          <legend data-i18n="interestLabel">Що вас цікавить?</legend>
+          <div>
+            <label><input type="radio" name="service" value="website" checked /><span data-i18n="interestWebsite">Вебсайт</span></label>
+            <label><input type="radio" name="service" value="app" /><span data-i18n="interestApp">Вебзастосунок</span></label>
+            <label><input type="radio" name="service" value="shop" /><span data-i18n="interestShop">Інтернет-магазин</span></label>
+            <label><input type="radio" name="service" value="other" /><span data-i18n="interestOther">Щось інше</span></label>
+          </div>
+        </fieldset>
+      </details>
       <label class="contact-honeypot" aria-hidden="true">
         Company
         <input name="company" type="text" tabindex="-1" autocomplete="off" />
       </label>
-      <fieldset class="service-picker">
-        <legend data-i18n="interestLabel">Що вас цікавить?</legend>
-        <div>
-          <label><input type="radio" name="service" value="website" checked /><span data-i18n="interestWebsite">Вебсайт</span></label>
-          <label><input type="radio" name="service" value="app" /><span data-i18n="interestApp">Вебзастосунок</span></label>
-          <label><input type="radio" name="service" value="shop" /><span data-i18n="interestShop">Інтернет-магазин</span></label>
-          <label><input type="radio" name="service" value="other" /><span data-i18n="interestOther">Щось інше</span></label>
-        </div>
-      </fieldset>
-      <label class="message-label">
-        <span data-i18n="messageLabel">Кілька слів про вашу ідею</span>
-        <textarea name="message" rows="4" minlength="10" maxlength="5000" required placeholder="Що хочете створити? Для кого? Чи є орієнтовні терміни?" data-i18n-placeholder="messagePlaceholder"></textarea>
-      </label>
-      <p class="form-note" id="form-note" data-i18n="formNote">Заявка надійде мені на пошту. Я відповім вам особисто.</p>
-      <button class="button button-dark form-submit" type="submit">
-        <span id="submit-label" data-i18n="submitSend">Відправити</span><span aria-hidden="true">↗</span>
-      </button>
+      <div class="form-actions">
+        <button class="button button-dark form-submit" type="submit">
+          <span id="submit-label" data-i18n="submitSend">Відправити заявку</span><span aria-hidden="true">↗</span>
+        </button>
+        <p class="form-note" id="form-note" data-i18n="formNote">Відповім особисто на ваш email.</p>
+      </div>
       <p class="form-status" id="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
     </form>
   </div>
 </section>
+
+<style>
+  .contact-form-intro, .form-extras > summary { display: none; }
+  .message-label { display: block; margin-top: 22px; }
+
+  @media (max-width: 640px) {
+    .contact-inner { display: block; padding-block: 28px; }
+    .contact-copy { display: none; }
+    .contact-form {
+      padding: 20px;
+      border: 1px solid var(--border-control);
+      border-radius: 16px;
+      background: var(--paper);
+      scroll-margin-top: 90px;
+    }
+    .contact-form-intro { display: block; margin-bottom: 18px; }
+    .contact-form-intro h2 { font-size: 26px; line-height: 1.25; letter-spacing: -.8px; }
+    .contact-form-intro p { margin-top: 6px; color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .form-row { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    .contact-form label > span { margin-bottom: 6px; font-size: 11px; }
+    .contact-form input[type=text], .contact-form input[type=email], .contact-form input[type=tel], .contact-form textarea {
+      min-height: 44px;
+      padding: 10px 12px;
+      border: 1px solid var(--border-control);
+      border-radius: 8px;
+      background: var(--surface);
+      font-size: 16px;
+      line-height: 1.4;
+    }
+    .contact-form input::placeholder, .contact-form textarea::placeholder { font-size: 12px; }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 2px #64b5ff26; }
+    .message-label { display: block; margin-top: 14px; }
+    .contact-form textarea { display: block; min-height: 80px; }
+    .form-extras { margin-top: 10px; }
+    .form-extras > summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      min-height: 44px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.5;
+      list-style: none;
+      cursor: pointer;
+    }
+    .form-extras > summary::-webkit-details-marker { display: none; }
+    .form-extras > summary::after { content: '+'; flex-shrink: 0; color: var(--accent); font-size: 22px; }
+    .form-extras[open] > summary::after { content: '−'; }
+    .contact-phone { margin-top: 14px; }
+    .service-picker { margin: 16px 0 0; }
+    .service-picker > div { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .service-picker label > span { justify-content: center; margin: 0; padding: 8px; font-size: 10px; text-align: center; }
+    .form-actions { display: grid; gap: 8px; margin-top: 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+    .form-submit { min-height: 48px; margin: 0; font-size: 13px; }
+    .form-note { margin: 0; font-size: 10px; line-height: 1.5; text-align: center; }
+    .form-status { margin-top: 12px; font-size: 12px; }
+    .form-status:empty { display: none; }
+  }
+</style>
