@@ -60,6 +60,26 @@ test('Spanish enquiries preserve their language and accented characters in the e
   assert.ok(body.includes('José Muñoz') && body.includes('cafetería con menú y teléfono'));
 });
 
+test('German enquiries preserve their language, umlauts and sharp S in the email', async () => {
+  const { run, deliveries } = setup();
+  const response = await run(request({ ...enquiry, language: 'de', name: 'Jürgen Müller', message: 'Ich möchte eine Website für mein Café in der Hauptstraße.' }));
+  assert.equal(response.status, 200);
+  assert.equal(deliveries.length, 1);
+  const body = bodyOf(deliveries[0]);
+  assert.match(body, /Мова \/ Language: de/);
+  assert.ok(body.includes('Jürgen Müller') && body.includes('möchte eine Website für mein Café in der Hauptstraße'));
+});
+
+test('Portuguese enquiries preserve their language and accented characters in the email', async () => {
+  const { run, deliveries } = setup();
+  const response = await run(request({ ...enquiry, language: 'pt', name: 'João Gonçalves', message: 'Preciso de um site para o meu café, com preços e informações.' }));
+  assert.equal(response.status, 200);
+  assert.equal(deliveries.length, 1);
+  const body = bodyOf(deliveries[0]);
+  assert.match(body, /Мова \/ Language: pt/);
+  assert.ok(body.includes('João Gonçalves') && body.includes('café, com preços e informações'));
+});
+
 test('customer fields cannot override recipient, sender, or inject email headers', async () => {
   const { run, deliveries } = setup();
   assert.equal((await run(request({ ...enquiry, to: 'attacker@example.com', from: 'attacker@example.com', name: 'Name\r\nBcc: attacker@example.com', phone: '\r\nBcc: attacker@example.com' }))).status, 200);

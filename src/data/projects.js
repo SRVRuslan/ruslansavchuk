@@ -1,4 +1,6 @@
 import spanish from './translations/es.js';
+import german from './translations/de.js';
+import portuguese from './translations/pt.js';
 
 /**
  * Додаткові роботи для кнопки «Переглянути більше».
@@ -44,6 +46,14 @@ export default {
         subtitle: spanish.orbitSubtitle, alt: spanish.orbitAlt, type: spanish.application,
         description: spanish.orbitDescription, focus: spanish.orbitFocus, format: spanish.orbitType,
       },
+      de: {
+        subtitle: german.orbitSubtitle, alt: german.orbitAlt, type: german.application,
+        description: german.orbitDescription, focus: german.orbitFocus, format: german.orbitType,
+      },
+      pt: {
+        subtitle: portuguese.orbitSubtitle, alt: portuguese.orbitAlt, type: portuguese.application,
+        description: portuguese.orbitDescription, focus: portuguese.orbitFocus, format: portuguese.orbitType,
+      },
     },
     {
       id: 'forma',
@@ -79,6 +89,14 @@ export default {
         subtitle: spanish.formaSubtitle, alt: spanish.formaAlt, type: spanish.website,
         description: spanish.formaDescription, focus: spanish.formaFocus, format: spanish.formaType,
       },
+      de: {
+        subtitle: german.formaSubtitle, alt: german.formaAlt, type: german.website,
+        description: german.formaDescription, focus: german.formaFocus, format: german.formaType,
+      },
+      pt: {
+        subtitle: portuguese.formaSubtitle, alt: portuguese.formaAlt, type: portuguese.website,
+        description: portuguese.formaDescription, focus: portuguese.formaFocus, format: portuguese.formaType,
+      },
     },
     {
       id: 'kseniia-savchuk',
@@ -105,6 +123,16 @@ export default {
         subtitle: spanish.photoProjectSubtitle,
         alt: 'Página de inicio de Kseniia Savchuk, fotógrafa en Calgary',
         type: spanish.website,
+      },
+      de: {
+        subtitle: german.photoProjectSubtitle,
+        alt: 'Startseite von Kseniia Savchuk, Fotografin in Calgary',
+        type: german.website,
+      },
+      pt: {
+        subtitle: portuguese.photoProjectSubtitle,
+        alt: 'Página inicial de Kseniia Savchuk, fotógrafa em Calgary',
+        type: portuguese.website,
       },
     },
   ],

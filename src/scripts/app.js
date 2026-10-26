@@ -1,6 +1,8 @@
 import config from '../data/config.js';
 import projectSettings from '../data/projects.js';
 import spanish from '../data/translations/es.js';
+import german from '../data/translations/de.js';
+import portuguese from '../data/translations/pt.js';
 import { LANGUAGE_PREFERENCE_KEY, detectBrowserLanguage, resolveInitialLanguage } from './language-preference.js';
 
 (() => {
@@ -15,7 +17,7 @@ import { LANGUAGE_PREFERENCE_KEY, detectBrowserLanguage, resolveInitialLanguage 
       languageLabel: 'Мова сайту', openMenu: 'Відкрити меню', closeMenu: 'Закрити меню',
       availability: 'Беру нові проєкти',
       heroLine1: 'Сучасні сайти.', heroLine2: 'Для бізнесу.',
-      heroDescription: 'SEO, соцмережі та контактна форма — усе готове до запуску.',
+      heroDescription: 'Створюю швидкі, стильні сайти, які презентують ваш бізнес, викликають довіру та допомагають залучати клієнтів.',
       viewWork: 'Приклади робіт', discussProject: 'Обговорити сайт',
       artSticker: 'Ваш бізнес.<br />Ваш новий сайт.',
       artProcess: 'DESIGN → WEBSITE → LAUNCH', artCaption: 'DESIGNED FOR YOUR BUSINESS',
@@ -99,7 +101,7 @@ import { LANGUAGE_PREFERENCE_KEY, detectBrowserLanguage, resolveInitialLanguage 
       languageLabel: 'Website language', openMenu: 'Open menu', closeMenu: 'Close menu',
       availability: 'Available for projects',
       heroLine1: 'Modern sites.', heroLine2: 'For your business.',
-      heroDescription: 'SEO, social links and a contact form — ready to launch.',
+      heroDescription: 'I create fast, stylish websites that showcase your business, build trust and help attract customers.',
       viewWork: 'View work', discussProject: 'Discuss your site',
       artSticker: 'Your business.<br />Your new website.',
       artProcess: 'DESIGN → WEBSITE → LAUNCH', artCaption: 'DESIGNED FOR YOUR BUSINESS',
@@ -185,7 +187,7 @@ import { LANGUAGE_PREFERENCE_KEY, detectBrowserLanguage, resolveInitialLanguage 
     languageLabel: 'Langue du site', openMenu: 'Ouvrir le menu', closeMenu: 'Fermer le menu',
     availability: 'Disponible pour vos projets',
     heroLine1: 'Un site moderne.', heroLine2: 'Pour votre activité.',
-    heroDescription: 'SEO, réseaux sociaux et formulaire de contact inclus.',
+    heroDescription: 'Je crée des sites rapides et élégants qui présentent votre activité, inspirent confiance et vous aident à attirer des clients.',
     viewWork: 'Voir les projets', discussProject: 'Parlons de votre site',
     artSticker: 'Votre activité.<br />Votre nouveau site.',
     artProcess: 'DESIGN → WEBSITE → LAUNCH', artCaption: 'DESIGNED FOR YOUR BUSINESS',
@@ -264,10 +266,12 @@ import { LANGUAGE_PREFERENCE_KEY, detectBrowserLanguage, resolveInitialLanguage 
   };
 
   translations.es = spanish;
+  translations.de = german;
+  translations.pt = portuguese;
 
   const isSupportedLanguage = value => Object.prototype.hasOwnProperty.call(translations, value);
   const defaultLanguage = isSupportedLanguage(config.defaultLanguage) ? config.defaultLanguage : 'en';
-  const openGraphLocales = { uk: 'uk_UA', en: 'en_US', fr: 'fr_FR', es: 'es_ES' };
+  const openGraphLocales = { uk: 'uk_UA', en: 'en_US', fr: 'fr_FR', es: 'es_ES', de: 'de_DE', pt: 'pt_PT' };
   const htmlKeys = new Set(['artSticker', 'bloomArt', 'roofingArt', 'servicesHeading', 'aboutNote', 'aboutHeading', 'faqHeading', 'contactHeading']);
   const menuButton = document.querySelector('.menu-toggle');
   const mobileNav = document.getElementById('mobile-nav');
@@ -279,6 +283,8 @@ import { LANGUAGE_PREFERENCE_KEY, detectBrowserLanguage, resolveInitialLanguage 
     en: { code: 'EN', name: 'English' },
     fr: { code: 'FR', name: 'Français' },
     es: { code: 'ES', name: 'Español' },
+    de: { code: 'DE', name: 'Deutsch' },
+    pt: { code: 'PT', name: 'Português' },
   };
   const form = document.getElementById('contact-form');
   const formStatus = document.getElementById('form-status');

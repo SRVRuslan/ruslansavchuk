@@ -7,7 +7,7 @@ export default {
   languageLabel: 'Idioma del sitio', openMenu: 'Abrir menú', closeMenu: 'Cerrar menú',
   availability: 'Disponible para nuevos proyectos',
   heroLine1: 'Sitios modernos.', heroLine2: 'Para tu negocio.',
-  heroDescription: 'SEO, redes sociales y formulario de contacto. Todo listo para publicar.',
+  heroDescription: 'Creo sitios rápidos y atractivos que presentan tu negocio, generan confianza y te ayudan a atraer clientes.',
   viewWork: 'Ver proyectos', discussProject: 'Hablemos de tu web',
   artSticker: 'Tu negocio.<br />Tu nuevo sitio.',
   artProcess: 'DISEÑO → SITIO WEB → LANZAMIENTO', artCaption: 'DISEÑADO PARA TU NEGOCIO',
