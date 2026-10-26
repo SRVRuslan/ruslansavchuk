@@ -1,6 +1,7 @@
 import config from '../data/config.js';
 import projectSettings from '../data/projects.js';
 import spanish from '../data/translations/es.js';
+import { LANGUAGE_PREFERENCE_KEY, detectBrowserLanguage, resolveInitialLanguage } from './language-preference.js';
 
 (() => {
   'use strict';
@@ -422,7 +423,9 @@ import spanish from '../data/translations/es.js';
     updateVisibleProjects();
     updateProject();
     if (rememberLanguage) {
-      try { localStorage.setItem('devfolio-language', language); } catch { /* Storage can be disabled. */ }
+      try {
+        localStorage.setItem(LANGUAGE_PREFERENCE_KEY, JSON.stringify({ language, browserLanguage }));
+      } catch { /* Storage can be disabled. */ }
     }
     if (updateUrl && ['http:', 'https:'].includes(location.protocol)) {
       const url = new URL(location.href);
@@ -665,16 +668,13 @@ import spanish from '../data/translations/es.js';
     document.querySelectorAll('main section[id]').forEach(section => observer.observe(section));
   }
 
-  const browserLanguages = navigator.languages?.length ? navigator.languages : [navigator.language];
-  const browserLanguage = browserLanguages
-    .map(value => typeof value === 'string' ? value.toLowerCase().split('-')[0] : '')
-    .find(isSupportedLanguage);
-  let initialLanguage = browserLanguage || defaultLanguage;
+  const supportedLanguages = Object.keys(translations);
+  const browserLanguage = detectBrowserLanguage(navigator.language, navigator.languages, supportedLanguages, defaultLanguage);
+  let savedPreference = null;
   try {
-    const savedLanguage = localStorage.getItem('devfolio-language');
-    if (isSupportedLanguage(savedLanguage)) initialLanguage = savedLanguage;
+    savedPreference = localStorage.getItem(LANGUAGE_PREFERENCE_KEY);
   } catch { /* Use browser preferences when storage is disabled. */ }
   const queryLanguage = new URLSearchParams(location.search).get('lang');
-  if (isSupportedLanguage(queryLanguage)) initialLanguage = queryLanguage;
-  setLanguage(initialLanguage, false, isSupportedLanguage(queryLanguage));
+  const initialLanguage = resolveInitialLanguage({ queryLanguage, savedPreference, browserLanguage, supportedLanguages });
+  setLanguage(initialLanguage, false, false);
 })();
