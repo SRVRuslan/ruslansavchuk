@@ -654,7 +654,9 @@
   z-index: 2;
 }
 .language-options:not([hidden]) { display: flex; flex-direction: column; gap: 3px; }
-.language-options button { width: 100%; min-height: 44px; justify-content: flex-start; }
+.language-options button { width: 100%; min-height: 44px; justify-content: flex-start; gap: 9px; }
+.language-option-icon { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 20px; }
+.language-option-icon > svg:not(.language-globe) { width: 20px; height: 14px; border-radius: 2px; }
 .language-options button:hover, .language-options button:focus-visible { background: var(--surface-raised); }
 .language-switch [hidden] { display: none; }
 @media (prefers-reduced-motion: reduce) {
