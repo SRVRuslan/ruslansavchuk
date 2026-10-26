@@ -11,5 +11,5 @@ export default {
     instagram: "",
     telegram: "",
   },
-  defaultLanguage: "uk", // Fallback when the browser has no supported language preference.
+  defaultLanguage: "en", // Fallback when the browser has no supported language preference.
 };

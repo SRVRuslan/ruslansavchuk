@@ -42,6 +42,7 @@ import projectSettings from '../data/projects.js';
       aboutNote: 'Трохи допитливості.<br />Багато уваги.', aboutEyebrow: 'ТРОХИ ПРО МЕНЕ', aboutHeading: 'Людина за кодом.<br />Партнер у вашій ідеї.',
       aboutText1: 'Привіт! Я веброзробник, якому однаково важливі те, як сайт виглядає, і те, як він працює. Люблю перетворювати складні задачі на прості та зрозумілі рішення.',
       aboutText2: 'Занурююся у вашу ідею, ставлю запитання та працюю з вами напряму. Щоб кожне рішення мало сенс, а результат відчувався вашим.',
+      mainStack: 'Головний стек',
       namedIntroduction: 'Привіт! Я {name}, веброзробник, якому однаково важливі те, як сайт виглядає, і те, як він працює. Люблю перетворювати складні задачі на прості та зрозумілі рішення.',
       value1: 'Пряма комунікація', value2: 'Увага до вашого бізнесу', value3: 'Прозорий процес', value4: 'Турбота про результат', getAcquainted: 'Познайомимося ближче',
       processEyebrow: 'ЯК МИ ПРАЦЮЄМО', processSide: 'Ви завжди знаєте, що відбувається.', processHeading: 'Від розмови до «вау, це моє».',
@@ -120,6 +121,7 @@ import projectSettings from '../data/projects.js';
       aboutNote: 'A little curiosity.<br />A whole lot of care.', aboutEyebrow: 'A LITTLE ABOUT ME', aboutHeading: 'The human behind the code.<br />A partner in your idea.',
       aboutText1: 'Hi! I’m a web developer who cares just as much about how a website looks as how it works. I enjoy turning complex challenges into simple, intuitive solutions.',
       aboutText2: 'I get to know your idea, ask questions, and work with you directly. So every decision has a purpose, and the result feels truly yours.',
+      mainStack: 'Main stack',
       namedIntroduction: 'Hi! I’m {name}, a web developer who cares just as much about how a website looks as how it works. I enjoy turning complex challenges into simple, intuitive solutions.',
       value1: 'Direct communication', value2: 'Your business in focus', value3: 'A transparent process', value4: 'Care for the outcome', getAcquainted: 'Let’s get to know each other',
       processEyebrow: 'HOW WE WORK TOGETHER', processSide: 'You always know where things stand.', processHeading: 'From “hello” to “that’s so me”.',
@@ -201,6 +203,7 @@ import projectSettings from '../data/projects.js';
     aboutNote: 'Un peu de curiosité.<br />Beaucoup d’attention.', aboutEyebrow: 'QUELQUES MOTS SUR MOI', aboutHeading: 'La personne derrière le code.<br />Un partenaire pour votre idée.',
     aboutText1: 'Bonjour ! Je suis développeur web et j’accorde autant d’importance à l’apparence d’un site qu’à son fonctionnement. J’aime transformer les défis complexes en solutions simples et intuitives.',
     aboutText2: 'Je prends le temps de comprendre votre idée, de poser des questions et de travailler directement avec vous. Pour que chaque décision ait du sens et que le résultat vous ressemble.',
+    mainStack: 'Technologies principales',
     namedIntroduction: 'Bonjour ! Je m’appelle {name}, je suis développeur web et j’accorde autant d’importance à l’apparence d’un site qu’à son fonctionnement. J’aime transformer les défis complexes en solutions simples et intuitives.',
     value1: 'Une communication directe', value2: 'Votre entreprise au cœur du projet', value3: 'Un processus transparent', value4: 'Le souci du résultat', getAcquainted: 'Faisons connaissance',
     processEyebrow: 'COMMENT NOUS TRAVAILLONS', processSide: 'Vous savez toujours où en est le projet.', processHeading: 'Du premier échange au « c’est tout moi ».',
@@ -244,6 +247,7 @@ import projectSettings from '../data/projects.js';
   };
 
   const isSupportedLanguage = value => Object.prototype.hasOwnProperty.call(translations, value);
+  const defaultLanguage = isSupportedLanguage(config.defaultLanguage) ? config.defaultLanguage : 'en';
   const openGraphLocales = { uk: 'uk_UA', en: 'en_US', fr: 'fr_FR' };
   const htmlKeys = new Set(['artSticker', 'bloomArt', 'roofingArt', 'servicesHeading', 'aboutNote', 'aboutHeading', 'faqHeading', 'contactHeading']);
   const menuButton = document.querySelector('.menu-toggle');
@@ -272,7 +276,7 @@ import projectSettings from '../data/projects.js';
   const brand = typeof config.brand === 'string' && config.brand.trim() ? config.brand.trim() : 'Ruslan Savchuk';
   const brandTagline = config.tagline || 'Web Developer · Software Engineer';
   const email = typeof config.email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(config.email) ? config.email : '';
-  let language = 'uk';
+  let language = defaultLanguage;
   let activeProject = null;
   let statusKey = '';
   let sending = false;
@@ -346,7 +350,7 @@ import projectSettings from '../data/projects.js';
   }
 
   function setLanguage(nextLanguage, updateUrl = true, rememberLanguage = updateUrl) {
-    language = isSupportedLanguage(nextLanguage) ? nextLanguage : 'uk';
+    language = isSupportedLanguage(nextLanguage) ? nextLanguage : defaultLanguage;
     const dictionary = translations[language];
     document.documentElement.lang = language;
     document.querySelectorAll('[data-i18n]').forEach(element => {
@@ -636,7 +640,7 @@ import projectSettings from '../data/projects.js';
   const browserLanguage = browserLanguages
     .map(value => typeof value === 'string' ? value.toLowerCase().split('-')[0] : '')
     .find(isSupportedLanguage);
-  let initialLanguage = browserLanguage || (isSupportedLanguage(config.defaultLanguage) ? config.defaultLanguage : 'uk');
+  let initialLanguage = browserLanguage || defaultLanguage;
   try {
     const savedLanguage = localStorage.getItem('devfolio-language');
     if (isSupportedLanguage(savedLanguage)) initialLanguage = savedLanguage;
