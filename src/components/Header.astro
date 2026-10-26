@@ -1,5 +1,6 @@
 ---
 import BrandLogo from './BrandLogo.astro';
+import GlobeIcon from './GlobeIcon.astro';
 ---
 <header class="header">
       <div class="container header-inner">
@@ -11,11 +12,11 @@ import BrandLogo from './BrandLogo.astro';
         </nav>
         <div class="header-actions">
           <div class="language-switch" role="group" aria-label="Мова сайту" data-i18n-aria="languageLabel">
-            <button class="language-toggle" type="button" aria-expanded="false" aria-controls="language-options" aria-label="Мова сайту: Українська" lang="uk"><span class="language-flag" aria-hidden="true">🇺🇦</span><span id="current-language">UA</span><svg class="language-chevron" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="m3 4.5 3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></button>
+            <button class="language-toggle" type="button" aria-expanded="false" aria-controls="language-options" aria-label="Мова сайту: Українська" lang="uk"><GlobeIcon /><span id="current-language">UA</span><svg class="language-chevron" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="m3 4.5 3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></button>
             <div class="language-options" id="language-options" hidden>
-              <button type="button" data-lang="uk" aria-pressed="true" lang="uk" hidden><span class="language-flag" aria-hidden="true">🇺🇦</span>UA</button>
-              <button type="button" data-lang="en" aria-pressed="false" lang="en"><span class="language-flag" aria-hidden="true">🇬🇧</span>EN</button>
-              <button type="button" data-lang="fr" aria-pressed="false" lang="fr"><span class="language-flag" aria-hidden="true">🇫🇷</span>FR</button>
+              <button type="button" data-lang="uk" aria-pressed="true" lang="uk" hidden>UA</button>
+              <button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
+              <button type="button" data-lang="fr" aria-pressed="false" lang="fr">FR</button>
             </div>
           </div>
           <a class="header-contact" href="#contact"><span data-i18n="letsTalk">Зв’яжіться з нами</span><span aria-hidden="true">↗</span></a>

@@ -256,9 +256,9 @@ import projectSettings from '../data/projects.js';
   const languageToggle = document.querySelector('.language-toggle');
   const languageOptions = document.getElementById('language-options');
   const languageLabels = {
-    uk: { code: 'UA', flag: '🇺🇦', name: 'Українська' },
-    en: { code: 'EN', flag: '🇬🇧', name: 'English' },
-    fr: { code: 'FR', flag: '🇫🇷', name: 'Français' },
+    uk: { code: 'UA', name: 'Українська' },
+    en: { code: 'EN', name: 'English' },
+    fr: { code: 'FR', name: 'Français' },
   };
   const form = document.getElementById('contact-form');
   const formStatus = document.getElementById('form-status');
@@ -281,10 +281,19 @@ import projectSettings from '../data/projects.js';
   let statusKey = '';
   let sending = false;
   let menuScrollFrame = 0;
+  let languageScrollFrame = 0;
 
   function setLanguageMenu(open) {
+    cancelAnimationFrame(languageScrollFrame);
+    languageScrollFrame = 0;
     languageToggle.setAttribute('aria-expanded', String(open));
     languageOptions.hidden = !open;
+    if (open) {
+      // Ignore the browser's focus/scroll adjustment while opening the menu.
+      languageScrollFrame = requestAnimationFrame(() => {
+        languageScrollFrame = requestAnimationFrame(() => { languageScrollFrame = 0; });
+      });
+    }
   }
 
   function setMenu(open) {
@@ -370,7 +379,6 @@ import projectSettings from '../data/projects.js';
       button.setAttribute('aria-pressed', String(current));
       button.hidden = current;
     });
-    languageToggle.querySelector('.language-flag').textContent = languageLabels[language].flag;
     document.getElementById('current-language').textContent = languageLabels[language].code;
     languageToggle.lang = language;
     languageToggle.setAttribute('aria-label', `${dictionary.languageLabel}: ${languageLabels[language].name}`);
@@ -465,6 +473,7 @@ import projectSettings from '../data/projects.js';
   mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
   addEventListener('scroll', () => {
     if (!mobileNav.hidden && !menuScrollFrame) setMenu(false);
+    if (mobileQuery.matches && !languageOptions.hidden && !languageScrollFrame) setLanguageMenu(false);
   }, { passive: true });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && !languageOptions.hidden) {

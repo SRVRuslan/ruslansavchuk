@@ -437,7 +437,7 @@
   transform: rotate(45deg);
 }
 .language-switch button { display: inline-flex; align-items: center; gap: 5px; }
-.language-flag { font-size: 13px; line-height: 1; }
+.language-globe { width: 14px; height: 14px; flex-shrink: 0; }
 .project-art-photo {
   align-items: stretch;
   padding: 24px 24px 0;
