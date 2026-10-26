@@ -2,7 +2,7 @@
 export default {
   brand: "Ruslan Savchuk",
   tagline: "Web Developer · Software Engineer",
-  name: { uk: "Руслан Савчук", en: "Ruslan Savchuk", fr: "Ruslan Savchuk" },
+  name: { uk: "Руслан Савчук", en: "Ruslan Savchuk", fr: "Ruslan Savchuk", es: "Ruslan Savchuk" },
   email: "ruslan.savchuk.dev.ca@gmail.com",
   social: {
     whatsapp: "https://wa.me/savchuk_rv777",

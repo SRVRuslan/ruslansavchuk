@@ -176,7 +176,7 @@ html { background: var(--paper); scrollbar-color: #56565c var(--paper); }
   letter-spacing: .85px;
   white-space: nowrap;
 }
-.rs-logo-role > span { margin-inline: 3px; color: #369bff; }
+.rs-logo-role > .rs-role-divider { margin-inline: 3px; color: #369bff; }
 .footer-logo.rs-logo { gap: 16px; }
 .footer-logo .rs-logo-mark { width: 88px; }
 .footer-logo .rs-logo-name { font-size: 19px; letter-spacing: 1.5px; }
@@ -245,4 +245,5 @@ html { background: var(--paper); scrollbar-color: #56565c var(--paper); }
 @media (max-width: 360px) {
   .header .rs-logo-name { font-size: 11px; }
   .header .rs-logo-role { font-size: 4.8px; }
+  html[lang=es] .header .rs-logo-role { max-width: 95px; white-space: normal; }
 }

@@ -50,6 +50,16 @@ test('phone accepts arbitrary text and punctuation without a phone-number patter
   assert.equal((await run(request(withoutPhone))).status, 200);
 });
 
+test('Spanish enquiries preserve their language and accented characters in the email', async () => {
+  const { run, deliveries } = setup();
+  const response = await run(request({ ...enquiry, language: 'es', name: 'José Muñoz', message: 'Necesito un sitio para una cafetería con menú y teléfono.' }));
+  assert.equal(response.status, 200);
+  assert.equal(deliveries.length, 1);
+  const body = bodyOf(deliveries[0]);
+  assert.match(body, /Мова \/ Language: es/);
+  assert.ok(body.includes('José Muñoz') && body.includes('cafetería con menú y teléfono'));
+});
+
 test('customer fields cannot override recipient, sender, or inject email headers', async () => {
   const { run, deliveries } = setup();
   assert.equal((await run(request({ ...enquiry, to: 'attacker@example.com', from: 'attacker@example.com', name: 'Name\r\nBcc: attacker@example.com', phone: '\r\nBcc: attacker@example.com' }))).status, 200);

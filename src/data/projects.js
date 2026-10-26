@@ -1,3 +1,5 @@
+import spanish from './translations/es.js';
+
 /**
  * Додаткові роботи для кнопки «Переглянути більше».
  * Додавайте нові об'єкти до additional — верстка і фільтри оновляться автоматично.
@@ -38,6 +40,10 @@ export default {
         focus: 'Interface, visualisation des données, UX',
         format: 'Tableau de bord financier',
       },
+      es: {
+        subtitle: spanish.orbitSubtitle, alt: spanish.orbitAlt, type: spanish.application,
+        description: spanish.orbitDescription, focus: spanish.orbitFocus, format: spanish.orbitType,
+      },
     },
     {
       id: 'forma',
@@ -69,6 +75,10 @@ export default {
         focus: 'Direction artistique, typographie, structure',
         format: 'Site de studio d’architecture',
       },
+      es: {
+        subtitle: spanish.formaSubtitle, alt: spanish.formaAlt, type: spanish.website,
+        description: spanish.formaDescription, focus: spanish.formaFocus, format: spanish.formaType,
+      },
     },
     {
       id: 'kseniia-savchuk',
@@ -90,6 +100,11 @@ export default {
         subtitle: 'Site d’une photographe à Calgary',
         alt: 'Page d’accueil de Kseniia Savchuk, photographe à Calgary',
         type: 'Site web',
+      },
+      es: {
+        subtitle: spanish.photoProjectSubtitle,
+        alt: 'Página de inicio de Kseniia Savchuk, fotógrafa en Calgary',
+        type: spanish.website,
       },
     },
   ],

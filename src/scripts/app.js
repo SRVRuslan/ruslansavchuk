@@ -1,5 +1,6 @@
 import config from '../data/config.js';
 import projectSettings from '../data/projects.js';
+import spanish from '../data/translations/es.js';
 
 (() => {
   'use strict';
@@ -16,6 +17,10 @@ import projectSettings from '../data/projects.js';
       heroDescription: 'SEO, соцмережі та контактна форма — усе готове до запуску.',
       viewWork: 'Приклади робіт', discussProject: 'Обговорити сайт',
       artSticker: 'Ваш бізнес.<br />Ваш новий сайт.',
+      artProcess: 'DESIGN → WEBSITE → LAUNCH', artCaption: 'DESIGNED FOR YOUR BUSINESS',
+      previewTagline: 'MADE TO MAKE A DIFFERENCE', previewTitleLine1: 'Good things.', previewTitleLine2: 'Start here.', previewCta: "LET’S MAKE IT HAPPEN",
+      brandDeveloper: 'WEB DEVELOPER', brandEngineer: 'SOFTWARE ENGINEER', brandTagline: 'Web Developer · Software Engineer',
+      brandImageAlt: 'RS — Ruslan Savchuk. Web Developer · Software Engineer.',
       stripIntro: 'У вашому сайті', strip1: 'Сучасний дизайн', strip2: 'Базове SEO', strip3: 'Соцмережі', strip4: 'Контактна форма',
       workEyebrow: 'ОБРАНІ РОБОТИ', workSide: 'Менше слів. Більше того, що можна побачити.',
       workHeading: 'Різні ідеї. Один підхід.', filterLabel: 'Фільтрувати проєкти', filterAll: 'Усі', filterWeb: 'Вебсайти', filterApp: 'Застосунки',
@@ -39,6 +44,7 @@ import projectSettings from '../data/projects.js';
       service1Title: 'Сайти та лендинги', service1Text: 'Виразна перша зустріч із вашим брендом. Зрозуміла структура, сильний дизайн і комфорт на будь-якому екрані.', service1Tag1: 'Лендинги', service1Tag2: 'Корпоративні сайти',
       service2Title: 'Вебзастосунки', service2Text: 'Коли потрібне щось більше. Особисті кабінети, інтерактивні сервіси та інтерфейси, що спрощують складне.', service2Tag1: 'Вебсервіси', service2Tag2: 'Інтеграції',
       service3Title: 'Інтернет-магазини', service3Text: 'Від першого знайомства з товаром до оформлення замовлення. Зручний шлях покупця та увага до кожної деталі.', service3Tag2: 'Каталоги',
+      service3Tag1: 'E-commerce',
       aboutNote: 'Трохи допитливості.<br />Багато уваги.', aboutEyebrow: 'ТРОХИ ПРО МЕНЕ', aboutHeading: 'Людина за кодом.<br />Партнер у вашій ідеї.',
       aboutText1: 'Привіт! Я веброзробник, якому однаково важливі те, як сайт виглядає, і те, як він працює. Люблю перетворювати складні задачі на прості та зрозумілі рішення.',
       aboutText2: 'Занурююся у вашу ідею, ставлю запитання та працюю з вами напряму. Щоб кожне рішення мало сенс, а результат відчувався вашим.',
@@ -95,6 +101,10 @@ import projectSettings from '../data/projects.js';
       heroDescription: 'SEO, social links and a contact form — ready to launch.',
       viewWork: 'View work', discussProject: 'Discuss your site',
       artSticker: 'Your business.<br />Your new website.',
+      artProcess: 'DESIGN → WEBSITE → LAUNCH', artCaption: 'DESIGNED FOR YOUR BUSINESS',
+      previewTagline: 'MADE TO MAKE A DIFFERENCE', previewTitleLine1: 'Good things.', previewTitleLine2: 'Start here.', previewCta: "LET’S MAKE IT HAPPEN",
+      brandDeveloper: 'WEB DEVELOPER', brandEngineer: 'SOFTWARE ENGINEER', brandTagline: 'Web Developer · Software Engineer',
+      brandImageAlt: 'RS — Ruslan Savchuk. Web Developer · Software Engineer.',
       stripIntro: 'Your site includes', strip1: 'Modern design', strip2: 'Basic SEO', strip3: 'Social links', strip4: 'Contact form',
       workEyebrow: 'SELECTED WORK', workSide: 'Less talking. More showing.',
       workHeading: 'Different ideas. Same care.', filterLabel: 'Filter projects', filterAll: 'All work', filterWeb: 'Websites', filterApp: 'Web apps',
@@ -118,6 +128,7 @@ import projectSettings from '../data/projects.js';
       service1Title: 'Websites & landing pages', service1Text: 'A memorable first hello from your brand. Clear structure, considered design, and a great experience on every screen.', service1Tag1: 'Landing pages', service1Tag2: 'Business websites',
       service2Title: 'Web applications', service2Text: 'When you need something more. Customer portals, interactive services, and interfaces that make the complex feel simple.', service2Tag1: 'Web platforms', service2Tag2: 'Integrations',
       service3Title: 'Online stores', service3Text: 'From discovering a product to placing an order. An intuitive shopping journey with care in every detail.', service3Tag2: 'Product catalogs',
+      service3Tag1: 'E-commerce',
       aboutNote: 'A little curiosity.<br />A whole lot of care.', aboutEyebrow: 'A LITTLE ABOUT ME', aboutHeading: 'The human behind the code.<br />A partner in your idea.',
       aboutText1: 'Hi! I’m a web developer who cares just as much about how a website looks as how it works. I enjoy turning complex challenges into simple, intuitive solutions.',
       aboutText2: 'I get to know your idea, ask questions, and work with you directly. So every decision has a purpose, and the result feels truly yours.',
@@ -176,6 +187,10 @@ import projectSettings from '../data/projects.js';
     heroDescription: 'SEO, réseaux sociaux et formulaire de contact inclus.',
     viewWork: 'Voir les projets', discussProject: 'Parlons de votre site',
     artSticker: 'Votre activité.<br />Votre nouveau site.',
+    artProcess: 'DESIGN → WEBSITE → LAUNCH', artCaption: 'DESIGNED FOR YOUR BUSINESS',
+    previewTagline: 'MADE TO MAKE A DIFFERENCE', previewTitleLine1: 'Good things.', previewTitleLine2: 'Start here.', previewCta: "LET’S MAKE IT HAPPEN",
+    brandDeveloper: 'WEB DEVELOPER', brandEngineer: 'SOFTWARE ENGINEER', brandTagline: 'Web Developer · Software Engineer',
+    brandImageAlt: 'RS — Ruslan Savchuk. Web Developer · Software Engineer.',
     stripIntro: 'Votre site inclut', strip1: 'Design moderne', strip2: 'SEO de base', strip3: 'Réseaux sociaux', strip4: 'Formulaire de contact',
     workEyebrow: 'SÉLECTION DE PROJETS', workSide: 'Moins de mots. Plus de concret.',
     workHeading: 'Des idées variées. Une même approche.', filterLabel: 'Filtrer les projets', filterAll: 'Tous', filterWeb: 'Sites web', filterApp: 'Applications',
@@ -200,6 +215,7 @@ import projectSettings from '../data/projects.js';
     service1Title: 'Sites web et pages de destination', service1Text: 'Une première rencontre mémorable avec votre marque. Une structure claire, un design soigné et une expérience agréable sur tous les écrans.', service1Tag1: 'Pages de destination', service1Tag2: 'Sites d’entreprise',
     service2Title: 'Applications web', service2Text: 'Quand il vous faut aller plus loin. Des espaces clients, des services interactifs et des interfaces qui simplifient les tâches complexes.', service2Tag1: 'Plateformes web', service2Tag2: 'Intégrations',
     service3Title: 'Boutiques en ligne', service3Text: 'De la découverte d’un produit à la commande. Un parcours d’achat intuitif et une attention portée à chaque détail.', service3Tag2: 'Catalogues de produits',
+    service3Tag1: 'E-commerce',
     aboutNote: 'Un peu de curiosité.<br />Beaucoup d’attention.', aboutEyebrow: 'QUELQUES MOTS SUR MOI', aboutHeading: 'La personne derrière le code.<br />Un partenaire pour votre idée.',
     aboutText1: 'Bonjour ! Je suis développeur web et j’accorde autant d’importance à l’apparence d’un site qu’à son fonctionnement. J’aime transformer les défis complexes en solutions simples et intuitives.',
     aboutText2: 'Je prends le temps de comprendre votre idée, de poser des questions et de travailler directement avec vous. Pour que chaque décision ait du sens et que le résultat vous ressemble.',
@@ -246,9 +262,11 @@ import projectSettings from '../data/projects.js';
     bloomFocus: 'Catalogue, fiches produits, identité visuelle', bloomType: 'Boutique de plantes en ligne',
   };
 
+  translations.es = spanish;
+
   const isSupportedLanguage = value => Object.prototype.hasOwnProperty.call(translations, value);
   const defaultLanguage = isSupportedLanguage(config.defaultLanguage) ? config.defaultLanguage : 'en';
-  const openGraphLocales = { uk: 'uk_UA', en: 'en_US', fr: 'fr_FR' };
+  const openGraphLocales = { uk: 'uk_UA', en: 'en_US', fr: 'fr_FR', es: 'es_ES' };
   const htmlKeys = new Set(['artSticker', 'bloomArt', 'roofingArt', 'servicesHeading', 'aboutNote', 'aboutHeading', 'faqHeading', 'contactHeading']);
   const menuButton = document.querySelector('.menu-toggle');
   const mobileNav = document.getElementById('mobile-nav');
@@ -259,6 +277,7 @@ import projectSettings from '../data/projects.js';
     uk: { code: 'UA', name: 'Українська' },
     en: { code: 'EN', name: 'English' },
     fr: { code: 'FR', name: 'Français' },
+    es: { code: 'ES', name: 'Español' },
   };
   const form = document.getElementById('contact-form');
   const formStatus = document.getElementById('form-status');
@@ -390,7 +409,8 @@ import projectSettings from '../data/projects.js';
     document.querySelector('meta[property="og:title"]').content = document.title;
     document.querySelector('meta[property="og:description"]').content = dictionary.pageDescription;
     document.querySelector('meta[property="og:locale"]').content = openGraphLocales[language];
-    document.querySelectorAll('.logo').forEach(element => element.setAttribute('aria-label', `${brand} — ${brandTagline} — ${dictionary.homeLabel}`));
+    document.querySelector('meta[property="og:image:alt"]').content = dictionary.brandImageAlt;
+    document.querySelectorAll('.logo').forEach(element => element.setAttribute('aria-label', `${brand} — ${dictionary.brandTagline || brandTagline} — ${dictionary.homeLabel}`));
     document.querySelectorAll('a[data-social]').forEach(link => {
       link.setAttribute('aria-label', dictionary.socialProfileLabel.replace('{name}', link.title));
     });
