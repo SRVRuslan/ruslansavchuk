@@ -1,5 +1,6 @@
 /** Personalize the site here. Add profile URLs to activate the footer social icons. */
 export default {
+  siteUrl: "https://ruslansavchuk.com/",
   brand: "Ruslan Savchuk",
   tagline: "Web Developer · Software Engineer",
   name: { uk: "Руслан Савчук", en: "Ruslan Savchuk", fr: "Ruslan Savchuk", es: "Ruslan Savchuk", de: "Ruslan Savchuk", pt: "Ruslan Savchuk" },

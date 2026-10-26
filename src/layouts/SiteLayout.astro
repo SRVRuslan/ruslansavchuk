@@ -1,6 +1,31 @@
 ---
 import "../styles/global.css";
 import config from "../data/config.js";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${config.siteUrl}#person`,
+      name: config.brand,
+      alternateName: config.name.uk,
+      url: config.siteUrl,
+      jobTitle: ["Web Developer", "Software Engineer"],
+      email: config.email,
+      knowsAbout: ["Web development", "Astro", "React", "Node.js", "Cloudflare"],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${config.siteUrl}#website`,
+      url: config.siteUrl,
+      name: config.brand,
+      inLanguage: Object.keys(config.name),
+      author: { "@id": `${config.siteUrl}#person` },
+      publisher: { "@id": `${config.siteUrl}#person` },
+    },
+  ],
+};
 ---
 <!doctype html>
 <html lang="uk">
@@ -9,16 +34,19 @@ import config from "../data/config.js";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#080d15" />
     <meta name="description" content="Незалежний веброзробник. Продумані сайти, інтернет-магазини та вебзастосунки — від першої ідеї до запуску." />
+    <link rel="canonical" href={config.siteUrl} />
     <meta property="og:title" content={`${config.brand} — ${config.tagline}`} />
     <meta property="og:description" content="Перетворюю хороші ідеї на сайти, якими приємно користуватися." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/assets/rs-brand-original.png" />
+    <meta property="og:url" content={config.siteUrl} />
+    <meta property="og:image" content={new URL("/assets/rs-brand-original.png", config.siteUrl).href} />
     <meta property="og:image:alt" content="RS — Ruslan Savchuk. Web Developer · Software Engineer." />
     <meta property="og:locale" content="uk_UA" />
     <meta name="color-scheme" content="dark" />
     <title>{config.brand} — {config.tagline}</title>
     <link rel="icon" type="image/png" sizes="512x512" href="/assets/rs-favicon-transparent.png" />
     <link rel="apple-touch-icon" href="/assets/rs-favicon-transparent.png" />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData).replace(/</g, "\\u003c")} />
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="skip">Перейти до вмісту</a>
