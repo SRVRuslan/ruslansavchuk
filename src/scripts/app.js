@@ -3,7 +3,7 @@ import projectSettings from '../data/projects.js';
 import spanish from '../data/translations/es.js';
 import german from '../data/translations/de.js';
 import portuguese from '../data/translations/pt.js';
-import { LANGUAGE_PREFERENCE_KEY, detectBrowserLanguage, resolveInitialLanguage } from './language-preference.js';
+import { detectBrowserLanguage, resolveInitialLanguage } from './language-preference.js';
 
 (() => {
   'use strict';
@@ -384,7 +384,7 @@ import { LANGUAGE_PREFERENCE_KEY, detectBrowserLanguage, resolveInitialLanguage 
     return matching;
   }
 
-  function setLanguage(nextLanguage, updateUrl = true, rememberLanguage = updateUrl) {
+  function setLanguage(nextLanguage) {
     language = isSupportedLanguage(nextLanguage) ? nextLanguage : defaultLanguage;
     const dictionary = translations[language];
     document.documentElement.lang = language;
@@ -428,16 +428,6 @@ import { LANGUAGE_PREFERENCE_KEY, detectBrowserLanguage, resolveInitialLanguage 
     updateAdditionalProjects();
     updateVisibleProjects();
     updateProject();
-    if (rememberLanguage) {
-      try {
-        localStorage.setItem(LANGUAGE_PREFERENCE_KEY, JSON.stringify({ language, browserLanguage }));
-      } catch { /* Storage can be disabled. */ }
-    }
-    if (updateUrl && ['http:', 'https:'].includes(location.protocol)) {
-      const url = new URL(location.href);
-      url.searchParams.set('lang', language);
-      history.replaceState(null, '', url);
-    }
   }
 
   document.querySelectorAll('[data-brand]').forEach(element => {
@@ -675,12 +665,35 @@ import { LANGUAGE_PREFERENCE_KEY, detectBrowserLanguage, resolveInitialLanguage 
   }
 
   const supportedLanguages = Object.keys(translations);
-  const browserLanguage = detectBrowserLanguage(navigator.language, navigator.languages, supportedLanguages, defaultLanguage);
-  let savedPreference = null;
+  const readBrowserLanguage = () => detectBrowserLanguage(navigator.language, navigator.languages, supportedLanguages, defaultLanguage);
+  let browserLanguage = readBrowserLanguage();
   try {
-    savedPreference = localStorage.getItem(LANGUAGE_PREFERENCE_KEY);
-  } catch { /* Use browser preferences when storage is disabled. */ }
-  const queryLanguage = new URLSearchParams(location.search).get('lang');
-  const initialLanguage = resolveInitialLanguage({ queryLanguage, savedPreference, browserLanguage, supportedLanguages });
-  setLanguage(initialLanguage, false, false);
+    localStorage.removeItem('devfolio-language');
+    localStorage.removeItem('devfolio-language-preference-v2');
+  } catch { /* Language selection also works when storage is disabled. */ }
+  const url = new URL(location.href);
+  const initialLanguage = resolveInitialLanguage({ queryLanguage: url.searchParams.get('lang'), browserLanguage, supportedLanguages });
+  setLanguage(initialLanguage);
+  // Consume shared language links once so reloads and restored tabs use the device.
+  if (url.searchParams.has('lang') && ['http:', 'https:'].includes(url.protocol)) {
+    url.searchParams.delete('lang');
+    history.replaceState(history.state, '', url);
+  }
+
+  function syncBrowserLanguage(force = false) {
+    const nextLanguage = readBrowserLanguage();
+    if (!force && nextLanguage === browserLanguage) return;
+    browserLanguage = nextLanguage;
+    setLanguage(browserLanguage);
+    setLanguageMenu(false);
+    setMenu(false);
+  }
+
+  window.addEventListener('languagechange', () => syncBrowserLanguage(true));
+  window.addEventListener('pageshow', event => {
+    if (event.persisted) syncBrowserLanguage(true);
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) syncBrowserLanguage();
+  });
 })();
