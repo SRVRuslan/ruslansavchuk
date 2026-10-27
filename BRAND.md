@@ -7,8 +7,11 @@
 - `public/assets/rs-brand-original.png` — точна копія оригінального зображення, 1983 × 793 px.
 - `public/assets/rs-brand.webp` — оптимізована версія для секції «Про мене», 1983 × 793 px.
 - `public/assets/rs-mark.webp` — окремий RS на прозорому тлі для шапки та футера, 640 × 364 px.
-- `public/assets/rs-favicon-transparent.png` — поточна іконка вкладки й Apple Touch Icon, 512 × 512 px, без непрозорих смуг зверху та знизу.
-- `public/assets/rs-favicon.png` — збережена попередня версія іконки.
+- `public/assets/rs-favicon-transparent.png` — прозоре джерело іконок, 512 × 512 px, без непрозорих смуг зверху та знизу.
+- `public/assets/rs-favicon-v3-16.png` та `rs-favicon-v3-32.png` — іконки вкладки у відповідних розмірах; версія в назві файлу оновлює адресу для браузерного кешу.
+- `public/favicon-v3.ico` — прозорий ICO з розмірами 16, 32, 48, 64, 128 і 256 px; `public/favicon.ico` — така сама іконка за стандартною резервною адресою.
+- `public/apple-touch-icon-v3.png` — прозорий Apple Touch Icon, 180 × 180 px; також доступний за стандартними адресами `/apple-touch-icon.png` та `/apple-touch-icon-precomposed.png`.
+- `public/assets/rs-favicon.png` — стара публічна адреса, що тепер також повертає чистий прозорий файл. Попередня версія зі смугами залишається в історії Git.
 
 Логотип підключено в `src/components/BrandLogo.astro`, назва й професія налаштовуються в `src/data/config.js`, кольори — у `src/styles/theme.css`. Основний акцент: `#64b5ff`; фон: `#080d15`.
 
@@ -27,6 +30,8 @@ Input image: edit target, supplied by user. Extract ONLY the large connected met
 ## Прозорий favicon
 
 Для поточної іконки використано вбудований **imagegen**, режим редагування з прозорим фоном, джерело — `public/assets/rs-favicon.png`. Результат зменшено до 512 × 512 px зі збереженням alpha. Нове ім’я файлу дозволяє браузерам завантажити виправлення замість кешованої іконки.
+
+Під час повторного виправлення кешування 2026-10-26 малюнок не змінювався: готовий прозорий файл зменшено через `sips` до 16, 32 і 180 px та упаковано в ICO через Pillow. HTML використовує нові назви з `v3`; стару публічну PNG-адресу замінено прозорим джерелом, а стандартні резервні адреси додано в корінь сайту.
 
 Точний промпт:
 
