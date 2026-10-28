@@ -24,15 +24,28 @@ import HeroGlobe from './HeroGlobe.astro';
     margin-top: 24px;
   }
 
+  .hero-copy h1:lang(pl) .hero-spark {
+    top: -26px;
+    right: 0;
+  }
+
+  @media (min-width: 641px) and (max-width: 900px) {
+    .hero-copy h1:lang(pl) {
+      font-size: clamp(34px, 5.2vw, 44px);
+    }
+  }
+
   @media (max-width: 640px) {
     .preview-title-accent:lang(pt),
-    .preview-title-accent:lang(it) {
+    .preview-title-accent:lang(it),
+    .preview-title-accent:lang(pl) {
       font-size: .9em;
     }
   }
 
   @media (max-width: 360px) {
-    .hero-copy h1:lang(de) {
+    .hero-copy h1:lang(de),
+    .hero-copy h1:lang(pl) {
       font-size: clamp(32px, 10vw, 36px);
     }
     .hero-spark {

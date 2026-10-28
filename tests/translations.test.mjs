@@ -5,9 +5,10 @@ import spanish from '../src/data/translations/es.js';
 import german from '../src/data/translations/de.js';
 import portuguese from '../src/data/translations/pt.js';
 import italian from '../src/data/translations/it.js';
+import polish from '../src/data/translations/pl.js';
 import projects from '../src/data/projects.js';
 
-for (const [language, dictionary, code] of [['Spanish', spanish, 'es'], ['German', german, 'de'], ['Portuguese', portuguese, 'pt'], ['Italian', italian, 'it']]) {
+for (const [language, dictionary, code] of [['Spanish', spanish, 'es'], ['German', german, 'de'], ['Portuguese', portuguese, 'pt'], ['Italian', italian, 'it'], ['Polish', polish, 'pl']]) {
   test(`${language} covers every translated component label, placeholder and accessible description`, () => {
     const directory = new URL('../src/components/', import.meta.url);
     for (const name of readdirSync(directory).filter(name => name.endsWith('.astro'))) {
@@ -35,7 +36,7 @@ for (const [language, dictionary, code] of [['Spanish', spanish, 'es'], ['German
   });
 }
 
-for (const [language, dictionary] of [['German', german], ['Portuguese', portuguese], ['Italian', italian]]) {
+for (const [language, dictionary] of [['German', german], ['Portuguese', portuguese], ['Italian', italian], ['Polish', polish]]) {
   test(`${language} and Spanish have the same complete translation key set`, () => {
     assert.deepEqual(Object.keys(dictionary).sort(), Object.keys(spanish).sort());
   });

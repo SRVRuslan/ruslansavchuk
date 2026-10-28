@@ -3,7 +3,7 @@ export default {
   siteUrl: "https://ruslansavchuk.com/",
   brand: "Ruslan Savchuk",
   tagline: "Web Developer · Software Engineer",
-  name: { uk: "Руслан Савчук", en: "Ruslan Savchuk", fr: "Ruslan Savchuk", es: "Ruslan Savchuk", de: "Ruslan Savchuk", pt: "Ruslan Savchuk", it: "Ruslan Savchuk" },
+  name: { uk: "Руслан Савчук", en: "Ruslan Savchuk", fr: "Ruslan Savchuk", es: "Ruslan Savchuk", de: "Ruslan Savchuk", pt: "Ruslan Savchuk", it: "Ruslan Savchuk", pl: "Ruslan Savchuk" },
   email: "ruslan.savchuk.dev.ca@gmail.com",
   social: {
     whatsapp: "https://wa.me/savchuk_rv777",

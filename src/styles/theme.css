@@ -243,9 +243,11 @@ html { background: var(--paper); scrollbar-color: #56565c var(--paper); }
   .header .rs-logo-role { margin-top: 4px; font-size: 5.2px; letter-spacing: .1px; }
 }
 @media (max-width: 360px) {
+  .header-inner:lang(pl) { gap: 16px; }
   .header .rs-logo-name { font-size: 11px; }
   .header .rs-logo-role { font-size: 4.8px; }
   html[lang=es] .header .rs-logo-role,
   html[lang=pt] .header .rs-logo-role,
-  html[lang=it] .header .rs-logo-role { max-width: 95px; white-space: normal; }
+  html[lang=it] .header .rs-logo-role,
+  html[lang=pl] .header .rs-logo-role { max-width: 95px; white-space: normal; }
 }

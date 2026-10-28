@@ -2,6 +2,7 @@ import spanish from './translations/es.js';
 import german from './translations/de.js';
 import portuguese from './translations/pt.js';
 import italian from './translations/it.js';
+import polish from './translations/pl.js';
 
 /**
  * Додаткові роботи для кнопки «Переглянути більше».
@@ -59,6 +60,10 @@ export default {
         subtitle: italian.orbitSubtitle, alt: italian.orbitAlt, type: italian.application,
         description: italian.orbitDescription, focus: italian.orbitFocus, format: italian.orbitType,
       },
+      pl: {
+        subtitle: polish.orbitSubtitle, alt: polish.orbitAlt, type: polish.application,
+        description: polish.orbitDescription, focus: polish.orbitFocus, format: polish.orbitType,
+      },
     },
     {
       id: 'forma',
@@ -106,6 +111,10 @@ export default {
         subtitle: italian.formaSubtitle, alt: italian.formaAlt, type: italian.website,
         description: italian.formaDescription, focus: italian.formaFocus, format: italian.formaType,
       },
+      pl: {
+        subtitle: polish.formaSubtitle, alt: polish.formaAlt, type: polish.website,
+        description: polish.formaDescription, focus: polish.formaFocus, format: polish.formaType,
+      },
     },
     {
       id: 'kseniia-savchuk',
@@ -147,6 +156,11 @@ export default {
         subtitle: italian.photoProjectSubtitle,
         alt: 'Pagina iniziale di Kseniia Savchuk, fotografa a Calgary',
         type: italian.website,
+      },
+      pl: {
+        subtitle: polish.photoProjectSubtitle,
+        alt: 'Strona główna Kseniia Savchuk, fotografki z Calgary',
+        type: polish.website,
       },
     },
   ],
