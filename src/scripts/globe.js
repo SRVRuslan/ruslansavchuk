@@ -10,6 +10,10 @@ if (canvas && context) {
   const cosTilt = Math.cos(tilt);
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const turnDuration = 180_000;
+  const mobileScreen = matchMedia('(max-width: 900px), (pointer: coarse)');
+  const background = document.createElement('canvas');
+  const backgroundContext = background.getContext('2d');
+  let pixelRatio = 1;
   const points = [];
   const graticules = [];
   let size = 0;
@@ -34,6 +38,34 @@ if (canvas && context) {
     graticules.push(Array.from({ length: 91 }, (_, i) => sphere(longitude, i * 2 - 90)));
   }
 
+  function paintBackground() {
+    if (!backgroundContext) return;
+    const center = size / 2;
+    const radius = size * .445;
+    background.width = canvas.width;
+    background.height = canvas.height;
+    backgroundContext.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    const atmosphere = backgroundContext.createRadialGradient(center, center, radius * .94, center, center, radius * 1.12);
+    atmosphere.addColorStop(0, '#64b5ff00');
+    atmosphere.addColorStop(.35, '#418aca16');
+    atmosphere.addColorStop(1, '#64b5ff00');
+    backgroundContext.fillStyle = atmosphere;
+    backgroundContext.fillRect(0, 0, size, size);
+
+    const ocean = backgroundContext.createRadialGradient(center - radius * .45, center - radius * .5, 0, center, center, radius);
+    ocean.addColorStop(0, '#122238');
+    ocean.addColorStop(.65, '#0c1828');
+    ocean.addColorStop(1, '#090f1a');
+    backgroundContext.beginPath();
+    backgroundContext.arc(center, center, radius, 0, Math.PI * 2);
+    backgroundContext.fillStyle = ocean;
+    backgroundContext.fill();
+    backgroundContext.lineWidth = .7;
+    backgroundContext.strokeStyle = '#68a4d52b';
+    backgroundContext.stroke();
+
+  }
+
   function draw() {
     if (!size) return;
     const center = size / 2;
@@ -52,24 +84,7 @@ if (canvas && context) {
     }
 
     context.clearRect(0, 0, size, size);
-    const atmosphere = context.createRadialGradient(center, center, radius * .94, center, center, radius * 1.12);
-    atmosphere.addColorStop(0, '#64b5ff00');
-    atmosphere.addColorStop(.35, '#418aca16');
-    atmosphere.addColorStop(1, '#64b5ff00');
-    context.fillStyle = atmosphere;
-    context.fillRect(0, 0, size, size);
-
-    const ocean = context.createRadialGradient(center - radius * .45, center - radius * .5, 0, center, center, radius);
-    ocean.addColorStop(0, '#122238');
-    ocean.addColorStop(.65, '#0c1828');
-    ocean.addColorStop(1, '#090f1a');
-    context.beginPath();
-    context.arc(center, center, radius, 0, Math.PI * 2);
-    context.fillStyle = ocean;
-    context.fill();
-    context.lineWidth = .7;
-    context.strokeStyle = '#68a4d52b';
-    context.stroke();
+    context.drawImage(background, 0, 0, size, size);
 
     context.lineWidth = .6;
     context.strokeStyle = '#6499ca1c';
@@ -100,7 +115,7 @@ if (canvas && context) {
 
   function tick(time) {
     frame = 0;
-    if (lastTime && time - lastTime < 1000 / 30) {
+    if (lastTime && time - lastTime < 1000 / (mobileScreen.matches ? 15 : 30)) {
       frame = requestAnimationFrame(tick);
       return;
     }
@@ -118,20 +133,26 @@ if (canvas && context) {
     else draw();
   }
 
-  function resize() {
-    const nextSize = canvas.getBoundingClientRect().width;
-    if (!nextSize) return;
+  function resize(nextSize) {
+    const nextRatio = Math.min(devicePixelRatio || 1, 2);
+    if (!nextSize || (size === nextSize && pixelRatio === nextRatio)) return;
     size = nextSize;
-    const pixelRatio = Math.min(devicePixelRatio || 1, 2);
+    pixelRatio = nextRatio;
     canvas.width = Math.round(size * pixelRatio);
     canvas.height = Math.round(size * pixelRatio);
     context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    paintBackground();
     draw();
   }
 
-  resize();
-  if ('ResizeObserver' in window) new ResizeObserver(resize).observe(canvas);
-  else addEventListener('resize', resize, { passive: true });
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(([entry]) => resize(entry.contentRect.width)).observe(canvas);
+    addEventListener('resize', () => resize(size), { passive: true });
+  } else {
+    const measure = () => requestAnimationFrame(() => resize(canvas.getBoundingClientRect().width));
+    measure();
+    addEventListener('resize', measure, { passive: true });
+  }
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;

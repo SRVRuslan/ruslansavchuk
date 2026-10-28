@@ -1,5 +1,9 @@
+---
+import { Image } from 'astro:assets';
+import brandArt from '../../public/assets/rs-brand.webp';
+---
 <section class="section container about-section" id="about" aria-labelledby="about-heading">
-        <div class="about-visual about-brand-visual"><img class="rs-brand-art" src="/assets/rs-brand.webp" width="1983" height="793" loading="lazy" decoding="async" alt="RS — Ruslan Savchuk. Web Developer · Software Engineer." data-i18n-alt="brandImageAlt" /></div>
+        <div class="about-visual about-brand-visual"><Image class="rs-brand-art" src={brandArt} widths={[400, 800, 1200, 1983]} sizes="(max-width: 640px) calc(100vw - 66px), (max-width: 900px) 40vw, 532px" quality={85} loading="lazy" decoding="async" alt="RS — Ruslan Savchuk. Web Developer · Software Engineer." data-i18n-alt="brandImageAlt" /></div>
         <div class="about-copy">
           <p class="eyebrow"><span data-i18n="aboutEyebrow">ТРОХИ ПРО МЕНЕ</span></p>
           <h2 id="about-heading" data-i18n="aboutHeading">Людина за кодом.<br />Партнер у вашій ідеї.</h2>

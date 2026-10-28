@@ -146,14 +146,24 @@ html { background: var(--paper); scrollbar-color: #56565c var(--paper); }
   transform: scale(1.4);
   transform-origin: center;
 }
+.rs-logo-symbol { position: relative; display: block; flex-shrink: 0; isolation: isolate; }
+.header .rs-logo-symbol::before {
+  content: '';
+  position: absolute;
+  inset: -14px;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #1688ff70, #1688ff1a 45%, transparent 72%);
+  opacity: .3;
+}
 @media (prefers-reduced-motion: no-preference) {
-  .header .rs-logo-mark {
+  .header .rs-logo-symbol::before {
     animation: rs-logo-glow 3s ease-in-out infinite;
   }
 }
 @keyframes rs-logo-glow {
-  0%, 100% { filter: drop-shadow(0 0 10px #1688ff4d); }
-  50% { filter: drop-shadow(0 0 18px #1688ffd7) drop-shadow(0 0 7px #55bdff9a); }
+  0%, 100% { opacity: .3; }
+  50% { opacity: .85; }
 }
 .rs-wordmark { display: block; }
 .rs-logo-name {

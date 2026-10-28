@@ -28,14 +28,14 @@
   }
 
   const targets = document.querySelectorAll(
-    '.hero-copy > *, .hero-art, .section-top, .section-heading-row, ' +
+    '.section-top, .section-heading-row, ' +
     '.project-card, .services-heading, .service-card, .about-visual, ' +
     '.about-copy, .process-section > h2, .process-grid > article, ' +
     '.faq-section > div, .contact-copy, .contact-form'
   );
 
   const delays = new WeakMap();
-  document.querySelectorAll('.hero-copy, .projects-grid, .services-grid, .process-grid').forEach(group => {
+  document.querySelectorAll('.projects-grid, .services-grid, .process-grid').forEach(group => {
     [...group.children].forEach((child, index) => delays.set(child, Math.min(index * 65, 260)));
   });
 
@@ -79,7 +79,7 @@
   addEventListener('scroll', queueScroll, { passive: true });
   addEventListener('resize', queueScroll, { passive: true });
   if ('ResizeObserver' in window) new ResizeObserver(queueScroll).observe(document.body);
-  updateScroll();
+  else queueScroll();
 
   let pointerFrame = 0;
   let x = 0;
