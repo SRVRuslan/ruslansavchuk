@@ -5,6 +5,7 @@ import german from '../data/translations/de.js';
 import portuguese from '../data/translations/pt.js';
 import italian from '../data/translations/it.js';
 import polish from '../data/translations/pl.js';
+import arabic from '../data/translations/ar.js';
 import { detectBrowserLanguage, resolveInitialLanguage } from './language-preference.js';
 
 (() => {
@@ -272,10 +273,11 @@ import { detectBrowserLanguage, resolveInitialLanguage } from './language-prefer
   translations.pt = portuguese;
   translations.it = italian;
   translations.pl = polish;
+  translations.ar = arabic;
 
   const isSupportedLanguage = value => Object.prototype.hasOwnProperty.call(translations, value);
   const defaultLanguage = isSupportedLanguage(config.defaultLanguage) ? config.defaultLanguage : 'en';
-  const openGraphLocales = { uk: 'uk_UA', en: 'en_US', fr: 'fr_FR', es: 'es_ES', de: 'de_DE', pt: 'pt_PT', it: 'it_IT', pl: 'pl_PL' };
+  const openGraphLocales = { uk: 'uk_UA', en: 'en_US', fr: 'fr_FR', es: 'es_ES', de: 'de_DE', pt: 'pt_PT', it: 'it_IT', pl: 'pl_PL', ar: 'ar_AR' };
   const htmlKeys = new Set(['artSticker', 'bloomArt', 'roofingArt', 'servicesHeading', 'aboutNote', 'aboutHeading', 'faqHeading', 'contactHeading']);
   const menuButton = document.querySelector('.menu-toggle');
   const mobileNav = document.getElementById('mobile-nav');
@@ -291,6 +293,7 @@ import { detectBrowserLanguage, resolveInitialLanguage } from './language-prefer
     pt: { code: 'PT', name: 'Português' },
     it: { code: 'IT', name: 'Italiano' },
     pl: { code: 'PL', name: 'Polski' },
+    ar: { code: 'AR', name: 'العربية' },
   };
   const form = document.getElementById('contact-form');
   const formStatus = document.getElementById('form-status');
@@ -390,10 +393,22 @@ import { detectBrowserLanguage, resolveInitialLanguage } from './language-prefer
     return matching;
   }
 
+  function updateInputDirections() {
+    for (const field of ['name', 'message']) {
+      const input = form.elements[field];
+      input.dir = input.value.trim() ? 'auto' : document.documentElement.dir;
+    }
+  }
+
+  form.addEventListener('input', updateInputDirections);
+  form.addEventListener('reset', () => queueMicrotask(updateInputDirections));
+
   function setLanguage(nextLanguage) {
     language = isSupportedLanguage(nextLanguage) ? nextLanguage : defaultLanguage;
     const dictionary = translations[language];
     document.documentElement.lang = language;
+    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+    updateInputDirections();
     document.querySelectorAll('[data-i18n]').forEach(element => {
       const key = element.dataset.i18n;
       if (dictionary[key] === undefined) return;
@@ -544,7 +559,7 @@ import { detectBrowserLanguage, resolveInitialLanguage } from './language-prefer
       control.dataset.project = project.id;
       control.setAttribute('aria-labelledby', `extra-${project.id}-title`);
     }
-    control.innerHTML = '<div class="project-art project-art-additional"><span class="concept-badge"></span><img width="800" height="570" loading="lazy" decoding="async" alt="" /><span class="project-open-icon" aria-hidden="true">↗</span></div><div class="project-info"><div><h3></h3><p></p></div><span class="project-type"></span></div>';
+    control.innerHTML = '<div class="project-art project-art-additional"><span class="concept-badge"></span><img width="800" height="570" loading="lazy" decoding="async" alt="" /><span class="project-open-icon" aria-hidden="true">↗</span></div><div class="project-info"><div><h3 dir="auto"></h3><p></p></div><span class="project-type"></span></div>';
     control.querySelector('img').src = project.image;
     control.querySelector('h3').id = `extra-${project.id}-title`;
     card.append(control);

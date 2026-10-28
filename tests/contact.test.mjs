@@ -100,6 +100,17 @@ test('Polish enquiries preserve their language and diacritics in the email', asy
   assert.ok(body.includes('Łukasz Żółkiewicz') && body.includes('zdjęciami i możliwością kontaktu'));
 });
 
+test('Arabic enquiries preserve their language, RTL text and international phone numbers', async () => {
+  const { run, deliveries } = setup();
+  const response = await run(request({ ...enquiry, language: 'ar', name: 'أحمد عبدالله', phone: '+971 50 123 4567', message: 'أريد موقعًا لمقهى يعرض قائمة الطعام والصور وبيانات التواصل.' }));
+  assert.equal(response.status, 200);
+  assert.equal(deliveries.length, 1);
+  const body = bodyOf(deliveries[0]);
+  assert.match(body, /Мова \/ Language: ar/);
+  assert.ok(body.includes('أحمد عبدالله') && body.includes('قائمة الطعام والصور'));
+  assert.ok(body.includes('+971 50 123 4567'));
+});
+
 test('customer fields cannot override recipient, sender, or inject email headers', async () => {
   const { run, deliveries } = setup();
   assert.equal((await run(request({ ...enquiry, to: 'attacker@example.com', from: 'attacker@example.com', name: 'Name\r\nBcc: attacker@example.com', phone: '\r\nBcc: attacker@example.com' }))).status, 200);

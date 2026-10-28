@@ -4,7 +4,7 @@
       <p class="eyebrow"><span data-i18n="contactEyebrow">НАСТУПНИЙ ПРОЄКТ — ВАШ?</span></p>
       <h2 id="contact-heading" data-i18n="contactHeading">Зробімо щось<br />класне<span class="contact-period">.</span></h2>
       <p data-i18n="contactDescription">Велика ідея чи маленький початок — усе починається з розмови. Розкажіть, що маєте на думці.</p>
-      <a class="contact-email" id="contact-email" hidden></a>
+      <a class="contact-email" id="contact-email" dir="ltr" hidden></a>
       <div class="contact-decoration" aria-hidden="true">↗</div>
       <div class="contact-note"><span class="status-dot"></span><span data-i18n="contactNote">Хороші проєкти починаються з «привіт».</span></div>
     </div>
@@ -16,20 +16,20 @@
       <div class="form-row">
         <label>
           <span data-i18n="nameLabel">Ваше ім’я</span>
-          <input name="name" type="text" autocomplete="name" maxlength="100" required placeholder="Як до вас звертатися?" data-i18n-placeholder="namePlaceholder" />
+          <input name="name" type="text" dir="auto" autocomplete="name" maxlength="100" required placeholder="Як до вас звертатися?" data-i18n-placeholder="namePlaceholder" />
         </label>
         <label>
           <span data-i18n="emailLabel">Електронна пошта</span>
-          <input name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@example.com" />
+          <input name="email" type="email" dir="ltr" autocomplete="email" maxlength="254" required placeholder="you@example.com" />
         </label>
       </div>
       <label class="contact-phone">
         <span data-i18n="phoneLabel">Номер телефону (необов’язково)</span>
-        <input name="phone" type="tel" autocomplete="tel" placeholder="Номер у зручному для вас форматі" data-i18n-placeholder="phonePlaceholder" />
+        <input name="phone" type="tel" dir="ltr" autocomplete="tel" placeholder="Номер у зручному для вас форматі" data-i18n-placeholder="phonePlaceholder" />
       </label>
       <label class="message-label">
         <span data-i18n="messageLabel">Який сайт вам потрібен?</span>
-        <textarea name="message" rows="3" minlength="10" maxlength="5000" required placeholder="Наприклад: сайт для кав’ярні з меню та контактами." data-i18n-placeholder="messagePlaceholder"></textarea>
+        <textarea name="message" dir="auto" rows="3" minlength="10" maxlength="5000" required placeholder="Наприклад: сайт для кав’ярні з меню та контактами." data-i18n-placeholder="messagePlaceholder"></textarea>
       </label>
       <details class="form-extras" open>
         <summary><span data-i18n="formExtrasLabel">Обрати тип проєкту</span></summary>

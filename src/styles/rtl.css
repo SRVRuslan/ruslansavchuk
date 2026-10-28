@@ -1,0 +1,118 @@
+@font-face {
+  font-family: 'Noto Sans Arabic';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/assets/noto-sans-arabic.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200F, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+html[lang=ar] { --font: 'Noto Sans Arabic', 'Manrope', sans-serif; }
+.language-options button[lang=ar], .noscript-message [lang=ar] { font-family: 'Noto Sans Arabic', sans-serif; letter-spacing: normal; }
+
+/* The document's dir attribute mirrors flex/grid order; keep Arabic letters joined. */
+html[dir=rtl] :is(h1, h2, h3, p, button, label, legend, summary, [data-i18n]) {
+  letter-spacing: normal;
+}
+html[dir=rtl] :is(.hero-copy, .services-heading, .about-copy, .process-section, .contact-copy, .contact-form, .dialog-content) {
+  text-align: start;
+}
+html[dir=rtl] .hero-copy h1 {
+  margin-inline-start: 0;
+  margin-inline-end: auto;
+  font-size: clamp(40px, 4.8vw, 68px);
+  line-height: 1.6;
+  letter-spacing: normal;
+}
+html[dir=rtl] .hero-spark { right: auto; left: 0; top: -26px; }
+html[dir=rtl] .hero-globe { right: auto; left: 0; }
+html[dir=rtl] .hero-description { font-size: 15px; }
+html[dir=rtl] :is(h2, h3) { line-height: 1.65; }
+html[dir=rtl] :is(.hero-description, .service-card p, .about-copy > p, .process-grid p, .faq-list details > p, .contact-copy > p) {
+  line-height: 2;
+}
+html[dir=rtl] :is(.availability, .eyebrow, .section-side-note, .concept-badge, .project-info p, .project-filters button, .service-tags > span, .footer-heading) {
+  font-size: 12px;
+}
+
+/* Preserve code, brand names, URLs and numbers without mirroring their glyphs. */
+html[dir=rtl] .rs-logo-role { font-family: var(--font); font-size: 10px; letter-spacing: normal; }
+html[dir=rtl] .project-info h3, html[dir=rtl] #dialog-title { text-align: right; }
+html[dir=rtl] .project-open { text-align: start; }
+html[dir=rtl] .project-info > div { min-width: 0; }
+html[dir=rtl] .project-type { font-size: 11px; }
+html[dir=rtl] .about-stack p { text-align: right; }
+html[dir=rtl] .contact-form :is(input[type=email], input[type=tel]) { text-align: left; }
+html[dir=rtl] .contact-form input[type=tel]::placeholder { text-align: right; }
+html[dir=rtl] .contact-form label > span,
+html[dir=rtl] .service-picker legend { font-size: 13px; }
+html[dir=rtl] .contact-form input::placeholder,
+html[dir=rtl] .contact-form textarea::placeholder { font-size: 13px; }
+html[dir=rtl] .form-note, html[dir=rtl] .form-status { font-size: 12px; line-height: 1.9; }
+html[dir=rtl] .contact-copy h2 { font-size: 56px; line-height: 1.7; }
+
+html[dir=rtl] .language-options { right: auto; left: 0; }
+html[dir=rtl] .language-options button { text-align: start; }
+html[dir=rtl] .language-toggle { font-family: 'Manrope', sans-serif; }
+html[dir=rtl] .service-index { right: auto; left: 30px; }
+html[dir=rtl] .faq-list details > p { padding-right: 0; padding-inline-end: 35px; }
+html[dir=rtl] .contact-decoration { right: auto; left: 0; }
+html[dir=rtl] .dialog-close { right: auto; left: 15px; }
+html[dir=rtl] .concept-badge { left: auto; right: 20px; }
+html[dir=rtl] .project-open-icon { right: auto; left: 20px; }
+
+/* The artwork keeps its original composition; only its interface follows RTL. */
+html[dir=rtl] :is(.art-caption, .art-coordinate, .preview-topline > span, .preview-bottom > span:first-child) {
+  font-family: var(--font);
+  letter-spacing: normal;
+  font-size: 9px;
+}
+html[dir=rtl] .preview-title { font-family: var(--font); font-size: 36px; line-height: 1.5; letter-spacing: normal; }
+html[dir=rtl] .preview-title-accent { font-family: inherit; font-style: normal; }
+html[dir=rtl] .asterisk { right: auto; left: 24px; }
+html[dir=rtl] .art-sticker { font-size: 13px; line-height: 1.8; }
+html[dir=rtl] .roofing-intro { gap: 12px; }
+html[dir=rtl] .roofing-tagline { font-family: var(--font); letter-spacing: normal; }
+html[dir=rtl] .roofing-brand { unicode-bidi: isolate; }
+html[dir=rtl] :is(.hero-actions .button > span:last-child, .hero-actions .text-link > span:last-child, .header-contact > span:last-child, .form-submit > span:last-child, .about-values > div > span:first-child, .about-copy .text-link > span:last-child) {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+html[dir=rtl] .footer-rights::before { margin-right: 0; margin-inline-end: 7px; }
+
+@media (max-width: 900px) {
+  html[dir=rtl] .header .rs-logo-role { font-size: 8px; }
+  html[dir=rtl] .preview-title { font-size: 29px; }
+}
+
+@media (max-width: 640px) {
+  html[dir=rtl] .header .rs-logo-role { max-width: 105px; white-space: normal; font-size: 7px; line-height: 1.65; }
+  html[dir=rtl] .hero-copy h1 { font-size: clamp(32px, 8.5vw, 48px); }
+  html[dir=rtl] .hero-globe { left: 0; }
+  html[dir=rtl] .hero-description { font-size: 14px; }
+  html[dir=rtl] .hero-actions :is(.button, .text-link) { font-size: 12px; }
+  html[dir=rtl] .preview-title { font-size: 23px; line-height: 1.45; }
+  html[dir=rtl] .asterisk { left: 8px; }
+  html[dir=rtl] :is(.art-caption, .art-coordinate, .preview-topline > span, .preview-bottom > span:first-child) { font-size: 6px; }
+  html[dir=rtl] .art-sticker { font-size: 9px; }
+  html[dir=rtl] .project-info h3 { font-size: 20px; }
+  html[dir=rtl] .project-info p { font-size: 11px; }
+  html[dir=rtl] .project-type { font-size: 9px; }
+  html[dir=rtl] .form-extras > summary { font-size: 12px; }
+  html[dir=rtl] .form-submit { font-size: 14px; }
+  html[dir=rtl] .service-picker label > span { font-size: 11px; }
+  html[dir=rtl] .contact-form-intro h2 { font-size: 25px; line-height: 1.65; }
+  html[dir=rtl] .contact-form-intro p { font-size: 13px; }
+  html[dir=rtl] .faq-list details > p { padding-inline-end: 18px; }
+  html[dir=rtl] .footer-logo .rs-logo-role { font-size: 7px; max-width: 110px; white-space: normal; }
+  html[dir=rtl] .footer-author { font-size: 11px; }
+  html[dir=rtl] .footer-author-link { font-family: 'Manrope', sans-serif; font-size: 9px; }
+}
+
+@media (max-width: 360px) {
+  html[dir=rtl] .header-inner { gap: 12px; }
+  html[dir=rtl] .header .rs-logo-role { max-width: 96px; }
+  html[dir=rtl] .hero-actions { gap: 12px; }
+  html[dir=rtl] .hero-actions :is(.button, .text-link) { font-size: 12px; }
+  html[dir=rtl] .preview-title { font-size: 21px; line-height: 1.4; }
+}

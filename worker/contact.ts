@@ -83,7 +83,7 @@ export async function handleContact(
   if (data.phone !== undefined && typeof data.phone !== 'string') return respond(400, 'invalid_fields');
   const phone = typeof data.phone === 'string' ? data.phone.trim() : '';
   const service = typeof data.service === 'string' && Object.hasOwn(services, data.service) ? services[data.service] : '';
-  const language = typeof data.language === 'string' && ['uk', 'en', 'fr', 'es', 'de', 'pt', 'it', 'pl'].includes(data.language) ? data.language : 'uk';
+  const language = typeof data.language === 'string' && ['uk', 'en', 'fr', 'es', 'de', 'pt', 'it', 'pl', 'ar'].includes(data.language) ? data.language : 'uk';
   if (!name || name.length > 100 || email.length > 254 ||
       !/^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9.-]*[A-Za-z0-9])?\.[A-Za-z]{2,}$/.test(email) ||
       message.length < 10 || message.length > 5000 || !service) return respond(400, 'invalid_fields');

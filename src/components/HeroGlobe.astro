@@ -7,7 +7,8 @@
     position: absolute;
     z-index: -1;
     top: -65px;
-    right: -7%;
+    /* Keep the existing offset where there is room, within the page gutter. */
+    right: max(-7%, min(-36px, calc((1256px - 100vw) / 2)));
     width: 120.96%;
     max-width: 691.2px;
     translate: 0 -3.703704%;
@@ -24,6 +25,10 @@
     height: 100%;
     border-radius: 50%;
     background: radial-gradient(circle at 36% 28%, #13253a77, #0b152388 48%, #080d1500 70%);
+  }
+
+  @media (max-width: 900px) {
+    .hero-globe { right: max(-7%, -24px); }
   }
 
   @media (max-width: 640px) {
