@@ -80,6 +80,16 @@ test('Portuguese enquiries preserve their language and accented characters in th
   assert.ok(body.includes('João Gonçalves') && body.includes('café, com preços e informações'));
 });
 
+test('Italian enquiries preserve their language, accents and apostrophes in the email', async () => {
+  const { run, deliveries } = setup();
+  const response = await run(request({ ...enquiry, language: 'it', name: 'Niccolò D’Angelo', message: 'Vorrei un sito per la mia attività, con menu del caffè e contatti.' }));
+  assert.equal(response.status, 200);
+  assert.equal(deliveries.length, 1);
+  const body = bodyOf(deliveries[0]);
+  assert.match(body, /Мова \/ Language: it/);
+  assert.ok(body.includes('Niccolò D’Angelo') && body.includes('attività, con menu del caffè'));
+});
+
 test('customer fields cannot override recipient, sender, or inject email headers', async () => {
   const { run, deliveries } = setup();
   assert.equal((await run(request({ ...enquiry, to: 'attacker@example.com', from: 'attacker@example.com', name: 'Name\r\nBcc: attacker@example.com', phone: '\r\nBcc: attacker@example.com' }))).status, 200);

@@ -3,6 +3,7 @@ import projectSettings from '../data/projects.js';
 import spanish from '../data/translations/es.js';
 import german from '../data/translations/de.js';
 import portuguese from '../data/translations/pt.js';
+import italian from '../data/translations/it.js';
 import { detectBrowserLanguage, resolveInitialLanguage } from './language-preference.js';
 
 (() => {
@@ -268,10 +269,11 @@ import { detectBrowserLanguage, resolveInitialLanguage } from './language-prefer
   translations.es = spanish;
   translations.de = german;
   translations.pt = portuguese;
+  translations.it = italian;
 
   const isSupportedLanguage = value => Object.prototype.hasOwnProperty.call(translations, value);
   const defaultLanguage = isSupportedLanguage(config.defaultLanguage) ? config.defaultLanguage : 'en';
-  const openGraphLocales = { uk: 'uk_UA', en: 'en_US', fr: 'fr_FR', es: 'es_ES', de: 'de_DE', pt: 'pt_PT' };
+  const openGraphLocales = { uk: 'uk_UA', en: 'en_US', fr: 'fr_FR', es: 'es_ES', de: 'de_DE', pt: 'pt_PT', it: 'it_IT' };
   const htmlKeys = new Set(['artSticker', 'bloomArt', 'roofingArt', 'servicesHeading', 'aboutNote', 'aboutHeading', 'faqHeading', 'contactHeading']);
   const menuButton = document.querySelector('.menu-toggle');
   const mobileNav = document.getElementById('mobile-nav');
@@ -285,6 +287,7 @@ import { detectBrowserLanguage, resolveInitialLanguage } from './language-prefer
     es: { code: 'ES', name: 'Español' },
     de: { code: 'DE', name: 'Deutsch' },
     pt: { code: 'PT', name: 'Português' },
+    it: { code: 'IT', name: 'Italiano' },
   };
   const form = document.getElementById('contact-form');
   const formStatus = document.getElementById('form-status');
