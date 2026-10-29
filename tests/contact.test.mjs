@@ -22,7 +22,7 @@ function setup(overrides = {}, verifyFetch = async () => Response.json({ success
     ...overrides,
   };
   const run = req => handleContact(req, env, (from, to, raw) => ({ from, to, raw }), verifyFetch);
-  return { run, deliveries };
+  return { run, deliveries, env };
 }
 const bodyOf = mail => Buffer.from(mail.raw.split('\r\n\r\n')[1].replace(/\r\n/g, ''), 'base64').toString('utf8');
 
@@ -212,7 +212,7 @@ test('verification uses the private secret, token and trusted CF IP at the fixed
   const { run, deliveries } = setup({}, async (url, options) => {
     called = true;
     assert.equal(url, 'https://challenges.cloudflare.com/turnstile/v0/siteverify');
-    assert.equal(options.redirect, 'error');
+    assert.equal(options.redirect, 'manual');
     assert.ok(options.signal instanceof AbortSignal);
     assert.deepEqual(JSON.parse(options.body), { secret: 'unit-test-secret', response: 'unit-test-token', remoteip: '192.0.2.1' });
     return Response.json({ success: true, hostname: 'ruslansavchuk.com', action: 'contact' });
@@ -223,7 +223,7 @@ test('verification uses the private secret, token and trusted CF IP at the fixed
 });
 
 test('provider timeouts, bad JSON and HTTP failures fail closed without sending mail', async () => {
-  for (const verify of [async () => { throw new Error('timeout'); }, async () => new Response('unavailable', { status: 503 }), async () => new Response('bad json')]) {
+  for (const verify of [async () => { throw new Error('timeout'); }, async () => new Response('unavailable', { status: 503 }), async () => new Response('redirect', { status: 302, headers: { Location: 'https://attacker.example' } }), async () => new Response('bad json')]) {
     const { run, deliveries } = setup({}, verify);
     assert.equal((await run(request())).status, 503);
     assert.equal(deliveries.length, 0);
@@ -273,4 +273,17 @@ test('phone length is bounded while preserving optional free-format input', asyn
   assert.equal((await run(request({ ...enquiry, phone: 'a'.repeat(101) }))).status, 400);
   assert.equal((await run(request({ ...enquiry, phone: 'a'.repeat(100) }))).status, 200);
   assert.equal(deliveries.length, 1);
+});
+
+test('the native verification transport preserves the Workers global fetch receiver', async t => {
+  const { env } = setup();
+  let verified = false;
+  t.mock.method(globalThis, 'fetch', function () {
+    assert.equal(this, globalThis);
+    verified = true;
+    return Promise.resolve(Response.json({ success: true, hostname: 'ruslansavchuk.com', action: 'contact' }));
+  });
+  const response = await handleContact(request(), env, (from, to, raw) => ({ from, to, raw }));
+  assert.equal(response.status, 200);
+  assert.ok(verified);
 });

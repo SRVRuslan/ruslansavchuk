@@ -69,7 +69,8 @@ export async function handleContact(
   request: Request,
   env: ContactEnv,
   createMessage: (from: string, to: string, raw: string) => EmailMessage,
-  verifyFetch: typeof fetch = fetch,
+  // Keep the platform transport bound when replacing it in tests.
+  verifyFetch: typeof fetch = (input, init) => globalThis.fetch(input, init),
 ) {
   if (request.method !== 'POST') {
     const response = respond(405, 'method_not_allowed');
@@ -126,11 +127,18 @@ export async function handleContact(
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ secret: env.TURNSTILE_SECRET_KEY, response: token, ...(ip !== 'local' ? { remoteip: ip } : {}) }),
         signal: AbortSignal.timeout(8000),
-        redirect: 'error',
+        // Workers does not implement redirect: 'error'. Reject 3xx below instead.
+        redirect: 'manual',
       });
-      if (!result.ok) return respond(503, 'verification_unavailable');
+      if (!result.ok) {
+        console.error('Contact verification provider HTTP status', result.status);
+        return respond(503, 'verification_unavailable');
+      }
       verification = await result.json();
-    } catch { return respond(503, 'verification_unavailable'); }
+    } catch (error) {
+      console.error('Contact verification request failed', error instanceof Error ? error.name : 'UnknownError');
+      return respond(503, 'verification_unavailable');
+    }
     if (verification?.success !== true || verification.hostname !== new URL(request.url).hostname || verification.action !== 'contact') {
       return respond(403, 'verification_failed');
     }
