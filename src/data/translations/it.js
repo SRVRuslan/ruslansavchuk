@@ -60,7 +60,7 @@ export default {
   messageLabel: 'Che sito vorresti creare?', messagePlaceholder: 'Per esempio: un sito per un bar con menu e contatti.',
   formHeading: 'Richiedi un sito', formIntro: 'Raccontami la tua idea.', formExtrasLabel: 'Scegli il tipo di progetto',
   phoneLabel: 'Telefono (facoltativo)', phonePlaceholder: 'Il tuo numero nel formato che preferisci',
-  formNote: 'Ti risponderò personalmente via email.', submitSend: 'Invia richiesta', submitSending: 'Invio in corso…',
+  formNote: 'Ti risponderò personalmente via email.', formVerifying: 'Verifica in corso…', submitSend: 'Invia richiesta', submitSending: 'Invio in corso…',
   formSent: 'Grazie! La tua richiesta è stata inviata. Ti ricontatterò al più presto.',
   formError: 'Non è stato possibile inviare la richiesta. Riprova o scrivimi via email. I dati inseriti sono ancora nel modulo.',
   formRateLimited: 'Troppi tentativi. Attendi un minuto e riprova.',

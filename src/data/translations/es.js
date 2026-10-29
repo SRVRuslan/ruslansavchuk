@@ -61,7 +61,7 @@ export default {
   messageLabel: '¿Qué sitio necesitas?', messagePlaceholder: 'Por ejemplo: un sitio para una cafetería con menú y datos de contacto.',
   formHeading: 'Hablemos de tu sitio', formIntro: 'Cuéntame tu idea y me pondré en contacto contigo.', formExtrasLabel: 'Elegir el tipo de proyecto',
   phoneLabel: 'Teléfono (opcional)', phonePlaceholder: 'Tu número en el formato que prefieras',
-  formNote: 'Te responderé personalmente por correo.', submitSend: 'Enviar solicitud', submitSending: 'Enviando…',
+  formNote: 'Te responderé personalmente por correo.', formVerifying: 'Verificando…', submitSend: 'Enviar solicitud', submitSending: 'Enviando…',
   formSent: '¡Gracias! Tu solicitud se ha enviado. Me pondré en contacto contigo pronto.',
   formError: 'No se pudo enviar tu solicitud. Inténtalo de nuevo o escríbeme por correo. Los datos siguen guardados en el formulario.',
   formRateLimited: 'Demasiados intentos. Espera un minuto y vuelve a intentarlo.',

@@ -1,3 +1,9 @@
+---
+import config from '../data/config.js';
+const local = ['localhost', '127.0.0.1', '[::1]'].includes(Astro.url.hostname);
+// Cloudflare's official test key is restricted to local builds only.
+const sitekey = local ? '1x00000000000000000000AA' : config.turnstileSiteKey;
+---
 <section class="contact-section" id="contact" aria-labelledby="contact-heading">
   <div class="container contact-inner">
     <div class="contact-copy">
@@ -25,7 +31,7 @@
       </div>
       <label class="contact-phone">
         <span data-i18n="phoneLabel">Номер телефону (необов’язково)</span>
-        <input name="phone" type="tel" dir="ltr" autocomplete="tel" placeholder="Номер у зручному для вас форматі" data-i18n-placeholder="phonePlaceholder" />
+        <input name="phone" type="tel" dir="ltr" autocomplete="tel" maxlength="100" placeholder="Номер у зручному для вас форматі" data-i18n-placeholder="phonePlaceholder" />
       </label>
       <label class="message-label">
         <span data-i18n="messageLabel">Який сайт вам потрібен?</span>
@@ -47,6 +53,7 @@
         Company
         <input name="company" type="text" tabindex="-1" autocomplete="off" />
       </label>
+      <div class="contact-verification" data-contact-verification data-sitekey={sitekey}></div>
       <div class="form-actions">
         <button class="button button-dark form-submit" type="submit">
           <span id="submit-label" data-i18n="submitSend">Відправити заявку</span><span aria-hidden="true">↗</span>
@@ -61,6 +68,8 @@
 <style>
   .contact-form-intro, .form-extras > summary { display: none; }
   .message-label { display: block; margin-top: 22px; }
+  .contact-verification { max-width: 100%; margin-top: 12px; }
+  .contact-verification:empty { display: none; }
 
   @media (max-width: 640px) {
     .contact-inner { display: block; padding-block: 28px; }

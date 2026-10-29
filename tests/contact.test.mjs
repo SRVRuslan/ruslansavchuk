@@ -6,19 +6,22 @@ const origin = 'https://ruslansavchuk.com';
 const enquiry = {
   name: 'Тестовий клієнт', email: 'client@example.com', phone: '',
   service: 'website', message: 'Хочу замовити новий сайт для свого бізнесу.', language: 'uk', company: '',
+  turnstileToken: 'unit-test-token',
 };
 const request = (data = enquiry, options = {}) => new Request(`${origin}/api/contact`, {
   method: 'POST', headers: { Origin: origin, 'Content-Type': 'application/json', 'CF-Connecting-IP': '192.0.2.1' },
   body: JSON.stringify(data), ...options,
 });
-function setup(overrides = {}) {
+function setup(overrides = {}, verifyFetch = async () => Response.json({ success: true, hostname: 'ruslansavchuk.com', action: 'contact' })) {
   const deliveries = [];
   const env = {
     CONTACT_EMAIL: { send: async message => { deliveries.push(message); } },
     CONTACT_RATE_LIMITER: { limit: async () => ({ success: true }) },
+    CONTACT_ATTEMPT_LIMITER: { limit: async () => ({ success: true }) },
+    TURNSTILE_SECRET_KEY: 'unit-test-secret',
     ...overrides,
   };
-  const run = req => handleContact(req, env, (from, to, raw) => ({ from, to, raw }));
+  const run = req => handleContact(req, env, (from, to, raw) => ({ from, to, raw }), verifyFetch);
   return { run, deliveries };
 }
 const bodyOf = mail => Buffer.from(mail.raw.split('\r\n\r\n')[1].replace(/\r\n/g, ''), 'base64').toString('utf8');
@@ -183,4 +186,91 @@ test('provider failures or missing bindings cannot produce a false success', asy
   assert.equal((await failure.run(request())).status, 502);
   const missing = setup({ CONTACT_EMAIL: undefined });
   assert.equal((await missing.run(request())).status, 503);
+});
+
+test('missing or oversized challenge tokens never reach the verification provider or email', async () => {
+  const { run, deliveries } = setup({}, () => { throw new Error('Must not verify invalid input'); });
+  for (const turnstileToken of [undefined, '', ' ', 123, 'x'.repeat(2049)]) {
+    assert.equal((await run(request({ ...enquiry, turnstileToken }))).status, 400);
+  }
+  assert.equal(deliveries.length, 0);
+});
+
+test('only successful contact challenges for this exact hostname can deliver mail', async () => {
+  for (const result of [null, {}, { success: false }, { success: 'true', hostname: 'ruslansavchuk.com', action: 'contact' },
+    { success: true, hostname: 'attacker.example', action: 'contact' },
+    { success: true, hostname: 'ruslansavchuk.com', action: 'login' },
+    { success: true, hostname: 'ruslansavchuk.com' }]) {
+    const { run, deliveries } = setup({}, async () => Response.json(result));
+    assert.equal((await run(request())).status, 403);
+    assert.equal(deliveries.length, 0);
+  }
+});
+
+test('verification uses the private secret, token and trusted CF IP at the fixed endpoint', async () => {
+  let called = false;
+  const { run, deliveries } = setup({}, async (url, options) => {
+    called = true;
+    assert.equal(url, 'https://challenges.cloudflare.com/turnstile/v0/siteverify');
+    assert.equal(options.redirect, 'error');
+    assert.ok(options.signal instanceof AbortSignal);
+    assert.deepEqual(JSON.parse(options.body), { secret: 'unit-test-secret', response: 'unit-test-token', remoteip: '192.0.2.1' });
+    return Response.json({ success: true, hostname: 'ruslansavchuk.com', action: 'contact' });
+  });
+  assert.equal((await run(request())).status, 200);
+  assert.ok(called);
+  assert.equal(deliveries.length, 1);
+});
+
+test('provider timeouts, bad JSON and HTTP failures fail closed without sending mail', async () => {
+  for (const verify of [async () => { throw new Error('timeout'); }, async () => new Response('unavailable', { status: 503 }), async () => new Response('bad json')]) {
+    const { run, deliveries } = setup({}, verify);
+    assert.equal((await run(request())).status, 503);
+    assert.equal(deliveries.length, 0);
+  }
+  for (const binding of ['TURNSTILE_SECRET_KEY', 'CONTACT_ATTEMPT_LIMITER', 'CONTACT_RATE_LIMITER', 'CONTACT_EMAIL']) {
+    const { run, deliveries } = setup({ [binding]: undefined });
+    assert.equal((await run(request())).status, 503);
+    assert.equal(deliveries.length, 0);
+  }
+});
+
+test('a reused token rejected by Turnstile cannot deliver a second message', async () => {
+  let verified = false;
+  const { run, deliveries } = setup({}, async () => {
+    const success = !verified;
+    verified = true;
+    return Response.json({ success, hostname: 'ruslansavchuk.com', action: 'contact' });
+  });
+  assert.equal((await run(request())).status, 200);
+  assert.equal((await run(request())).status, 403);
+  assert.equal(deliveries.length, 1);
+});
+
+test('attempt limiter stops requests before parsing bodies or calling external providers', async () => {
+  let key;
+  const { run, deliveries } = setup({ CONTACT_ATTEMPT_LIMITER: { limit: async options => { key = options.key; return { success: false }; } } },
+    () => { throw new Error('Must not verify a blocked request'); });
+  const response = await run(request(enquiry, { body: '{bad' }));
+  assert.equal(response.status, 429);
+  assert.equal(response.headers.get('Retry-After'), '60');
+  assert.equal(key, 'portfolio-contact-attempt:192.0.2.1');
+  assert.equal(deliveries.length, 0);
+});
+
+test('cross-site Fetch Metadata and compressed payloads are rejected', async () => {
+  const { run, deliveries } = setup();
+  const headers = { Origin: origin, 'Content-Type': 'application/json' };
+  for (const site of ['cross-site', 'same-site', 'none']) {
+    assert.equal((await run(request(enquiry, { headers: { ...headers, 'Sec-Fetch-Site': site } }))).status, 403);
+  }
+  assert.equal((await run(request(enquiry, { headers: { ...headers, 'Content-Encoding': 'gzip' } }))).status, 415);
+  assert.equal(deliveries.length, 0);
+});
+
+test('phone length is bounded while preserving optional free-format input', async () => {
+  const { run, deliveries } = setup();
+  assert.equal((await run(request({ ...enquiry, phone: 'a'.repeat(101) }))).status, 400);
+  assert.equal((await run(request({ ...enquiry, phone: 'a'.repeat(100) }))).status, 200);
+  assert.equal(deliveries.length, 1);
 });

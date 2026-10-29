@@ -7,6 +7,7 @@ import italian from '../data/translations/it.js';
 import polish from '../data/translations/pl.js';
 import arabic from '../data/translations/ar.js';
 import { detectBrowserLanguage, resolveInitialLanguage } from './language-preference.js';
+import { createContactVerification } from './contact-verification.js';
 
 (() => {
   'use strict';
@@ -75,7 +76,7 @@ import { detectBrowserLanguage, resolveInitialLanguage } from './language-prefer
       formHeading: 'Заявка на сайт', formIntro: 'Розкажіть про сайт — я зв’яжуся з вами.', formExtrasLabel: 'Обрати тип проєкту',
       phoneLabel: 'Номер телефону (необов’язково)', phonePlaceholder: 'Номер у зручному для вас форматі',
       formNote: 'Відповім особисто на ваш email.',
-      submitSend: 'Відправити заявку', submitSending: 'Відправляємо…',
+      formVerifying: 'Перевіряємо…', submitSend: 'Відправити заявку', submitSending: 'Відправляємо…',
       formSent: 'Дякую! Вашу заявку відправлено. Я зв’яжуся з вами найближчим часом.',
       formError: 'Не вдалося відправити заявку. Спробуйте ще раз або напишіть мені на пошту. Ваші дані збережено у формі.',
       formRateLimited: 'Забагато спроб. Зачекайте хвилину та спробуйте ще раз.',
@@ -159,7 +160,7 @@ import { detectBrowserLanguage, resolveInitialLanguage } from './language-prefer
       formHeading: 'Website enquiry', formIntro: 'Tell me about your site — I’ll get back to you.', formExtrasLabel: 'Choose a project type',
       phoneLabel: 'Phone number (optional)', phonePlaceholder: 'Your number in any format you prefer',
       formNote: 'I’ll reply personally by email.',
-      submitSend: 'Send enquiry', submitSending: 'Sending…',
+      formVerifying: 'Verifying…', submitSend: 'Send enquiry', submitSending: 'Sending…',
       formSent: 'Thank you! Your enquiry has been sent. I’ll get back to you soon.',
       formError: 'Your enquiry could not be sent. Please try again or email me directly. Your details are still in the form.',
       formRateLimited: 'Too many attempts. Please wait a minute and try again.',
@@ -246,7 +247,7 @@ import { detectBrowserLanguage, resolveInitialLanguage } from './language-prefer
     formHeading: 'Parlons de votre site', formIntro: 'Décrivez votre site, et je vous recontacte.', formExtrasLabel: 'Choisir le type de projet',
     phoneLabel: 'Numéro de téléphone (facultatif)', phonePlaceholder: 'Votre numéro au format de votre choix',
     formNote: 'Je vous répondrai personnellement par e-mail.',
-    submitSend: 'Envoyer la demande', submitSending: 'Envoi en cours…',
+    formVerifying: 'Vérification…', submitSend: 'Envoyer la demande', submitSending: 'Envoi en cours…',
     formSent: 'Merci ! Votre demande a été envoyée. Je vous répondrai prochainement.',
     formError: 'L’envoi a échoué. Réessayez ou contactez-moi par e-mail. Vos informations sont conservées dans le formulaire.',
     formRateLimited: 'Trop de tentatives. Patientez une minute, puis réessayez.',
@@ -317,6 +318,7 @@ import { detectBrowserLanguage, resolveInitialLanguage } from './language-prefer
   let sending = false;
   let menuScrollFrame = 0;
   let languageScrollFrame = 0;
+  const verification = createContactVerification(form, () => language);
 
   function setLanguageMenu(open) {
     cancelAnimationFrame(languageScrollFrame);
@@ -405,6 +407,7 @@ import { detectBrowserLanguage, resolveInitialLanguage } from './language-prefer
 
   function setLanguage(nextLanguage) {
     language = isSupportedLanguage(nextLanguage) ? nextLanguage : defaultLanguage;
+    verification.updateLanguage();
     const dictionary = translations[language];
     document.documentElement.lang = language;
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
@@ -643,8 +646,10 @@ import { detectBrowserLanguage, resolveInitialLanguage } from './language-prefer
     form.dataset.status = 'sending';
     form.setAttribute('aria-busy', 'true');
     form.querySelectorAll('input, textarea, button').forEach(input => { input.disabled = true; });
-    document.getElementById('submit-label').textContent = dictionary.submitSending;
+    document.getElementById('submit-label').textContent = dictionary.formVerifying;
     try {
+      payload.turnstileToken = await verification.getToken();
+      document.getElementById('submit-label').textContent = translations[language].submitSending;
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -664,6 +669,7 @@ import { detectBrowserLanguage, resolveInitialLanguage } from './language-prefer
       statusKey = 'formError';
       form.dataset.status = 'error';
     } finally {
+      verification.reset();
       sending = false;
       form.removeAttribute('aria-busy');
       form.querySelectorAll('input, textarea, button').forEach(input => { input.disabled = false; });

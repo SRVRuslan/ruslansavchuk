@@ -60,7 +60,7 @@ export default {
   messageLabel: 'Jaką stronę chcesz stworzyć?', messagePlaceholder: 'Na przykład: stronę kawiarni z menu i danymi kontaktowymi.',
   formHeading: 'Zapytaj o stronę', formIntro: 'Opowiedz mi o swoim pomyśle.', formExtrasLabel: 'Wybierz rodzaj projektu',
   phoneLabel: 'Telefon (opcjonalnie)', phonePlaceholder: 'Twój numer w dowolnym formacie',
-  formNote: 'Odpowiem osobiście na twój email.', submitSend: 'Wyślij zapytanie', submitSending: 'Wysyłanie…',
+  formNote: 'Odpowiem osobiście na twój email.', formVerifying: 'Weryfikacja…', submitSend: 'Wyślij zapytanie', submitSending: 'Wysyłanie…',
   formSent: 'Dziękuję! Twoje zapytanie zostało wysłane. Wkrótce się z tobą skontaktuję.',
   formError: 'Nie udało się wysłać zapytania. Spróbuj ponownie lub napisz do mnie email. Wprowadzone dane pozostały w formularzu.',
   formRateLimited: 'Zbyt wiele prób. Poczekaj minutę i spróbuj ponownie.',

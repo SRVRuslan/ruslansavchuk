@@ -61,7 +61,7 @@ export default {
   messageLabel: 'Que site pretende criar?', messagePlaceholder: 'Por exemplo: um site para um café com menu e dados de contacto.',
   formHeading: 'Pedido de site', formIntro: 'Conte-me a sua ideia.', formExtrasLabel: 'Escolher o tipo de projeto',
   phoneLabel: 'Telefone (opcional)', phonePlaceholder: 'O seu número no formato que preferir',
-  formNote: 'Respondo pessoalmente por email.', submitSend: 'Enviar pedido', submitSending: 'A enviar…',
+  formNote: 'Respondo pessoalmente por email.', formVerifying: 'A verificar…', submitSend: 'Enviar pedido', submitSending: 'A enviar…',
   formSent: 'Obrigado! O seu pedido foi enviado. Entrarei em contacto consigo em breve.',
   formError: 'Não foi possível enviar o pedido. Tente novamente ou escreva-me por email. Os dados continuam guardados no formulário.',
   formRateLimited: 'Demasiadas tentativas. Aguarde um minuto e tente novamente.',

@@ -61,7 +61,7 @@ export default {
   messageLabel: 'Welche Website brauchst du?', messagePlaceholder: 'Zum Beispiel: eine Website für ein Café mit Speisekarte und Kontaktdaten.',
   formHeading: 'Website anfragen', formIntro: 'Beschreibe kurz deine Idee.', formExtrasLabel: 'Projektart auswählen',
   phoneLabel: 'Telefon (optional)', phonePlaceholder: 'Deine Nummer im gewünschten Format',
-  formNote: 'Ich antworte dir persönlich per E-Mail.', submitSend: 'Anfrage senden', submitSending: 'Wird gesendet…',
+  formNote: 'Ich antworte dir persönlich per E-Mail.', formVerifying: 'Wird überprüft…', submitSend: 'Anfrage senden', submitSending: 'Wird gesendet…',
   formSent: 'Vielen Dank! Deine Anfrage wurde gesendet. Ich melde mich bald bei dir.',
   formError: 'Deine Anfrage konnte nicht gesendet werden. Versuche es erneut oder schreibe mir eine E-Mail. Deine Angaben bleiben im Formular erhalten.',
   formRateLimited: 'Zu viele Versuche. Warte eine Minute und versuche es erneut.',

@@ -4,6 +4,8 @@
   "account_id": "3c75295ab6c346e05ba389966251f52a",
   "main": "worker/index.ts",
   "compatibility_date": "2026-10-23",
+  "workers_dev": false,
+  "preview_urls": false,
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
@@ -20,6 +22,11 @@
     }
   ],
   "ratelimits": [
+    {
+      "name": "CONTACT_ATTEMPT_LIMITER",
+      "namespace_id": "859732102",
+      "simple": { "limit": 30, "period": 60 }
+    },
     {
       "name": "CONTACT_RATE_LIMITER",
       "namespace_id": "859732101",

@@ -5,6 +5,7 @@ export default {
   tagline: "Web Developer · Software Engineer",
   name: { uk: "Руслан Савчук", en: "Ruslan Savchuk", fr: "Ruslan Savchuk", es: "Ruslan Savchuk", de: "Ruslan Savchuk", pt: "Ruslan Savchuk", it: "Ruslan Savchuk", pl: "Ruslan Savchuk", ar: "روسلان سافتشوك" },
   email: "ruslan.savchuk.dev.ca@gmail.com",
+  turnstileSiteKey: "0x4AAAAAAFqVLM7r_tqtlHtU",
   social: {
     whatsapp: "https://wa.me/savchuk_rv777",
     github: "",
