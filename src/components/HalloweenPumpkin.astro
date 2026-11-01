@@ -1,0 +1,99 @@
+<svg viewBox="0 0 240 224" fill="none" aria-hidden="true">
+  <defs>
+    <path id="pumpkin-silhouette" d="M116 69C100 57 83 60 72 68 48 60 28 80 25 111 19 151 35 181 62 194 79 205 97 206 117 201 139 207 163 203 181 193 208 186 223 158 219 123 217 94 204 72 183 71 165 58 142 58 125 67 122 68 118 70 116 69Z" />
+    <path id="pumpkin-openings" d="m57 114 33-16 5 31-34-7-4-8Zm92-13 36 19-38 8 2-27Zm-32 23-8 20 17-1-9-19ZM58 146l18 8 6-9 16 17 13-4 12 11 15-4 9-12 10 7 25-13c-7 23-20 39-41 43-37 8-65-7-83-44Z" />
+    <clipPath id="pumpkin-skin-clip"><use href="#pumpkin-silhouette" /></clipPath>
+    <clipPath id="pumpkin-carving-clip"><use href="#pumpkin-openings" /></clipPath>
+    <radialGradient id="pumpkin-skin" cx=".34" cy=".25" r=".85">
+      <stop stop-color="#e8a24a" /><stop offset=".4" stop-color="#c97423" /><stop offset=".76" stop-color="#8e431b" /><stop offset="1" stop-color="#352018" />
+    </radialGradient>
+    <radialGradient id="pumpkin-left-rib" cx=".32" cy=".32" r=".8">
+      <stop stop-color="#d89139" /><stop offset=".47" stop-color="#b96820" /><stop offset="1" stop-color="#6a3218" />
+    </radialGradient>
+    <radialGradient id="pumpkin-middle-rib" cx=".35" cy=".23" r=".81">
+      <stop stop-color="#f2b65d" /><stop offset=".42" stop-color="#d58a30" /><stop offset=".82" stop-color="#9a501c" /><stop offset="1" stop-color="#63301a" />
+    </radialGradient>
+    <radialGradient id="pumpkin-right-rib" cx=".2" cy=".3" r=".92">
+      <stop stop-color="#d48a32" /><stop offset=".6" stop-color="#a3521d" /><stop offset="1" stop-color="#4b281a" />
+    </radialGradient>
+    <linearGradient id="pumpkin-stem" x1="105" y1="24" x2="129" y2="72" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9a9166" /><stop offset=".3" stop-color="#716e43" /><stop offset=".65" stop-color="#4c4c2f" /><stop offset="1" stop-color="#393323" />
+    </linearGradient>
+    <radialGradient id="pumpkin-candle" cx=".49" cy=".77" r=".78">
+      <stop stop-color="#fff4ce" /><stop offset=".32" stop-color="#ffd486" /><stop offset=".72" stop-color="#f2a13b" /><stop offset="1" stop-color="#b35617" />
+    </radialGradient>
+    <radialGradient id="pumpkin-ground-light">
+      <stop stop-color="#ed9a37" stop-opacity=".3" /><stop offset="1" stop-color="#ed9a37" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="pumpkin-flame" x1="120" y1="156" x2="120" y2="186" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffcf68" /><stop offset=".6" stop-color="#fff2b7" /><stop offset="1" stop-color="#fffbe3" />
+    </linearGradient>
+    <filter id="pumpkin-grain" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="2" seed="11" />
+      <feColorMatrix type="matrix" values="0 0 0 0 .23  0 0 0 0 .11  0 0 0 0 .04  .6 .2 .2 0 0" />
+      <feComposite in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  <ellipse cx="123" cy="210" rx="94" ry="10" fill="#020408" opacity=".58" />
+  <ellipse class="ground-reflection" cx="123" cy="207" rx="88" ry="15" fill="url(#pumpkin-ground-light)" />
+
+  <path d="M107 74c8-16 5-35-4-48l16-10c12 18 12 37 3 59" fill="url(#pumpkin-stem)" stroke="#aea17a" stroke-opacity=".3" stroke-width=".8" />
+  <path d="m107 27 9-5m-6 8c9 15 9 28 4 39m1-43c8 14 10 26 5 40m-10-27 13-5m-10 15 12-4m-12 15 10-3" stroke="#c1b48d" stroke-opacity=".35" stroke-width="1.2" stroke-linecap="round" />
+  <path d="M119 69c16-12 29-15 32-8s-6 12-9 8 2-7 7-5" stroke="#69633f" stroke-width="1.7" stroke-linecap="round" />
+
+  <g clip-path="url(#pumpkin-skin-clip)">
+    <use href="#pumpkin-silhouette" fill="url(#pumpkin-skin)" />
+    <path d="M77 65C53 75 39 95 40 127c0 37 16 60 44 76L61 210 17 179 13 101 39 65Z" fill="#71361b" opacity=".5" />
+    <path d="M91 64C66 64 47 91 48 127c-1 35 15 62 43 78l26-4c-17-15-26-42-25-73 0-32 6-52 15-62Z" fill="url(#pumpkin-left-rib)" />
+    <path d="M121 65c-24-6-43 16-47 53-5 41 9 74 39 87 21-8 38-32 40-66 3-37-10-66-32-74Z" fill="url(#pumpkin-middle-rib)" />
+    <path d="M139 64c27-6 53 17 56 55 4 37-11 67-40 82l-32 4c23-17 33-42 31-73-1-30-10-53-24-63Z" fill="url(#pumpkin-right-rib)" />
+    <path d="M181 73c26 20 34 43 29 73-4 25-17 42-35 50 31-5 48-36 45-70-1-25-15-51-39-53Z" fill="#502b1c" opacity=".38" />
+    <path d="M76 70C53 97 49 159 78 196m23-128c-19 25-24 92-1 133m35-132c21 28 27 86 9 130m20-127c30 30 31 83 7 119" stroke="#65351b" stroke-opacity=".5" stroke-width="2.2" />
+    <path d="M79 73C59 101 56 148 75 181m28-110c-11 21-17 47-13 77m43-76c12 23 18 46 18 71m15-65c17 21 23 50 17 78" stroke="#ffd28b" stroke-opacity=".16" stroke-width="1.1" stroke-linecap="round" />
+    <use href="#pumpkin-silhouette" fill="#fff" filter="url(#pumpkin-grain)" opacity=".18" />
+    <path d="m42 108 2 8m22-34-2 6m31-10 1 6m52 2 3 5m37 14 2 9M47 148l2 4m35 29 2 6m85-20-2 8m-34 17-4 3" stroke="#38271a" stroke-opacity=".3" stroke-width=".8" stroke-linecap="round" />
+    <path d="M89 76c11 4 19-1 28-2 11-2 24 2 33 2l9 6-15-1-10 3-16-4-12 4-13-2-4-6Z" fill="#63371f" opacity=".6" />
+    <path d="m94 77 12 3 12-3 16 4 10-3 10 1" stroke="#eeb25c" stroke-opacity=".4" stroke-width="1" />
+  </g>
+  <use href="#pumpkin-silhouette" stroke="#f8b768" stroke-opacity=".2" stroke-width=".8" />
+
+  <!-- Thick, uneven cut edges remain still while the light flickers behind them. -->
+  <use href="#pumpkin-openings" fill="#24150e" stroke="#f1b95f" stroke-width="3.6" stroke-linejoin="round" />
+  <use href="#pumpkin-openings" fill="#3d210e" stroke="#6b3918" stroke-width="1.8" stroke-linejoin="round" />
+  <g clip-path="url(#pumpkin-carving-clip)">
+    <rect x="50" y="90" width="145" height="110" fill="#a34c13" />
+    <g class="candlelight">
+      <rect x="50" y="90" width="145" height="110" fill="url(#pumpkin-candle)" />
+      <ellipse cx="120" cy="184" rx="15" ry="6" fill="#ffe6a3" opacity=".45" />
+      <path class="candle-flame" d="M120 157c3 10-8 12-6 21 1 8 12 9 13 0 1-7-6-11-7-21Z" fill="url(#pumpkin-flame)" />
+      <path d="M120 174q-6 8 0 10 6-2 0-10Z" fill="#fff7d7" opacity=".8" />
+    </g>
+  </g>
+  <path d="m59 115 31-15m61 3 32 16m-72 24 13-1m-61 9 13 6 6-9 16 17 13-4 12 11 15-4 9-12 10 7 22-11" stroke="#4e2811" stroke-opacity=".8" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" />
+  <path d="m62 122 30 6m57 0 32-7m-80 67c17 5 31 5 45 1" stroke="#ffd184" stroke-opacity=".65" stroke-width="1.2" stroke-linecap="round" />
+</svg>
+
+<style>
+  svg { display: block; width: 100%; height: auto; }
+  .candlelight { opacity: .85; animation: pumpkin-candlelight 6.7s ease-in-out infinite; }
+  .ground-reflection { opacity: .7; animation: pumpkin-candlelight 6.7s ease-in-out infinite; }
+  .candle-flame { transform-box: view-box; transform-origin: 120px 184px; animation: pumpkin-flame 2.9s ease-in-out infinite; }
+  @keyframes pumpkin-candlelight {
+    0%, 100% { opacity: .82; }
+    13% { opacity: .96; }
+    27% { opacity: .73; }
+    38% { opacity: .9; }
+    61% { opacity: .78; }
+    76% { opacity: 1; }
+    89% { opacity: .86; }
+  }
+  @keyframes pumpkin-flame {
+    0%, 100% { transform: skewX(-4deg) scaleY(.92); }
+    35% { transform: skewX(5deg) scaleY(1.06); }
+    65% { transform: skewX(-2deg) scaleY(.96); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .candlelight, .ground-reflection, .candle-flame { animation: none; }
+  }
+</style>

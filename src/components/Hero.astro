@@ -1,15 +1,17 @@
 ---
 import HeroGlobe from './HeroGlobe.astro';
+import HalloweenDecor from './HalloweenDecor.astro';
 ---
 <section class="hero container" id="home" aria-labelledby="hero-heading">
         <div class="hero-copy">
-          <div class="availability"><span class="status-dot" aria-hidden="true"></span><span data-i18n="availability">Беру нові проєкти</span></div>
+          <div class="availability availability-halloween"><span class="status-dot" aria-hidden="true"></span><svg class="halloween-mini" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 7c-3-3-5-1-6 0-4-1-5 3-4 7 1 5 5 7 10 6 5 1 9-1 10-6 1-4 0-8-4-7-1-1-3-3-6 0Z" stroke="currentColor" stroke-width="1.5" /><path d="M12 7c2-2 2-4 1-5M6 12l3-2 1 3-4-1Zm12 0-3-2-1 3 4-1ZM7 16c3 3 7 3 10 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg><span data-i18n="availability">Беру нові проєкти</span></div>
           <h1 id="hero-heading"><span data-i18n="heroLine1">Сучасні сайти.</span><br /><span class="highlight" data-i18n="heroLine2">Для бізнесу.</span><svg class="hero-spark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M32 3v58M3 32h58M11.5 11.5l41 41m0-41-41 41" stroke="currentColor" stroke-width="8" /></svg></h1>
           <p class="hero-description" data-i18n="heroDescription">Створюю швидкі, стильні сайти, які презентують ваш бізнес, викликають довіру та допомагають залучати клієнтів.</p>
           <div class="hero-actions"><a class="button button-dark" href="#contact"><span data-i18n="discussProject">Обговорити сайт</span><span aria-hidden="true">↗</span></a><a class="text-link" href="#work"><span data-i18n="viewWork">Приклади робіт</span><span aria-hidden="true">↗</span></a></div>
         </div>
         <div class="hero-art" aria-hidden="true">
           <HeroGlobe />
+          <HalloweenDecor />
           <div class="art-grid"></div><span class="art-coordinate art-coordinate-top" data-i18n="artProcess">DESIGN → WEBSITE → LAUNCH</span>
           <div class="code-window" dir="ltr"><div class="window-bar"><span class="window-dots"><i></i><i></i><i></i></span><span>something-great.tsx</span><span>⌘</span></div><div class="code-body"><div class="line-numbers">01<br />02<br />03<br />04<br />05<br />06<br />07<br />08<br />09</div><code><span class="code-purple">const</span> yourNextWebsite = &#123;<br />&nbsp;&nbsp;design: <span class="code-green">'thoughtful'</span>,<br />&nbsp;&nbsp;experience: <span class="code-green">'effortless'</span>,<br />&nbsp;&nbsp;details: <span class="code-green">'matter'</span>,<br />&nbsp;&nbsp;possibilities: <span class="code-orange">Infinity</span>,<br />&#125;;<br /><br /><span class="code-purple">let's</span> buildSomething(<br />&nbsp;&nbsp;<span class="code-green">'extraordinary'</span><br />);</code></div></div>
           <div class="preview-window"><div class="preview-toolbar" dir="ltr"><span class="window-dots"><i></i><i></i><i></i></span><span>your-next-big-thing.com</span><span>↗</span></div><div class="preview-content"><div class="preview-topline"><b dir="ltr">hello®</b><span data-i18n="previewTagline">MADE TO MAKE A DIFFERENCE</span></div><div class="preview-title"><span data-i18n="previewTitleLine1">Good things.</span><br /><span class="preview-title-accent" data-i18n="previewTitleLine2">Start here.</span></div><div class="asterisk"><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="preview-bottom"><span data-i18n="previewCta">LET’S MAKE IT HAPPEN</span><span class="preview-arrow">↗</span></div></div></div>
@@ -18,6 +20,10 @@ import HeroGlobe from './HeroGlobe.astro';
       </section>
 
 <style>
+  :global(html[data-halloween]) .availability-halloween { border-color: #bc79384d; background: #bd6a1710; }
+  .halloween-mini { display: none; width: 18px; height: 18px; flex-shrink: 0; color: #efb177; }
+  :global(html[data-halloween]) .halloween-mini { display: block; }
+  :global(html[data-halloween]) .availability > .status-dot { display: none; }
   .hero-copy h1 {
     display: block;
     width: fit-content;

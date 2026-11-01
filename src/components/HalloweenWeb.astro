@@ -1,0 +1,30 @@
+---
+// Spread from the upper-right corner across the full globe, as a corner web.
+const spokeCount = 9;
+const angleAt = (index: number) => Math.PI / 2 + index * Math.PI / 2 / (spokeCount - 1);
+const point = (radius: number, angle: number) => `${(598 + Math.cos(angle) * radius).toFixed(2)} ${(2 + Math.sin(angle) * radius).toFixed(2)}`;
+const spokes = Array.from({ length: spokeCount }, (_, index) => `M598 2L${point(850, angleAt(index))}`);
+const rings = [45, 98, 162, 238, 325, 423, 532, 651, 779, 847].map((radius, ring) => {
+  const radiusAt = (angle: number) => radius * (1 + .012 * Math.sin(angle * 3 + ring * .6));
+  let path = `M${point(radiusAt(angleAt(0)), angleAt(0))}`;
+  for (let index = 0; index < spokeCount - 1; index++) {
+    const next = angleAt(index + 1);
+    const middle = (angleAt(index) + next) / 2;
+    path += `Q${point(radiusAt(middle) * .92, middle)} ${point(radiusAt(next), next)}`;
+  }
+  return path;
+});
+---
+<svg class="globe-web" viewBox="0 0 600 600" fill="none" aria-hidden="true">
+  <g stroke="currentColor" stroke-width=".8" stroke-linecap="round" stroke-linejoin="round">
+    {spokes.map(path => <path d={path} />)}
+    {rings.map(path => <path d={path} />)}
+  </g>
+</svg>
+
+<style>
+  .globe-web { display: none; position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; color: #c4b09b; opacity: .4; pointer-events: none; }
+  :global(html[data-halloween]) .globe-web { display: block; }
+  path { vector-effect: non-scaling-stroke; }
+  @media (max-width: 640px) { .globe-web { opacity: .34; } }
+</style>

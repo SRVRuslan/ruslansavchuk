@@ -60,6 +60,10 @@ Astro збирає клієнтський код з `src/scripts/client.js`: с�
 
 Шрифт [Noto Sans Arabic](https://fonts.google.com/noto/specimen/Noto+Sans+Arabic) розміщений локально як `public/assets/noto-sans-arabic.woff2`, ліцензія — `public/assets/OFL-NotoSansArabic.txt`. Джерело: Google Fonts CSS API, Noto Sans Arabic v33, арабський піднабір, вага 400–700. Напрямок розмітки відповідає [рекомендаціям W3C](https://www.w3.org/International/questions/qa-html-dir).
 
+## Сезонне оформлення
+
+Гарбуз, кажани, павутинка, привид та святковий статус автоматично з’являються лише 31 жовтня щороку за місцевою датою пристрою відвідувача. Дата перевіряється у браузері, тому повторна збірка або публікація наступного року не потрібна. При переході через північ, поверненні до вкладки чи відновленні сторінки оформлення оновлюється автоматично; поза святом показується звичайний синій індикатор доступності. Логіка — `src/scripts/seasonal-theme.js` і `seasonal-date.js`, декор — `src/components/HalloweenDecor.astro`. Привид з’являється з випадковими паузами у вільних місцях видимого екрана, оминає текст і керування та зникає під час взаємодії. Його логіка — `src/scripts/seasonal-ghost.js`; при зменшеній анімації та в прихованій вкладці він вимкнений.
+
 ## SEO
 
 Основна адреса сайту — `https://ruslansavchuk.com/`, задана в `src/data/config.js` та використана в Astro, canonical, Open Graph і структурованих даних JSON-LD (`Person` та `WebSite`). Sitemap і robots.txt генеруються під час збірки з `src/pages/sitemap.xml.ts` та `src/pages/robots.txt.ts`.

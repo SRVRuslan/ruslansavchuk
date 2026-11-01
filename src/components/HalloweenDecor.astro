@@ -1,0 +1,72 @@
+---
+import HalloweenPumpkin from './HalloweenPumpkin.astro';
+const bats = ['one', 'two', 'three'];
+---
+<!-- Decorative, language-neutral artwork, isolated from the page content. -->
+<div class="halloween-decor" aria-hidden="true">
+  <div class="autumn-glow"></div>
+
+  {bats.map(bat => (
+    <svg class={`bat bat-${bat}`} viewBox="0 0 200 112" fill="none">
+      <defs>
+        <linearGradient id={`bat-membrane-${bat}`} x1="27" y1="16" x2="86" y2="88" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#8b7775" /><stop offset=".35" stop-color="#54494c" /><stop offset="1" stop-color="#292b34" />
+        </linearGradient>
+        <radialGradient id={`bat-fur-${bat}`} cx=".35" cy=".3" r=".75">
+          <stop stop-color="#777071" /><stop offset=".45" stop-color="#413d43" /><stop offset="1" stop-color="#20242d" />
+        </radialGradient>
+        <g id={`bat-wing-${bat}`}>
+          <path d="M97 53C83 48 79 32 64 27 46 21 27 22 6 9 16 23 23 38 24 54 34 48 45 58 45 73 56 66 66 77 69 91 77 81 86 84 91 94L100 68Z" fill={`url(#bat-membrane-${bat})`} stroke="#ad9993" stroke-opacity=".4" stroke-width="1.2" stroke-linejoin="round" />
+          <path d="M96 54C82 47 78 31 64 27 46 21 28 22 6 9M64 27Q45 33 24 54M64 27Q49 47 45 73M64 27Q64 55 69 91M64 27Q79 56 91 94" stroke="#c1aba2" stroke-opacity=".36" stroke-width="1.05" stroke-linecap="round" />
+          <path d="M32 34Q39 47 42 58M46 30Q53 47 54 66M70 39Q72 60 76 76" stroke="#c3aaa1" stroke-opacity=".12" stroke-width=".7" />
+          <path d="M95 55C85 51 78 37 66 30" stroke="#d1b8aa" stroke-opacity=".3" stroke-width="2.6" stroke-linecap="round" />
+        </g>
+      </defs>
+      <g class="bat-wing"><use href={`#bat-wing-${bat}`} /></g>
+      <g transform="translate(200 0) scale(-1 1)"><g class="bat-wing"><use href={`#bat-wing-${bat}`} /></g></g>
+      <path d="m91 78 9 24 9-24-9 7Z" fill="#38333d" stroke="#a08e8c" stroke-opacity=".25" stroke-width=".8" />
+      <path d="M92 53C87 49 87 42 92 37L90 24Q95 22 100 34 105 22 110 24L108 37C113 42 113 49 108 53 114 64 110 81 104 89L100 94 96 89C90 81 86 64 92 53Z" fill={`url(#bat-fur-${bat})`} stroke="#9a9092" stroke-opacity=".35" stroke-width=".9" />
+      <path d="m93 29 2 10-3-3Zm14 0-2 10 3-3Z" fill="#b39b98" opacity=".45" />
+      <path d="m94 54-2 8m5-6-2 10m7-10 2 10m3-12 2 8m-12 8 1 10m4-10-1 12" stroke="#b5a9a6" stroke-opacity=".2" stroke-width=".9" stroke-linecap="round" />
+      <path d="M96 47q4 4 8 0" stroke="#aaa09c" stroke-opacity=".45" stroke-width="1.4" stroke-linecap="round" />
+      <ellipse cx="100" cy="47" rx="1.7" ry="1.2" fill="#171c25" />
+      <path d="m96 87-3 6-2-1m13-5 3 6 2-1" stroke="#8e8282" stroke-width="1" stroke-linecap="round" />
+    </svg>
+  ))}
+
+  <div class="pumpkin"><HalloweenPumpkin /></div>
+  <span class="ember ember-one"></span><span class="ember ember-two"></span><span class="ember ember-three"></span>
+</div>
+
+<style>
+  .halloween-decor { display: none; position: absolute; inset: 0; pointer-events: none; user-select: none; }
+  :global(html[data-halloween]) .halloween-decor { display: block; }
+  .autumn-glow { position: absolute; inset: 12% 0 -8% 30%; z-index: -1; background: radial-gradient(ellipse closest-side at 65% 70%, #e9791b1c, #e9791b06 55%, transparent); }
+  /* Fly behind the opaque artwork windows so their text stays readable. */
+  .bat { position: absolute; z-index: -1; height: auto; overflow: visible; filter: drop-shadow(0 2px 2px #080d15); animation: bat-flight 18s ease-in-out infinite; }
+  .bat-wing { transform-box: view-box; transform-origin: 100px 54px; animation: wingbeat var(--wing-duration, 1.7s) cubic-bezier(.4, 0, .2, 1) var(--wing-delay, 0s) infinite; }
+  .bat-one { top: -58px; left: 8%; width: 78px; rotate: -12deg; --flight-x: clamp(70px, 14vw, 180px); --flight-y: 32px; --wing-duration: 1.7s; --wing-delay: -.4s; }
+  .bat-two { top: 136px; right: 2%; width: 50px; rotate: 8deg; opacity: .8; animation-delay: -7s; animation-duration: 22s; --flight-x: -64px; --flight-y: 56px; --wing-duration: 1.45s; --wing-delay: -.9s; }
+  .bat-three { top: -63px; right: 12%; width: 35px; rotate: -8deg; opacity: .6; animation-delay: -12s; animation-duration: 26s; --flight-x: -112px; --flight-y: 28px; --wing-duration: 1.25s; --wing-delay: -.2s; }
+  .pumpkin { position: absolute; z-index: 4; right: -4px; bottom: -10px; width: clamp(96px, 10vw, 142px); rotate: 3deg; }
+  .pumpkin::before { content: ''; position: absolute; inset: 10% -8% -15%; z-index: -1; border-radius: 50%; background: radial-gradient(ellipse, #f79b3433, transparent 66%); opacity: .8; animation: pumpkin-halo 6.7s ease-in-out infinite; }
+  .ember { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: #edac67; box-shadow: 0 0 7px #ff9a4666; opacity: .6; }
+  .ember-one { top: 10%; left: 29%; }
+  .ember-two { bottom: 9%; right: 29%; width: 2px; height: 2px; opacity: .4; }
+  .ember-three { top: 25%; right: 10%; width: 2px; height: 2px; }
+  @keyframes bat-flight {
+    0%, 100% { transform: translate(0, 0) rotate(-4deg); }
+    25% { transform: translate(calc(var(--flight-x) * .3), calc(var(--flight-y) * .35)) rotate(2deg); }
+    50% { transform: translate(var(--flight-x), var(--flight-y)) rotate(8deg); }
+    75% { transform: translate(calc(var(--flight-x) * .55), calc(var(--flight-y) * .7)) rotate(-2deg); }
+  }
+  @keyframes wingbeat { 0%, 100% { transform: rotate(-3deg) scaleY(1); } 45% { transform: rotate(6deg) scaleY(.58); } }
+  @keyframes pumpkin-halo { 0%, 100% { opacity: .8; } 27%, 61% { opacity: .65; } 13%, 76% { opacity: .95; } }
+  @media (max-width: 640px) {
+    .bat-one { top: -6px; left: 8%; width: 48px; --flight-x: 44px; --flight-y: 20px; }
+    .bat-two { top: 92px; right: 2%; width: 34px; --flight-x: -30px; --flight-y: 36px; }
+    .bat-three { display: none; }
+    .pumpkin { width: 87px; right: 2px; bottom: -17px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .bat, .bat-wing, .pumpkin::before { animation: none; } }
+</style>

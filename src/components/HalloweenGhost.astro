@@ -1,0 +1,27 @@
+<div class="halloween-ghost" data-halloween-ghost aria-hidden="true" hidden>
+  <svg viewBox="0 0 120 160" fill="none" focusable="false">
+    <defs>
+      <radialGradient id="ghost-cloth" cx=".4" cy=".2" r=".85">
+        <stop stop-color="#f2f7fc" stop-opacity=".95" /><stop offset=".45" stop-color="#c6d7e8" stop-opacity=".8" /><stop offset="1" stop-color="#7695b3" stop-opacity=".06" />
+      </radialGradient>
+      <linearGradient id="ghost-fold" x1="41" y1="63" x2="58" y2="149" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#6f8aa6" stop-opacity="0" /><stop offset=".5" stop-color="#6f8aa6" stop-opacity=".3" /><stop offset="1" stop-color="#6f8aa6" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+    <path d="M31 63C24 29 39 10 61 12c22 2 32 21 27 47-3 24 6 44 18 63 5 10 2 19-3 23-4-12-10-11-16 4-5-13-12-11-16 2-7-12-15-11-20 1-6-14-13-13-20-2-1-14-8-16-15-10-2-18 9-35 13-52 2-9 2-16 2-25Z" fill="url(#ghost-cloth)" stroke="#d9e8f5" stroke-opacity=".22" stroke-width=".7" />
+    <path d="M43 82c2 21-13 40-12 68 10-21 19-42 12-68Zm16 4c9 18-2 39-8 66 15-22 22-48 8-66Zm16-2c-3 23 3 44 12 65-3-26-6-47-12-65Z" fill="url(#ghost-fold)" />
+    <path d="M41 44c-1-13 6-24 17-26m23 62c1 15 6 29 12 42M38 95c-2 14-6 25-9 35" stroke="#eef6ff" stroke-opacity=".3" stroke-width="1.2" stroke-linecap="round" />
+    <ellipse cx="47" cy="59" rx="5.5" ry="8" transform="rotate(-9 47 59)" fill="#1c2a3a" opacity=".72" />
+    <ellipse cx="72" cy="58" rx="5" ry="7.5" transform="rotate(8 72 58)" fill="#1c2a3a" opacity=".72" />
+    <ellipse cx="60" cy="79" rx="4.5" ry="6" fill="#26364a" opacity=".5" />
+  </svg>
+</div>
+
+<style>
+  .halloween-ghost { display: none; position: fixed; z-index: 12; top: 0; left: 0; width: 90px; aspect-ratio: 3 / 4; opacity: 0; pointer-events: none; user-select: none; filter: drop-shadow(0 0 12px #b2d9ff1c); }
+  :global(html[data-halloween]) .halloween-ghost { display: block; }
+  svg { display: block; width: 100%; height: 100%; }
+  @media (max-width: 640px) { .halloween-ghost { width: 44px; } }
+  @media (prefers-reduced-motion: reduce) { .halloween-ghost { display: none !important; } }
+  @media print { .halloween-ghost { display: none !important; } }
+</style>
