@@ -1,0 +1,54 @@
+---
+// Deterministic positions and staggered starts keep the snow evenly distributed.
+const flakes = Array.from({ length: 24 });
+---
+<div class="christmas-snow" aria-hidden="true">
+  <svg class="snow-symbol" xmlns="http://www.w3.org/2000/svg"><defs><symbol id="christmas-snow-crystal" viewBox="0 0 20 20"><path d="M10 1v18M2.2 5.5l15.6 9M2.2 14.5l15.6-9M7.5 2.5 10 5l2.5-2.5M7.5 17.5 10 15l2.5 2.5M3.1 8.4 6.5 8 6 4.6m8 10.8-.5-3.4 3.4-.4M3.1 11.6l3.4.4-.5 3.4M14 4.6 13.5 8l3.4.4" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" /></symbol></defs></svg>
+  {flakes.map(() => <span class="snowflake"><svg viewBox="0 0 20 20"><use href="#christmas-snow-crystal" /></svg></span>)}
+</div>
+<style>
+  .christmas-snow { display: none; position: fixed; inset: 0; z-index: 30; pointer-events: none; user-select: none; overflow: hidden; contain: strict; }
+  :global(html[data-christmas]) .christmas-snow { display: block; }
+  .snow-symbol { position: absolute; width: 0; height: 0; }
+  .snowflake { position: absolute; top: -24px; color: #e0edf7; opacity: 0; animation: christmas-snow 24s linear infinite; }
+  .snowflake svg { display: block; width: 100%; height: 100%; }
+  .snowflake:nth-of-type(1) { left: 3%; width: 13.5px; height: 13.5px; animation-duration: 19s; animation-delay: 0s; }
+  .snowflake:nth-of-type(2) { left: 40%; width: 9px; height: 9px; animation-duration: 21s; animation-delay: -7s; }
+  .snowflake:nth-of-type(3) { left: 77%; width: 13.5px; height: 13.5px; animation-duration: 23s; animation-delay: -14s; }
+  .snowflake:nth-of-type(4) { left: 14%; width: 10.5px; height: 10.5px; animation-duration: 25s; animation-delay: -21s; }
+  .snowflake:nth-of-type(5) { left: 51%; width: 13.5px; height: 13.5px; animation-duration: 27s; animation-delay: -28s; }
+  .snowflake:nth-of-type(6) { left: 88%; width: 7.5px; height: 7.5px; animation-duration: 29s; animation-delay: -4s; }
+  .snowflake:nth-of-type(7) { left: 25%; width: 13.5px; height: 13.5px; animation-duration: 31s; animation-delay: -11s; }
+  .snowflake:nth-of-type(8) { left: 62%; width: 9px; height: 9px; animation-duration: 19s; animation-delay: -18s; }
+  .snowflake:nth-of-type(9) { left: 99%; width: 13.5px; height: 13.5px; animation-duration: 21s; animation-delay: -25s; }
+  .snowflake:nth-of-type(10) { left: 36%; width: 10.5px; height: 10.5px; animation-duration: 23s; animation-delay: -1s; }
+  .snowflake:nth-of-type(11) { left: 73%; width: 13.5px; height: 13.5px; animation-duration: 25s; animation-delay: -8s; }
+  .snowflake:nth-of-type(12) { left: 10%; width: 7.5px; height: 7.5px; animation-duration: 27s; animation-delay: -15s; }
+  .snowflake:nth-of-type(13) { left: 47%; width: 13.5px; height: 13.5px; animation-duration: 29s; animation-delay: -22s; }
+  .snowflake:nth-of-type(14) { left: 84%; width: 9px; height: 9px; animation-duration: 31s; animation-delay: -29s; }
+  .snowflake:nth-of-type(15) { left: 21%; width: 13.5px; height: 13.5px; animation-duration: 19s; animation-delay: -5s; }
+  .snowflake:nth-of-type(16) { left: 58%; width: 10.5px; height: 10.5px; animation-duration: 21s; animation-delay: -12s; }
+  .snowflake:nth-of-type(17) { left: 95%; width: 13.5px; height: 13.5px; animation-duration: 23s; animation-delay: -19s; }
+  .snowflake:nth-of-type(18) { left: 32%; width: 7.5px; height: 7.5px; animation-duration: 25s; animation-delay: -26s; }
+  .snowflake:nth-of-type(19) { left: 69%; width: 13.5px; height: 13.5px; animation-duration: 27s; animation-delay: -2s; }
+  .snowflake:nth-of-type(20) { left: 6%; width: 9px; height: 9px; animation-duration: 29s; animation-delay: -9s; }
+  .snowflake:nth-of-type(21) { left: 43%; width: 13.5px; height: 13.5px; animation-duration: 31s; animation-delay: -16s; }
+  .snowflake:nth-of-type(22) { left: 80%; width: 10.5px; height: 10.5px; animation-duration: 19s; animation-delay: -23s; }
+  .snowflake:nth-of-type(23) { left: 17%; width: 13.5px; height: 13.5px; animation-duration: 21s; animation-delay: -30s; }
+  .snowflake:nth-of-type(24) { left: 54%; width: 7.5px; height: 7.5px; animation-duration: 23s; animation-delay: -6s; }
+  .snowflake:nth-of-type(even) { animation-name: christmas-snow-reverse; }
+  @keyframes christmas-snow {
+    0% { opacity: 0; transform: translate3d(-14px, 0, 0) rotate(0); }
+    10% { opacity: .55; }
+    85% { opacity: .4; }
+    100% { opacity: 0; transform: translate3d(25px, calc(100vh + 48px), 0) rotate(140deg); }
+  }
+  @keyframes christmas-snow-reverse {
+    0% { opacity: 0; transform: translate3d(12px, 0, 0) rotate(20deg); }
+    10% { opacity: .4; }
+    85% { opacity: .3; }
+    100% { opacity: 0; transform: translate3d(-25px, calc(100vh + 48px), 0) rotate(-130deg); }
+  }
+  @media (max-width: 640px) { .snowflake:nth-of-type(n+15) { display: none; } }
+  @media (prefers-reduced-motion: reduce), print { .christmas-snow { display: none !important; } }
+</style>

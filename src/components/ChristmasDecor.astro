@@ -1,0 +1,77 @@
+---
+const sprigs = [
+  [174, 45, 8, .58], [164, 56, 63, .6], [155, 67, -25, .88],
+  [144, 78, 61, .81], [132, 90, -28, .91], [120, 100, 62, .8],
+  [108, 112, -32, .8], [98, 121, 57, .7],
+];
+// Paired, gently curved pine needles with small natural variations in length.
+const needles = Array.from({ length: 18 }, (_, i) => {
+  const y = -4 - i * 2.7;
+  const reach = 16 + Math.sin(i * 2.1) * 4;
+  const spread = 13 + Math.sin(i * 1.7) * 4;
+  return [-1, 1].flatMap(side => [0, 1].map(pair => ({
+    path: `M${side * .5} ${y}Q${side * (spread * .65 + pair)} ${y - reach * .35} ${side * (spread + pair * 1.6)} ${y - reach - pair * 2}`,
+    shade: ['#204638', '#427159', '#628469', '#315d46'][i % 4],
+  })));
+}).flat();
+---
+<div class="christmas-decor" aria-hidden="true">
+  <div class="christmas-warmth"></div>
+  <svg class="christmas-ornaments" viewBox="0 0 200 224" fill="none">
+    <defs>
+      <radialGradient id="christmas-red-glass" cx=".3" cy=".24" r=".8">
+        <stop stop-color="#efb2a0" /><stop offset=".2" stop-color="#bd4c45" /><stop offset=".6" stop-color="#76272c" /><stop offset="1" stop-color="#2d1720" />
+      </radialGradient>
+      <radialGradient id="christmas-gold-glass" cx=".3" cy=".25" r=".82">
+        <stop stop-color="#fff1c5" /><stop offset=".3" stop-color="#dcb76d" /><stop offset=".7" stop-color="#a67438" /><stop offset="1" stop-color="#4c3627" />
+      </radialGradient>
+      <linearGradient id="christmas-metal" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#775630" /><stop offset=".5" stop-color="#e9cd91" /><stop offset="1" stop-color="#7d5c36" /></linearGradient>
+      <g id="christmas-pine-sprig" stroke-linecap="round">
+        <path d="M0 0Q-1-25 0-57" stroke="#574b31" stroke-width="1.8" />
+        {needles.map(needle => <path d={needle.path} stroke="#0c241b" stroke-width="1.5" />)}
+        {needles.map(needle => <path d={needle.path} stroke={needle.shade} stroke-width=".75" />)}
+        <path d="M-.6-3 .4-53" stroke="#a89b65" stroke-opacity=".45" stroke-width=".5" />
+        <ellipse cy="-56" rx="1.8" ry="4" fill="#87704a" />
+        <path d="M-1-57h2m-2 2h2" stroke="#c0a478" stroke-width=".5" />
+      </g>
+    </defs>
+    <ellipse cx="116" cy="211" rx="65" ry="7" fill="#020409" opacity=".45" />
+    <path d="M175 24c-9 43-45 67-83 102" stroke="#3b3123" stroke-width="3.5" stroke-linecap="round" />
+    <path d="M174 24c-9 43-45 67-83 102" stroke="#a28b5e" stroke-width="1.3" stroke-linecap="round" />
+    {sprigs.map(([x, y, angle, scale]) => <use href="#christmas-pine-sprig" transform={`translate(${x} ${y}) rotate(${angle}) scale(${scale})`} />)}
+    <g class="ornament-swing ornament-gold">
+    <path d="M151 81c-2 20-2 37 0 57" stroke="#c5a46d" stroke-opacity=".8" stroke-width=".85" />
+    <path d="M148 137v-5a3 3 0 0 1 6 0v5" stroke="#c6a366" stroke-width="1" />
+    <circle cx="151" cy="163" r="25" fill="url(#christmas-gold-glass)" stroke="#ebc987" stroke-opacity=".3" stroke-width=".7" />
+    <path d="M132 154c2-6 6-10 12-11" stroke="#fff2ce" stroke-opacity=".55" stroke-width="2.2" stroke-linecap="round" />
+    <rect x="145" y="135" width="12" height="6" rx="1.4" fill="url(#christmas-metal)" />
+    </g>
+    <g class="ornament-swing ornament-red">
+    <path d="M98 113q-10 8-7 20" stroke="#c5a46d" stroke-opacity=".8" stroke-width=".85" />
+    <path d="M88 134v-5a4 4 0 0 1 8 0v5" stroke="#d7b877" stroke-width="1" />
+    <circle cx="92" cy="168" r="37" fill="url(#christmas-red-glass)" stroke="#edbb97" stroke-opacity=".3" stroke-width=".7" />
+    <rect x="84" y="131" width="16" height="8" rx="1.8" fill="url(#christmas-metal)" />
+    <path d="M62 157c3-10 10-17 20-19" stroke="#ffe7d5" stroke-opacity=".5" stroke-width="3" stroke-linecap="round" />
+    <path d="M65 182c9 14 27 20 43 10" stroke="#efad8e" stroke-opacity=".22" stroke-width="1.3" stroke-linecap="round" />
+    <path d="m92 154 3 10 10 4-10 3-3 10-3-10-10-3 10-4Z" fill="#efce93" opacity=".72" />
+    <g stroke="#edcf98" stroke-width=".7" opacity=".4">
+      <path d="M68 169h4m41 0h4M92 144v4m0 41v4" />
+      <circle cx="92" cy="168" r="23" />
+    </g>
+    </g>
+  </svg>
+</div>
+
+<style>
+  .christmas-decor { display: none; position: absolute; inset: 0; pointer-events: none; user-select: none; }
+  :global(html[data-christmas]) .christmas-decor { display: block; }
+  .christmas-warmth { position: absolute; inset: 15% 0 -5% 25%; z-index: -1; background: radial-gradient(ellipse closest-side at 65% 72%, #e7c27a16, transparent); }
+  .christmas-ornaments { position: absolute; z-index: 4; right: -3px; bottom: -19px; width: clamp(108px, 10vw, 146px); height: auto; }
+  .ornament-swing { transform-box: view-box; animation: ornament-sway 5.6s ease-in-out infinite; }
+  .ornament-red { transform-origin: 98px 113px; }
+  .ornament-gold { transform-origin: 151px 81px; animation-duration: 6.7s; animation-delay: -2.8s; }
+  @keyframes ornament-sway { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+  @media (prefers-reduced-motion: reduce) { .ornament-swing { animation: none; } }
+  @media print { .christmas-decor { display: none !important; } }
+  @media (max-width: 640px) { .christmas-ornaments { width: 86px; right: 2px; bottom: -22px; } }
+</style>
