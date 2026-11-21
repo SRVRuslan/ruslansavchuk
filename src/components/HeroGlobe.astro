@@ -55,11 +55,14 @@ import globePosterMobile from '../assets/globe/earth-poster-512.webp';
   @media (max-width: 640px) {
     .hero-globe {
       top: -42px;
-      right: 0;
-      width: 100%;
-      translate: none;
+      left: 50%;
+      right: auto;
+      width: calc(100vw - 8px);
+      max-width: none;
+      translate: -50% 0;
       opacity: .9;
     }
+    :global(html[dir=rtl]) .hero-globe { left: 50%; right: auto; }
   }
 </style>
 
