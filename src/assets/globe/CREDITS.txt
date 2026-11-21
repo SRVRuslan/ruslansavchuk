@@ -1,0 +1,19 @@
+Earth surface: NASA Blue Marble imagery; optimized from the three-globe example texture.
+https://github.com/vasturiano/three-globe/blob/master/example/img/earth-blue-marble.jpg
+https://science.nasa.gov/earth/earth-observatory/blue-marble/
+
+Night lights: NASA Earth Observatory, Black Marble 2016 (3600 x 1800 color map).
+https://science.nasa.gov/earth/earth-observatory/earth-at-night/maps/
+https://assets.science.nasa.gov/content/dam/science/esd/eo/images/imagerecords/144000/144898/BlackMarble_2016_01deg.jpg
+NASA imagery usage guidelines: https://www.nasa.gov/nasa-brand-center/images-and-media/
+No NASA identifiers or endorsement are implied.
+
+Geographic outlines: Natural Earth 1:110m admin 0 countries, public domain.
+https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_110m_admin_0_countries.geojson
+https://www.naturalearthdata.com/about/terms-of-use/
+Rasterized to 2048 x 1024 and 1024 x 512 outline masks for the decorative globe.
+The 768 px / 512 px static posters are rendered from the same local globe scene.
+
+Both satellite maps are converted to WebP at 2048 x 1024 for desktop and
+1024 x 512 for small/coarse-pointer screens. Assets are bundled locally;
+visitors do not make requests to NASA, GitHub or a texture CDN.

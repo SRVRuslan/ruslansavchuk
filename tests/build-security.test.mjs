@@ -11,6 +11,7 @@ test('production CSP is enforced as an HTTP header with matching inline style/sc
   assert.match(headers, /base-uri 'none'/);
   assert.match(headers, /script-src-attr 'none'/);
   assert.match(headers, /style-src-attr 'none'/);
+  assert.match(headers, /worker-src 'self'/);
   assert.doesNotMatch(headers, /'unsafe-inline'|'unsafe-eval'|https:\s|\*\./);
   assert.match(html, /data-sitekey="0x4AAAAAAFqVLM7r_tqtlHtU"/);
   assert.doesNotMatch(html, /data-sitekey="1x00000000000000000000AA"/);

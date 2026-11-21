@@ -20,6 +20,7 @@ export default defineConfig({
         "form-action 'self'",
         "img-src 'self' data: https://photo.ruslan-savchuk-dev-ca.workers.dev",
         "font-src 'self'", "connect-src 'self' https://challenges.cloudflare.com https://cloudflareinsights.com",
+        "worker-src 'self'",
         'frame-src https://challenges.cloudflare.com', "manifest-src 'self'", 'upgrade-insecure-requests',
       ],
     },

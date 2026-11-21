@@ -1,8 +1,15 @@
 ---
 import HalloweenWeb from './HalloweenWeb.astro';
+import globePoster from '../assets/globe/earth-poster.webp';
+import globePosterMobile from '../assets/globe/earth-poster-512.webp';
 ---
 <div class="hero-globe" aria-hidden="true">
+  <picture class="globe-poster">
+    <source media="(max-width: 900px)" srcset={globePosterMobile.src} />
+    <img src={globePoster.src} width="768" height="768" alt="" decoding="async" fetchpriority="high" />
+  </picture>
   <canvas data-hero-globe width="600" height="600"></canvas>
+  <canvas data-globe-network width="600" height="600"></canvas>
   <HalloweenWeb />
 </div>
 
@@ -10,7 +17,7 @@ import HalloweenWeb from './HalloweenWeb.astro';
   .hero-globe {
     position: absolute;
     z-index: -1;
-    top: -65px;
+    top: -95px;
     /* Keep the existing offset where there is room, within the page gutter. */
     right: max(-7%, min(-36px, calc((1256px - 100vw) / 2)));
     width: 120.96%;
@@ -18,17 +25,27 @@ import HalloweenWeb from './HalloweenWeb.astro';
     translate: 0 -3.703704%;
     aspect-ratio: 1;
     pointer-events: none;
-    opacity: .8;
+    opacity: .95;
     /* Fade the lower hemisphere into the existing background. */
-    mask-image: linear-gradient(#000 65%, #0009 85%, transparent 100%);
+    mask-image: linear-gradient(#000 70%, #000c 87%, transparent 100%);
   }
 
-  canvas {
+  canvas, .globe-poster {
     display: block;
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: radial-gradient(circle at 36% 28%, #13253a77, #0b152388 48%, #080d1500 70%);
+  }
+
+  .globe-poster img { display: block; width: 100%; height: 100%; }
+
+  canvas { opacity: 0; }
+  .hero-globe[data-globe-ready] canvas { opacity: 1; }
+  .hero-globe[data-globe-ready] .globe-poster { visibility: hidden; }
+
+  .globe-poster, canvas[data-globe-network] {
+    position: absolute;
+    inset: 0;
   }
 
   @media (max-width: 900px) {
@@ -37,11 +54,11 @@ import HalloweenWeb from './HalloweenWeb.astro';
 
   @media (max-width: 640px) {
     .hero-globe {
-      top: -22px;
+      top: -42px;
       right: 0;
       width: 100%;
       translate: none;
-      opacity: .7;
+      opacity: .9;
     }
   }
 </style>
